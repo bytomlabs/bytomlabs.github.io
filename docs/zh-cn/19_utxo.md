@@ -1,0 +1,5 @@
+## UTXO
+
+UTXO的全名是Unspend transaction output，中文意思即未花费的交易输出。在比原链上每一笔交易的每一个输入（issue, coinbase除外）都会消耗一个UTXO, 每一笔交易的每一个输出(retire除外)都会创造一个新的UTXO. 每一个比原的全节点都会维护个本地的UTXO池，为验证区块的流程提供UTXO合法性验证。在区块验证合法之后，节点会根据区块内的交易信息动态更新UTXO池。
+
+在UTXO池中的存在形态是一个哈希，计算的方式是 SHA256（资产ID + 资产数量 + 智能合约 + SourceID）。 哈希中加入资产ID是因为比原链天然支持多资产，但在内核的设计中希望多资产共享一个UTXO池子所以加入资产ID用来混淆哈希。在UTXO的计算过程中资产数量，智能合约，与资产ID只是起到辅助混淆哈希结果的作用，真正保证了每一个UXTO的哈希的唯一性是依赖SourceID。SourceID是一笔交易所有输入的一个哈希，计算的方式是 SHA256（Input1 UTXO + Input2 UTXO ... + InputN UTXO). 从高层级的视角来看SourceID可以代表一笔交易所有输入的历史转账数据，通过这种方式保证了每一个SourceID的唯一性。 每个SoureID的唯一性保障了每个UTXO的唯一性，每个UTXO的唯一性同时也逆向保障了每个SourceID的唯一性。

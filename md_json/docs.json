@@ -1,0 +1,402 @@
+{
+  "en-us": [
+    {
+      "filename": "01_install.md",
+      "link": "/en-us/docs/01_install.html",
+      "meta": {}
+    },
+    {
+      "filename": "02_config_node.md",
+      "link": "/en-us/docs/02_config_node.html",
+      "meta": {}
+    },
+    {
+      "filename": "03_cli_tool.md",
+      "link": "/en-us/docs/03_cli_tool.html",
+      "meta": {}
+    },
+    {
+      "filename": "04_network.md",
+      "link": "/en-us/docs/04_network.html",
+      "meta": {}
+    },
+    {
+      "filename": "05_mining.md",
+      "link": "/en-us/docs/05_mining.html",
+      "meta": {}
+    },
+    {
+      "filename": "06_build_environment.md",
+      "link": "/en-us/docs/06_build_environment.html",
+      "meta": {}
+    },
+    {
+      "filename": "07_compile_and_run_node.md",
+      "link": "/en-us/docs/07_compile_and_run_node.html",
+      "meta": {}
+    },
+    {
+      "filename": "08_rpc_call.md",
+      "link": "/en-us/docs/08_rpc_call.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_ws_call.md",
+      "link": "/en-us/docs/09_ws_call.html",
+      "meta": {}
+    },
+    {
+      "filename": "10_other_sdk.md",
+      "link": "/en-us/docs/10_other_sdk.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_other_tools.md",
+      "link": "/en-us/docs/11_other_tools.html",
+      "meta": {}
+    },
+    {
+      "filename": "12_architecture_overview.md",
+      "link": "/en-us/docs/12_architecture_overview.html",
+      "meta": {}
+    },
+    {
+      "filename": "13_key.md",
+      "link": "/en-us/docs/13_key.html",
+      "meta": {}
+    },
+    {
+      "filename": "14_address.md",
+      "link": "/en-us/docs/14_address.html",
+      "meta": {}
+    },
+    {
+      "filename": "15_account.md",
+      "link": "/en-us/docs/15_account.html",
+      "meta": {}
+    },
+    {
+      "filename": "16_transaction.md",
+      "link": "/en-us/docs/16_transaction.html",
+      "meta": {}
+    },
+    {
+      "filename": "17_UTXO.md",
+      "link": "/en-us/docs/17_UTXO.html",
+      "meta": {}
+    },
+    {
+      "filename": "18_consensus.md",
+      "link": "/en-us/docs/18_consensus.html",
+      "meta": {}
+    },
+    {
+      "filename": "19_p2p.md",
+      "link": "/en-us/docs/19_p2p.html",
+      "meta": {}
+    },
+    {
+      "filename": "20_smart_contract_overview.md",
+      "link": "/en-us/docs/20_smart_contract_overview.html",
+      "meta": {}
+    },
+    {
+      "filename": "21_smart_contract_build.md",
+      "link": "/en-us/docs/21_smart_contract_build.html",
+      "meta": {}
+    },
+    {
+      "filename": "22_contract_template.md",
+      "link": "/en-us/docs/22_contract_template.html",
+      "meta": {}
+    },
+    {
+      "filename": "23_wallet.md",
+      "link": "/en-us/docs/23_wallet.html",
+      "meta": {}
+    },
+    {
+      "filename": "24_ligth_wallet.md",
+      "link": "/en-us/docs/24_ligth_wallet.html",
+      "meta": {}
+    },
+    {
+      "filename": "25_block_explorer.md",
+      "link": "/en-us/docs/25_block_explorer.html",
+      "meta": {}
+    },
+    {
+      "filename": "26_mining_pool.md",
+      "link": "/en-us/docs/26_mining_pool.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo1.md",
+      "link": "/en-us/docs/demo1.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo2.md",
+      "link": "/en-us/docs/demo2.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo3.md",
+      "link": "/en-us/docs/dir/demo3.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_BVM.md",
+      "link": "/en-us/docs/mydoc_BVM.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_FAQ.md",
+      "link": "/en-us/docs/mydoc_FAQ.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_block.md",
+      "link": "/en-us/docs/mydoc_block.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_contract_operator.md",
+      "link": "/en-us/docs/mydoc_contract_operator.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_control_program.md",
+      "link": "/en-us/docs/mydoc_control_program.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_developer_demo.md",
+      "link": "/en-us/docs/mydoc_developer_demo.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_license.md",
+      "link": "/en-us/docs/mydoc_license.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_roadmap.md",
+      "link": "/en-us/docs/mydoc_roadmap.html",
+      "meta": {
+        "title": "Roadmap",
+        "tags": "[publishing]",
+        "keywords": "building, serving, serve, build",
+        "last_updated": "July 3, 2016",
+        "sidebar": "mydoc_sidebar",
+        "permalink": "mydoc_roadmap.html",
+        "folder": "mydoc"
+      }
+    },
+    {
+      "filename": "mydoc_smart_contract.md",
+      "link": "/en-us/docs/mydoc_smart_contract.html",
+      "meta": {}
+    }
+  ],
+  "zh-cn": [
+    {
+      "filename": "01_install.md",
+      "link": "/zh-cn/docs/01_install.html",
+      "meta": {}
+    },
+    {
+      "filename": "02_config_node.md",
+      "link": "/zh-cn/docs/02_config_node.html",
+      "meta": {}
+    },
+    {
+      "filename": "03_cli_tool.md",
+      "link": "/zh-cn/docs/03_cli_tool.html",
+      "meta": {}
+    },
+    {
+      "filename": "04_network.md",
+      "link": "/zh-cn/docs/04_network.html",
+      "meta": {}
+    },
+    {
+      "filename": "05_mining.md",
+      "link": "/zh-cn/docs/05_mining.html",
+      "meta": {}
+    },
+    {
+      "filename": "06_build_environment.md",
+      "link": "/zh-cn/docs/06_build_environment.html",
+      "meta": {}
+    },
+    {
+      "filename": "07_compile_and_run_node.md",
+      "link": "/zh-cn/docs/07_compile_and_run_node.html",
+      "meta": {}
+    },
+    {
+      "filename": "08_rpc_call.md",
+      "link": "/zh-cn/docs/08_rpc_call.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_ws_call.md",
+      "link": "/zh-cn/docs/09_ws_call.html",
+      "meta": {}
+    },
+    {
+      "filename": "10_other_sdk.md",
+      "link": "/zh-cn/docs/10_other_sdk.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_other_tools.md",
+      "link": "/zh-cn/docs/11_other_tools.html",
+      "meta": {
+        "title": "其他工具",
+        "tags": "[publishing]",
+        "keywords": "building, serving, serve, build",
+        "last_updated": "July 3, 2016",
+        "sidebar": "mydoc_sidebar_cn",
+        "permalink": "mydoc_other_tools.cn.html",
+        "folder": "mydoc"
+      }
+    },
+    {
+      "filename": "12_developer_demo.md",
+      "link": "/zh-cn/docs/12_developer_demo.html",
+      "meta": {}
+    },
+    {
+      "filename": "13_architecture_overview.md",
+      "link": "/zh-cn/docs/13_architecture_overview.html",
+      "meta": {}
+    },
+    {
+      "filename": "14_key.md",
+      "link": "/zh-cn/docs/14_key.html",
+      "meta": {}
+    },
+    {
+      "filename": "15_address.md",
+      "link": "/zh-cn/docs/15_address.html",
+      "meta": {}
+    },
+    {
+      "filename": "16_account.md",
+      "link": "/zh-cn/docs/16_account.html",
+      "meta": {}
+    },
+    {
+      "filename": "17_transaction.md",
+      "link": "/zh-cn/docs/17_transaction.html",
+      "meta": {}
+    },
+    {
+      "filename": "18_block.md",
+      "link": "/zh-cn/docs/18_block.html",
+      "meta": {}
+    },
+    {
+      "filename": "19_utxo.md",
+      "link": "/zh-cn/docs/19_utxo.html",
+      "meta": {}
+    },
+    {
+      "filename": "20_consensus.md",
+      "link": "/zh-cn/docs/20_consensus.html",
+      "meta": {}
+    },
+    {
+      "filename": "21_p2p.md",
+      "link": "/zh-cn/docs/21_p2p.html",
+      "meta": {}
+    },
+    {
+      "filename": "22_smart_contract_overview.md",
+      "link": "/zh-cn/docs/22_smart_contract_overview.html",
+      "meta": {}
+    },
+    {
+      "filename": "23_smart_contract_build.md",
+      "link": "/zh-cn/docs/23_smart_contract_build.html",
+      "meta": {}
+    },
+    {
+      "filename": "24_contract_operator.md",
+      "link": "/zh-cn/docs/24_contract_operator.html",
+      "meta": {}
+    },
+    {
+      "filename": "25_contract_template.md",
+      "link": "/zh-cn/docs/25_contract_template.html",
+      "meta": {}
+    },
+    {
+      "filename": "26_wallet.md",
+      "link": "/zh-cn/docs/26_wallet.html",
+      "meta": {}
+    },
+    {
+      "filename": "27_ligth_wallet.md",
+      "link": "/zh-cn/docs/27_ligth_wallet.html",
+      "meta": {}
+    },
+    {
+      "filename": "28_block_explorer.md",
+      "link": "/zh-cn/docs/28_block_explorer.html",
+      "meta": {}
+    },
+    {
+      "filename": "29_mining_pool.md",
+      "link": "/zh-cn/docs/29_mining_pool.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo1.md",
+      "link": "/zh-cn/docs/demo1.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo2.md",
+      "link": "/zh-cn/docs/demo2.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo3.md",
+      "link": "/zh-cn/docs/dir/demo3.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_BVM.cn.md",
+      "link": "/zh-cn/docs/mydoc_BVM.cn.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_FAQ.cn.md",
+      "link": "/zh-cn/docs/mydoc_FAQ.cn.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_control_program.cn.md",
+      "link": "/zh-cn/docs/mydoc_control_program.cn.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_license.cn.md",
+      "link": "/zh-cn/docs/mydoc_license.cn.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_roadmap.cn.md",
+      "link": "/zh-cn/docs/mydoc_roadmap.cn.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_smart_contract.cn.md",
+      "link": "/zh-cn/docs/mydoc_smart_contract.cn.html",
+      "meta": {}
+    }
+  ]
+}

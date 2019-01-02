@@ -1,0 +1,6 @@
+{
+  "filename": "06_build_environment.md",
+  "__html": "<h2>Developer Environment</h2>\n<p>We assume that you have <a href=\"https://golang.org/doc/install\"><code>go</code> v1.8 or higher installed</a>, and <code>GOPATH</code> is set.</p>\n<p><strong>Note</strong>:You must have your working copy under <code>$GOPATH/src/github.com/bytom</code>.</p>\n<p>Since <code>go</code> does not use relative path for import, working in any other directory will have no effect, since the import paths will be appended to <code>$GOPATH/src</code>, and if the lib does not exist, the version at master HEAD will be downloaded.</p>\n<p>Most likely you will be working from your fork of <code>bytom</code>, let's say from <code>github.com/nirname/bytom</code>. Clone or move your fork into the right place:</p>\n<pre><code>git clone git@github.com:nirname/bytom.git $GOPATH/src/github.com/bytom\n</code></pre>\n",
+  "link": "/en-us/docs/06_build_environment.html",
+  "meta": {}
+}

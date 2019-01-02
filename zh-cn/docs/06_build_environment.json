@@ -1,0 +1,6 @@
+{
+  "filename": "06_build_environment.md",
+  "__html": "<h2>搭建开发环境</h2>\n<p>假设你已经配置好 <a href=\"https://golang.org/doc/install\"><code>go</code> v1.8 or higher installed</a>, 并且设置好 <code>GOPATH</code>。</p>\n<p><strong>备注</strong>:你必须将工作目录拷贝到 <code>$GOPATH/src/github.com/bytom</code>.</p>\n<p>因为 <code>go</code> 不依赖于import的相对路径，所以把项目放在在任何目录中都没有影响, 因为import路径会被追加到 <code>$GOPATH/src</code>,如果lib不存在, 将会从 master HEAD下载.</p>\n<p>你最可能会把项目放在 <code>bytom</code>fork下面, 那么让我们从 <code>github.com/nirname/bytom</code>开始. 克隆并移动你的fork到正确的地方:</p>\n<pre><code>git clone git@github.com:nirname/bytom.git $GOPATH/src/github.com/bytom\n</code></pre>\n",
+  "link": "/zh-cn/docs/06_build_environment.html",
+  "meta": {}
+}

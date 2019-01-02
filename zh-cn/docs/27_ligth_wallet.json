@@ -1,0 +1,6 @@
+{
+  "filename": "27_ligth_wallet.md",
+  "__html": "<h2>SPV 轻钱包</h2>\n<p>SPV允许轻量级客户端在没有下载整个区块链的情况下，验证交易是否包含在Bytom区块链中。 SPV钱包只需要下载区块头，相比下载整个区块信息来说要小的多。为了验证一笔交易是否在区块中，SPV钱包需要以Merkle树形式请求包含证明\n。</p>\n<p>使用SPV钱包请点击 <a href=\"https://github.com/Bytom/bytom-spv/releases\">https://github.com/Bytom/bytom-spv/releases</a>.\n与全节点钱包的使用方法相同</p>\n<h3>初始</h3>\n<pre><code>./bytom-spv-wallet init --chain_id testnet -r ~/.bytom_spv\n</code></pre>\n<h3>运行</h3>\n<pre><code>$ ./bytom-spv-wallet node -r ~/.bytom_spv\n</code></pre>\n<h3>Dashboard</h3>\n<p>进入dashboard:</p>\n<pre><code>$ 打开 http://localhost:9888/\n</code></pre>\n<hr>\n",
+  "link": "/zh-cn/docs/27_ligth_wallet.html",
+  "meta": {}
+}

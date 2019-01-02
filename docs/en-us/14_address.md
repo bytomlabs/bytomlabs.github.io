@@ -1,0 +1,25 @@
+# Address
+
+## Introduction
+
+​	The ownership of bytom assets is established through address and digital signature. Each transaction requires a valid digital signature to be included in the blockchain, which can only be generated with a secret key. Therefore, one with that key has control of the assets in that account.  Keys come in pairs consisting of a private key and a public key.  Simply，the public key can be used as the address for a transaction output, while the private key can be used to sign transactions. In general, they are stored in a wallet file and managed by the wallet software.
+
+​	When an asset is issued, it will be issued to the specified address. And when spending an asset, it will be consumed from an existing address and then transferred to a new address. Similarly, retiring an asset means it will be consumed from an existing address but transferred to an address that can never be consumed.
+
+​	Otherwise, not all addresses are public keys, they can also represent other payment objects, such as scripts. The payment script is called the control program, and each control program contains a series of predicates that need to be met in order to spend the output.
+
+## Account control program
+
+​	Among all types of control programs, the account control program is the most basic, which defines multiple keys and the number of signatures required when spending an asset unit. When depositing an asset into a specified account, the wallet client will derive a new series of sub-public keys from the root key and create a unique, only one-time control program that uses the number of signatures defined before.
+
+​	There are single-sign account and multi-sign account according to the number of keys in the account. The single-sign account uses P2PKH to create the control program. It mainly verifies whether the public key can be converted to the correct address and whether the signature is correct. The multi-sign account uses P2SH, for example, a 3-2 multi-sign account needs to verify two valid signatures at least.
+
+​	Although the sub-public keys used by all the control programs in an account are derived from the same root key, it is impossible for others on the blockchain to associate them. This technique is called HD Wallets, which ensures that only the one that trade with you on the blockchain will know that the control program belongs to you. For others, the creator of the control program is unknown.
+
+## Retire control program
+
+​	The retire control program is a very simple control program with a simple predicate: FAIL. It ensures that the asset unit in it can never be consumed, that is, the asset has been removed from the blockchain.
+
+## Custom control program
+
+​	BVM support the custom control program. We had developed a high-level language that allows developers to write smart contract programs on the Bytom Blockchain. See the Smart Contracts document for details.
