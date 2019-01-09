@@ -1,0 +1,6 @@
+{
+  "filename": "27_ligth_wallet.md",
+  "__html": "<h2>Simple Payment Verification Wallet</h2>\n<p>Simple Payment Verification (SPV) allows a lightweight client to verify that a transaction is included in the Bytom blockchain,\nwithout downloading the entire blockchain. The SPV client only needs download the block headers, which are much smaller\nthan the full blocks. To verify that a transaction is in a block, a SPV client requests a proof of inclusion, in the form\nof a Merkle branch.</p>\n<p>To use the SPV wallet <a href=\"https://github.com/Bytom/bytom-spv/releases\">https://github.com/Bytom/bytom-spv/releases</a>.\nRun and configured as the normal Bytom wallet.</p>\n<h4>Init</h4>\n<pre><code>./bytom-spv-wallet init --chain_id testnet -r ~/.bytom_spv\n</code></pre>\n<h3>launch</h3>\n<pre><code>$ ./bytom-spv-wallet node -r ~/.bytom_spv\n</code></pre>\n<h3>Dashboard</h3>\n<p>Access the dashboard:</p>\n<pre><code>$ open http://localhost:9888/\n</code></pre>\n<hr>\n",
+  "link": "/en-us/docs/27_ligth_wallet.html",
+  "meta": {}
+}

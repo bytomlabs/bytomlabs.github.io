@@ -4,30 +4,30 @@ export default {
                 title: 'Understanding Bytom',
                 children: [{
                         title: 'Overview',
-                        link: '/en-us/docs/demo1.html',
+                        link: '/en-us/docs/00_index.html',
                     }, {
                         title: 'Architecture and Design',
                         opened: true,
                         children: [{
                                 title: 'Overall Architecture Overview',
-                                link: '/en-us/docs/12_architecture_overview.html',
+                                link: '/en-us/docs/13_architecture_overview.html',
                             },
                             {
                                 title: 'Key',
-                                link: '/en-us/docs/13_key.html',
+                                link: '/en-us/docs/14_key.html',
                             },
                             {
 
                                 title: 'Address',
-                                link: '/en-us/docs/14_address.html',
+                                link: '/en-us/docs/15_address.html',
                             },
                             {
                                 title: 'Account',
-                                link: '/en-us/docs/15_account.html',
+                                link: '/en-us/docs/16_account.html',
                             },
                             {
                                 title: 'Transaction',
-                                link: '/en-us/docs/16_transaction.html',
+                                link: '/en-us/docs/17_transaction.html',
                             },
                             {
                                 title: 'Block',
@@ -35,11 +35,11 @@ export default {
                             },
                             {
                                 title: 'UTXO',
-                                link: '/en-us/docs/17_UTXO.html',
+                                link: '/en-us/docs/19_UTXO.html',
                             },
                             {
                                 title: 'P2p Network',
-                                link: '/en-us/docs/19_p2p.html',
+                                link: '/en-us/docs/21_p2p.html',
                             },
                         ],
                     },
@@ -48,7 +48,7 @@ export default {
                         opened: true,
                         children: [{
                                 title: 'Overvew',
-                                link: '/en-us/docs/18_consensus.html',
+                                link: '/en-us/docs/20_consensus.html',
                             },
                             {
                                 title: 'Design Principle',
@@ -61,15 +61,15 @@ export default {
                         opened: true,
                         children: [{
                                 title: 'Overview',
-                                link: '/en-us/docs/20_smart_contract_overview.html',
+                                link: '/en-us/docs/22_smart_contract_overview.html',
                             },
                             {
                                 title: 'Smart Contract Build',
-                                link: '/en-us/docs/21_smart_contract_build.html',
+                                link: '/en-us/docs/23_smart_contract_build.html',
                             },
                             {
                                 title: 'Contract Template',
-                                link: '/en-us/docs/22_contract_operator.html',
+                                link: '/en-us/docs/24_contract_operator.html',
                             },
                             {
                                 title: 'Contract Template',
@@ -241,7 +241,7 @@ export default {
                 title: '认识比原',
                 children: [{
                         title: '概述',
-                        link: '/zh-cn/docs/demo1.html',
+                        link: '/zh-cn/docs/00_index.html',
                     }, {
                         title: '设计原理和架构',
                         opened: true,
