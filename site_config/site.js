@@ -7,24 +7,9 @@ export default {
     defaultLanguage: 'en-us',
     'en-us': {
         pageMenu: [{
-                key: 'home', // 用作顶部菜单的选中
-                text: 'HOME',
-                link: '/en-us/index.html',
-            },
-            {
                 key: 'docs',
                 text: 'DOCS',
                 link: '/en-us/docs/demo1.html',
-            },
-            {
-                key: 'blog',
-                text: 'BLOG',
-                link: '/en-us/blog/index.html',
-            },
-            {
-                key: 'community',
-                text: 'COMMUNITY',
-                link: '/en-us/community/index.html',
             },
         ],
         disclaimer: {
