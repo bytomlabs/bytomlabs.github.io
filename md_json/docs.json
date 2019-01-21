@@ -3,13 +3,7 @@
     {
       "filename": "00_index.md",
       "link": "/en-us/docs/00_index.html",
-      "meta": {
-        "title": "\"Bytom Overview\"",
-        "keywords": "sample homepage",
-        "sidebar": "mydoc_sidebar",
-        "permalink": "index.html",
-        "summary": "Overview."
-      }
+      "meta": {}
     },
     {
       "filename": "01_install.md",
@@ -149,6 +143,16 @@
     {
       "filename": "29_mining_pool.md",
       "link": "/en-us/docs/29_mining_pool.html",
+      "meta": {}
+    },
+    {
+      "filename": "30_sidechain_overview.md",
+      "link": "/en-us/docs/30_sidechain_overview.html",
+      "meta": {}
+    },
+    {
+      "filename": "31_sidechain.md",
+      "link": "/en-us/docs/31_sidechain.html",
       "meta": {}
     },
     {
@@ -356,6 +360,16 @@
     {
       "filename": "29_mining_pool.md",
       "link": "/zh-cn/docs/29_mining_pool.html",
+      "meta": {}
+    },
+    {
+      "filename": "30_sidechain_overview.md",
+      "link": "/zh-cn/docs/30_sidechain_overview.html",
+      "meta": {}
+    },
+    {
+      "filename": "31_sidechain.md",
+      "link": "/zh-cn/docs/31_sidechain.html",
       "meta": {}
     },
     {

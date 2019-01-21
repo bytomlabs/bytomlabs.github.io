@@ -1,11 +1,3 @@
----
-title: "Bytom Overview"
-keywords: sample homepage
-sidebar: mydoc_sidebar
-permalink: index.html
-summary:  Overview.
----
-
 ## Overview
 
 Bytom Blockchain Protocol (hereinafter referred as Bytom) is an interactive protocol of multiple byteassets. Heterogeneous byte-assets (indigenous digital currency, digital assets) that operate in different forms on the Bytom Blockchain and atomic assets (warrants, securities, dividends, bonds, intelligence information, forecasting information and other information that exist in the physical world) can be registered, exchanged, gambled and engaged in other more complicated and contract-based interoperations via Bytom. The protocol connects the atomic world and the byteworld to promote the interaction and circulation of assets between the two worlds.

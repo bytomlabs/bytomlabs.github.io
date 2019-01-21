@@ -37,24 +37,11 @@ export default {
                                 title: 'UTXO',
                                 link: '/en-us/docs/19_UTXO.html',
                             },
-                            {
-                                title: 'P2p Network',
-                                link: '/en-us/docs/21_p2p.html',
-                            },
                         ],
                     },
                     {
                         title: 'Consensus',
-                        opened: true,
-                        children: [{
-                                title: 'Overvew',
-                                link: '/en-us/docs/20_consensus.html',
-                            },
-                            {
-                                title: 'Design Principle',
-                                link: '/en-us/docs/demo2.html',
-                            },
-                        ],
+                        link: '/en-us/docs/20_consensus.html',
                     },
                     {
                         title: 'Smart Contract',
@@ -82,11 +69,11 @@ export default {
                         opened: true,
                         children: [{
                                 title: 'Overview',
-                                link: '/en-us/docs/demo1.html',
+                                link: '/en-us/docs/30_sidechain_overview.html',
                             },
                             {
                                 title: 'Configuration Node',
-                                link: '/en-us/docs/demo2.html',
+                                link: '/en-us/docs/31_sidechain.html',
                             },
                         ],
                     },
@@ -274,24 +261,11 @@ export default {
                                 title: 'UTXO',
                                 link: '/zh-cn/docs/19_utxo.html',
                             },
-                            {
-                                title: 'p2p网络',
-                                link: '/zh-cn/docs/21_p2p.html',
-                            },
                         ],
                     },
                     {
                         title: '共识算法',
-                        opened: true,
-                        children: [{
-                                title: '概述',
-                                link: '/zh-cn/docs/demo1.html',
-                            },
-                            {
-                                title: '设计原理',
-                                link: '/zh-cn/docs/demo2.html',
-                            },
-                        ],
+                        link: '/zh-cn/docs/20_consensus.html',
                     },
                     {
                         title: '智能合约',
@@ -319,11 +293,11 @@ export default {
                         opened: true,
                         children: [{
                                 title: '概述',
-                                link: '/zh-cn/docs/demo1.html',
+                                link: '/zh-cn/docs/30_sidechain_overview.html',
                             },
                             {
                                 title: '配置节点',
-                                link: '/zh-cn/docs/demo2.html',
+                                link: '/zh-cn/docs/31_sidechain.html',
                             },
                         ],
                     },
