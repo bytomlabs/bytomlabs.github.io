@@ -1,7 +1,7 @@
 {
   "filename": "mydoc_roadmap.md",
   "__html": "<img src=\".\\images\\roadmap.jpg\" align=\"middle\" width=\"500%\"/>",
-  "link": "\\en-us\\docs\\mydoc_roadmap.html",
+  "link": "/en-us/docs/mydoc_roadmap.html",
   "meta": {
     "title": "Roadmap",
     "tags": "[publishing]",
