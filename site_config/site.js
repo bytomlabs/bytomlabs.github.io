@@ -6,7 +6,11 @@ export default {
     defaultSearch: 'google', // 默认搜索引擎，baidu或者google
     defaultLanguage: 'en-us',
     'en-us': {
-        pageMenu: [
+        pageMenu: [{
+                key: 'home', // 用作顶部菜单的选中		
+                text: 'HOME',
+                link: '/en-us/index.html',
+            },
             {
                 key: 'docs',
                 text: 'DOCS',
@@ -48,7 +52,12 @@ export default {
         copyright: 'Copyright © 2018 Bytomxxxxxxxx',
     },
     'zh-cn': {
-        pageMenu: [
+        pageMenu: [{
+
+                key: 'home',
+                text: '首页',
+                link: '/zh-cn/index.html',
+            },
             {
                 key: 'docs',
                 text: '文档',
@@ -89,4 +98,4 @@ export default {
         },
         copyright: 'Copyright © 2018 Bytom',
     },
-};
+}
