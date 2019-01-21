@@ -64,7 +64,7 @@ export default {
       img: '/img/quick_start.png',
       button: {
         text: '阅读更多',
-        link: '/zh-cn/docs/demo1.html',
+        link: '/zh-cn/docs/00_index.html',
       },
     },
     users: {
