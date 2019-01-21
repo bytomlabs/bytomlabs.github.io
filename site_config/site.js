@@ -9,33 +9,36 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: 'DOCS',
-            link: '/en-us/docs/demo1.html',
+            link: '/en-us/docs/00_index.html',
         }, ],
         disclaimer: {
-            title: 'Disclaimer',
-            content: 'the disclaimer content',
+            title: 'friendship tips',
+            content: 'If there are errors in document editing, please contact us!',
         },
         documentation: {
             title: 'Documentation',
             list: [{
                     text: 'Overview',
-                    link: '/en-us/docs/demo1.html',
+                    link: '/en-us/docs/00_index.html',
                 },
                 {
                     text: 'Quick start',
-                    link: '/en-us/docs/demo2.html',
+                    link: '/en-us/docs/13_architecture_overview.html',
                 },
                 {
                     text: 'Developer guide',
-                    link: '/en-us/docs/dir/demo3.html',
+                    link: '/en-us/docs/06_build_environment.html',
                 },
             ],
         },
         resources: {
             title: 'Resources',
-            list: [],
+            list: [{
+                    text: 'Github',
+                    link: 'https://github.com/bytomlabs/bytomlabs.github.io',
+                },],
         },
-        copyright: 'Copyright © 2018 Bytomxxxxxxxx',
+        copyright: 'Copyright © 2018 Bytom',
     },
     'zh-cn': {
         pageMenu: [{
@@ -44,16 +47,31 @@ export default {
             link: '/zh-cn/docs/00_index.html',
         }, ],
         disclaimer: {
-            title: '免责声明',
-            content: '转载要注明为本站出处，最终版权归作者本人所有！',
+            title: '友情提示',
+            content: '如果文档编辑有错误，请联系我们!',
         },
         documentation: {
             title: '文档',
-            list: [],
+            list: [{
+                    text: 'Overview',
+                    link: '/zh-cn/docs/00_index.html',
+                },
+                {
+                    text: 'Quick start',
+                    link: '/zh-cn/docs/13_architecture_overview.html',
+                },
+                {
+                    text: 'Developer guide',
+                    link: '/zh-cn/docs/06_build_environment.html',
+                },
+            ],
         },
         resources: {
-            title: '资源',
-            list: [],
+            title: '编辑文档',
+            list: [{
+                    text: 'Github',
+                    link: 'https://github.com/bytomlabs/bytomlabs.github.io',
+                },],
         },
         copyright: 'Copyright © 2018 Bytom',
     },
