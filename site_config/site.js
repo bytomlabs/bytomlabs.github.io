@@ -7,16 +7,10 @@ export default {
     defaultLanguage: 'en-us',
     'en-us': {
         pageMenu: [{
-                key: 'home', // 用作顶部菜单的选中		
-                text: 'HOME',
-                link: '/en-us/index.html',
-            },
-            {
-                key: 'docs',
-                text: 'DOCS',
-                link: '/en-us/docs/demo1.html',
-            },
-        ],
+            key: 'docs',
+            text: 'DOCS',
+            link: '/en-us/docs/demo1.html',
+        }, ],
         disclaimer: {
             title: 'Disclaimer',
             content: 'the disclaimer content',
@@ -39,62 +33,27 @@ export default {
         },
         resources: {
             title: 'Resources',
-            list: [{
-                    text: 'Blog',
-                    link: '/en-us/blog/index.html',
-                },
-                {
-                    text: 'Community',
-                    link: '/en-us/community/index.html',
-                },
-            ],
+            list: [],
         },
         copyright: 'Copyright © 2018 Bytomxxxxxxxx',
     },
     'zh-cn': {
         pageMenu: [{
-
-                key: 'home',
-                text: '首页',
-                link: '/zh-cn/index.html',
-            },
-            {
-                key: 'docs',
-                text: '文档',
-                link: '/zh-cn/docs/mydoc_index.html',
-            },
-        ],
+            key: 'docs',
+            text: '文档',
+            link: '/zh-cn/docs/00_index.html',
+        }, ],
         disclaimer: {
             title: '免责声明',
             content: '转载要注明为本站出处，最终版权归作者本人所有！',
         },
         documentation: {
             title: '文档',
-            list: [{
-                    text: '概览',
-                    link: '/zh-cn/docs/demo1.html',
-                },
-                {
-                    text: '快速开始',
-                    link: '/zh-cn/docs/demo2.html',
-                },
-                {
-                    text: '开发者指南',
-                    link: '/zh-cn/docs/dir/demo3.html',
-                },
-            ],
+            list: [],
         },
         resources: {
             title: '资源',
-            list: [{
-                    text: '博客',
-                    link: '/zh-cn/blog/index.html',
-                },
-                {
-                    text: '社区',
-                    link: '/zh-cn/community/index.html',
-                },
-            ],
+            list: [],
         },
         copyright: 'Copyright © 2018 Bytom',
     },
