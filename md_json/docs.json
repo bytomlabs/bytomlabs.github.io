@@ -156,13 +156,38 @@
       "meta": {}
     },
     {
-      "filename": "demo1.md",
-      "link": "/en-us/docs/demo1.html",
+      "filename": "1_application.md",
+      "link": "/en-us/docs/application/1_application.html",
       "meta": {}
     },
     {
-      "filename": "demo2.md",
-      "link": "/en-us/docs/demo2.html",
+      "filename": "1_collection.md",
+      "link": "/en-us/docs/collection/1_collection.html",
+      "meta": {}
+    },
+    {
+      "filename": "2_collection.md",
+      "link": "/en-us/docs/collection/2_collection.html",
+      "meta": {}
+    },
+    {
+      "filename": "3_collection.md",
+      "link": "/en-us/docs/collection/3_collection.html",
+      "meta": {}
+    },
+    {
+      "filename": "1_dapp.md",
+      "link": "/en-us/docs/dapp/1_dapp.html",
+      "meta": {}
+    },
+    {
+      "filename": "2_dapp.md",
+      "link": "/en-us/docs/dapp/2_dapp.html",
+      "meta": {}
+    },
+    {
+      "filename": "3_dapp.md",
+      "link": "/en-us/docs/dapp/3_dapp.html",
       "meta": {}
     },
     {
@@ -373,18 +398,63 @@
       "meta": {}
     },
     {
-      "filename": "demo1.md",
-      "link": "/zh-cn/docs/demo1.html",
+      "filename": "32_docker_run.md",
+      "link": "/zh-cn/docs/32_docker_run.html",
       "meta": {}
     },
     {
-      "filename": "demo2.md",
-      "link": "/zh-cn/docs/demo2.html",
+      "filename": "1_application.md",
+      "link": "/zh-cn/docs/application/1_application.html",
+      "meta": {}
+    },
+    {
+      "filename": "1_collection.md",
+      "link": "/zh-cn/docs/collection/1_collection.html",
+      "meta": {}
+    },
+    {
+      "filename": "2_collection.md",
+      "link": "/zh-cn/docs/collection/2_collection.html",
+      "meta": {}
+    },
+    {
+      "filename": "3_collection.md",
+      "link": "/zh-cn/docs/collection/3_collection.html",
+      "meta": {}
+    },
+    {
+      "filename": "1_dapp.md",
+      "link": "/zh-cn/docs/dapp/1_dapp.html",
+      "meta": {}
+    },
+    {
+      "filename": "2_dapp.md",
+      "link": "/zh-cn/docs/dapp/2_dapp.html",
+      "meta": {}
+    },
+    {
+      "filename": "3_dapp.md",
+      "link": "/zh-cn/docs/dapp/3_dapp.html",
       "meta": {}
     },
     {
       "filename": "demo3.md",
       "link": "/zh-cn/docs/dir/demo3.html",
+      "meta": {}
+    },
+    {
+      "filename": "1_exchange.md",
+      "link": "/zh-cn/docs/exchange/1_exchange.html",
+      "meta": {}
+    },
+    {
+      "filename": "2_exchange.md",
+      "link": "/zh-cn/docs/exchange/2_exchange.html",
+      "meta": {}
+    },
+    {
+      "filename": "3_exchange.md",
+      "link": "/zh-cn/docs/exchange/3_exchange.html",
       "meta": {}
     },
     {
@@ -415,6 +485,21 @@
     {
       "filename": "mydoc_smart_contract.md",
       "link": "/zh-cn/docs/mydoc_smart_contract.html",
+      "meta": {}
+    },
+    {
+      "filename": "1_wallet.md",
+      "link": "/zh-cn/docs/wallet/1_wallet.html",
+      "meta": {}
+    },
+    {
+      "filename": "2_wallet.md",
+      "link": "/zh-cn/docs/wallet/2_wallet.html",
+      "meta": {}
+    },
+    {
+      "filename": "3_wallet.md",
+      "link": "/zh-cn/docs/wallet/3_wallet.html",
       "meta": {}
     }
   ]

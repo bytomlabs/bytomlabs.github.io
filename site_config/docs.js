@@ -89,12 +89,12 @@ export default {
                     title: 'Compile and Run Node',
                     opened: true,
                     children: [{
-                            title: '',
+                            title: 'Compile run node',
                             link: '/en-us/docs/07_compile_and_run_node.html',
                         },
                         {
                             title: 'docker run node',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/32_docker_run.html',
                         },
                     ],
                 }, {
@@ -112,15 +112,15 @@ export default {
                     opened: true,
                     children: [{
                             title: 'Installation And Operation',
-                            link: '/en-us/docs/demo1.html',
+                            link: '/en-us/docs/dapp/1_dapp.html',
                         },
                         {
                             title: 'Configuration Node',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/dapp/2_dapp.html',
                         },
                         {
                             title: 'Command Line Tool',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/dapp/3_dapp.html',
                         },
                     ],
                 }, {
@@ -128,15 +128,15 @@ export default {
                     opened: true,
                     children: [{
                             title: 'Document',
-                            link: '/en-us/docs/demo1.html',
+                            link: '/en-us/docs/collection/1_collection.html',
                         },
                         {
                             title: 'Configuration Node',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/collection/2_collection.html',
                         },
                         {
                             title: 'Command Line Tool',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/collection/3_collection.html',
                         },
                     ],
                 }, ],
@@ -148,11 +148,15 @@ export default {
                     opened: true,
                     children: [{
                             title: 'Installation And Operation',
-                            link: '/en-us/docs/demo1.html',
+                            link: '/en-us/docs/exchange/1_exchange.html',
                         },
                         {
                             title: 'Configuration Node',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/exchange/2_exchange.html',
+                        },
+                        {
+                            title: 'Configuration Node',
+                            link: '/en-us/docs/exchange/3_exchange.html',
                         },
                     ],
                 }, {
@@ -160,15 +164,15 @@ export default {
                     opened: true,
                     children: [{
                             title: 'Sign Key',
-                            link: '/en-us/docs/demo1.html',
+                            link: '/en-us/docs/wallet/1_wallet.html',
                         },
                         {
                             title: 'Configuration Node',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/wallet/2_wallet.html',
                         },
                         {
                             title: 'Begining',
-                            link: '/en-us/docs/demo2.html',
+                            link: '/en-us/docs/wallet/3_wallet.html',
                         },
                     ],
                 }, ],
@@ -206,17 +210,10 @@ export default {
                     title: 'Floor Application',
                     opened: true,
                     children: [{
-                            title: 'Payment Case',
-                            link: '/en-us/docs/demo1.html',
+                            title: 'application',
+                            link: '/en-us/docs/application/1_application.html',
                         },
-                        {
-                            title: 'Data OnChain',
-                            link: '/en-us/docs/demo2.html',
-                        },
-                        {
-                            title: 'Dapp',
-                            link: '/en-us/docs/demo2.html',
-                        },
+                        
                     ],
                 }, ],
             },
@@ -336,15 +333,15 @@ export default {
                     opened: true,
                     children: [{
                             title: '安装与运行',
-                            link: '/zh-cn/docs/demo1.html',
+                            link: '/zh-cn/docs/dapp/1_dapp.html',
                         },
                         {
                             title: '配置节点',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/dapp/2_dapp.html',
                         },
                         {
                             title: '命令行工具',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/dapp/3_dapp.html',
                         },
                     ],
                 }, {
@@ -352,15 +349,15 @@ export default {
                     opened: true,
                     children: [{
                             title: '文档',
-                            link: '/zh-cn/docs/demo1.html',
+                            link: '/zh-cn/docs/collection/1_collection.html',
                         },
                         {
                             title: '配置节点',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/collection/2_collection.html',
                         },
                         {
                             title: '命令行工具',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/collection/3_collection.html',
                         },
                     ],
                 }, ],
@@ -372,11 +369,15 @@ export default {
                     opened: true,
                     children: [{
                             title: '安装与运行',
-                            link: '/zh-cn/docs/demo1.html',
+                            link: '/zh-cn/docs/exchange/1_exchange.html',
                         },
                         {
                             title: '配置节点',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/exchange/2_exchange.html',
+                        },
+                        {
+                            title: '配置节点',
+                            link: '/zh-cn/docs/exchange/3_exchange.html',
                         },
                     ],
                 }, {
@@ -384,15 +385,15 @@ export default {
                     opened: true,
                     children: [{
                             title: '安装与运行',
-                            link: '/zh-cn/docs/demo1.html',
+                            link: '/zh-cn/docs/wallet/1_wallet.html',
                         },
                         {
                             title: '配置节点',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/wallet/2_wallet.html',
                         },
                         {
                             title: '开始挖矿',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/wallet/3_wallet.html',
                         },
                     ],
                 }, ],
@@ -430,17 +431,10 @@ export default {
                     title: '落地应用',
                     opened: true,
                     children: [{
-                            title: '支付案例',
-                            link: '/zh-cn/docs/demo1.html',
+                            title: '应用',
+                            link: '/zh-cn/docs/application/1_application.html',
                         },
-                        {
-                            title: '数据上链',
-                            link: '/zh-cn/docs/demo2.html',
-                        },
-                        {
-                            title: '去中心化应用',
-                            link: '/zh-cn/docs/demo2.html',
-                        },
+                        
                     ],
                 }, ],
             },
