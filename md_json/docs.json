@@ -2,197 +2,197 @@
   "en-us": [
     {
       "filename": "00_index.md",
-      "link": "/en-us/docs/00_index.html",
+      "link": "\\en-us\\docs\\00_index.html",
       "meta": {}
     },
     {
       "filename": "01_install.md",
-      "link": "/en-us/docs/01_install.html",
+      "link": "\\en-us\\docs\\01_install.html",
       "meta": {}
     },
     {
       "filename": "02_config_node.md",
-      "link": "/en-us/docs/02_config_node.html",
+      "link": "\\en-us\\docs\\02_config_node.html",
       "meta": {}
     },
     {
       "filename": "03_cli_tool.md",
-      "link": "/en-us/docs/03_cli_tool.html",
+      "link": "\\en-us\\docs\\03_cli_tool.html",
       "meta": {}
     },
     {
       "filename": "04_network.md",
-      "link": "/en-us/docs/04_network.html",
+      "link": "\\en-us\\docs\\04_network.html",
       "meta": {}
     },
     {
       "filename": "05_mining.md",
-      "link": "/en-us/docs/05_mining.html",
+      "link": "\\en-us\\docs\\05_mining.html",
       "meta": {}
     },
     {
       "filename": "06_build_environment.md",
-      "link": "/en-us/docs/06_build_environment.html",
+      "link": "\\en-us\\docs\\06_build_environment.html",
       "meta": {}
     },
     {
       "filename": "07_compile_and_run_node.md",
-      "link": "/en-us/docs/07_compile_and_run_node.html",
+      "link": "\\en-us\\docs\\07_compile_and_run_node.html",
       "meta": {}
     },
     {
       "filename": "08_rpc_call.md",
-      "link": "/en-us/docs/08_rpc_call.html",
+      "link": "\\en-us\\docs\\08_rpc_call.html",
       "meta": {}
     },
     {
       "filename": "09_ws_call.md",
-      "link": "/en-us/docs/09_ws_call.html",
+      "link": "\\en-us\\docs\\09_ws_call.html",
       "meta": {}
     },
     {
       "filename": "10_other_sdk.md",
-      "link": "/en-us/docs/10_other_sdk.html",
+      "link": "\\en-us\\docs\\10_other_sdk.html",
       "meta": {}
     },
     {
       "filename": "11_other_tools.md",
-      "link": "/en-us/docs/11_other_tools.html",
+      "link": "\\en-us\\docs\\11_other_tools.html",
       "meta": {}
     },
     {
       "filename": "13_architecture_overview.md",
-      "link": "/en-us/docs/13_architecture_overview.html",
+      "link": "\\en-us\\docs\\13_architecture_overview.html",
       "meta": {}
     },
     {
       "filename": "14_key.md",
-      "link": "/en-us/docs/14_key.html",
+      "link": "\\en-us\\docs\\14_key.html",
       "meta": {}
     },
     {
       "filename": "15_address.md",
-      "link": "/en-us/docs/15_address.html",
+      "link": "\\en-us\\docs\\15_address.html",
       "meta": {}
     },
     {
       "filename": "16_account.md",
-      "link": "/en-us/docs/16_account.html",
+      "link": "\\en-us\\docs\\16_account.html",
       "meta": {}
     },
     {
       "filename": "17_transaction.md",
-      "link": "/en-us/docs/17_transaction.html",
+      "link": "\\en-us\\docs\\17_transaction.html",
       "meta": {}
     },
     {
       "filename": "18_block.md",
-      "link": "/en-us/docs/18_block.html",
+      "link": "\\en-us\\docs\\18_block.html",
       "meta": {}
     },
     {
       "filename": "19_UTXO.md",
-      "link": "/en-us/docs/19_UTXO.html",
+      "link": "\\en-us\\docs\\19_UTXO.html",
       "meta": {}
     },
     {
       "filename": "20_consensus.md",
-      "link": "/en-us/docs/20_consensus.html",
+      "link": "\\en-us\\docs\\20_consensus.html",
       "meta": {}
     },
     {
       "filename": "21_p2p.md",
-      "link": "/en-us/docs/21_p2p.html",
+      "link": "\\en-us\\docs\\21_p2p.html",
       "meta": {}
     },
     {
       "filename": "22_smart_contract_overview.md",
-      "link": "/en-us/docs/22_smart_contract_overview.html",
+      "link": "\\en-us\\docs\\22_smart_contract_overview.html",
       "meta": {}
     },
     {
       "filename": "23_smart_contract_build.md",
-      "link": "/en-us/docs/23_smart_contract_build.html",
+      "link": "\\en-us\\docs\\23_smart_contract_build.html",
       "meta": {}
     },
     {
       "filename": "24_contract_operator.md",
-      "link": "/en-us/docs/24_contract_operator.html",
+      "link": "\\en-us\\docs\\24_contract_operator.html",
       "meta": {}
     },
     {
       "filename": "25_contract_template.md",
-      "link": "/en-us/docs/25_contract_template.html",
+      "link": "\\en-us\\docs\\25_contract_template.html",
       "meta": {}
     },
     {
       "filename": "26_wallet.md",
-      "link": "/en-us/docs/26_wallet.html",
+      "link": "\\en-us\\docs\\26_wallet.html",
       "meta": {}
     },
     {
       "filename": "27_ligth_wallet.md",
-      "link": "/en-us/docs/27_ligth_wallet.html",
+      "link": "\\en-us\\docs\\27_ligth_wallet.html",
       "meta": {}
     },
     {
       "filename": "28_block_explorer.md",
-      "link": "/en-us/docs/28_block_explorer.html",
+      "link": "\\en-us\\docs\\28_block_explorer.html",
       "meta": {}
     },
     {
       "filename": "29_mining_pool.md",
-      "link": "/en-us/docs/29_mining_pool.html",
+      "link": "\\en-us\\docs\\29_mining_pool.html",
       "meta": {}
     },
     {
       "filename": "30_sidechain_overview.md",
-      "link": "/en-us/docs/30_sidechain_overview.html",
+      "link": "\\en-us\\docs\\30_sidechain_overview.html",
       "meta": {}
     },
     {
       "filename": "31_sidechain.md",
-      "link": "/en-us/docs/31_sidechain.html",
+      "link": "\\en-us\\docs\\31_sidechain.html",
       "meta": {}
     },
     {
       "filename": "demo1.md",
-      "link": "/en-us/docs/demo1.html",
+      "link": "\\en-us\\docs\\demo1.html",
       "meta": {}
     },
     {
       "filename": "demo2.md",
-      "link": "/en-us/docs/demo2.html",
+      "link": "\\en-us\\docs\\demo2.html",
       "meta": {}
     },
     {
       "filename": "demo3.md",
-      "link": "/en-us/docs/dir/demo3.html",
+      "link": "\\en-us\\docs\\dir\\demo3.html",
       "meta": {}
     },
     {
       "filename": "mydoc_BVM.md",
-      "link": "/en-us/docs/mydoc_BVM.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_FAQ.md",
-      "link": "/en-us/docs/mydoc_FAQ.html",
+      "link": "\\en-us\\docs\\mydoc_BVM.html",
       "meta": {}
     },
     {
       "filename": "mydoc_control_program.md",
-      "link": "/en-us/docs/mydoc_control_program.html",
+      "link": "\\en-us\\docs\\mydoc_control_program.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_FAQ.md",
+      "link": "\\en-us\\docs\\mydoc_FAQ.html",
       "meta": {}
     },
     {
       "filename": "mydoc_license.md",
-      "link": "/en-us/docs/mydoc_license.html",
+      "link": "\\en-us\\docs\\mydoc_license.html",
       "meta": {}
     },
     {
       "filename": "mydoc_roadmap.md",
-      "link": "/en-us/docs/mydoc_roadmap.html",
+      "link": "\\en-us\\docs\\mydoc_roadmap.html",
       "meta": {
         "title": "Roadmap",
         "tags": "[publishing]",
@@ -207,7 +207,7 @@
   "zh-cn": [
     {
       "filename": "00_index.md",
-      "link": "/zh-cn/docs/00_index.html",
+      "link": "\\zh-cn\\docs\\00_index.html",
       "meta": {
         "keywords": "sample homepage",
         "sidebar": "mydoc_sidebar_cn",
@@ -216,57 +216,57 @@
     },
     {
       "filename": "01_install.md",
-      "link": "/zh-cn/docs/01_install.html",
+      "link": "\\zh-cn\\docs\\01_install.html",
       "meta": {}
     },
     {
       "filename": "02_config_node.md",
-      "link": "/zh-cn/docs/02_config_node.html",
+      "link": "\\zh-cn\\docs\\02_config_node.html",
       "meta": {}
     },
     {
       "filename": "03_cli_tool.md",
-      "link": "/zh-cn/docs/03_cli_tool.html",
+      "link": "\\zh-cn\\docs\\03_cli_tool.html",
       "meta": {}
     },
     {
       "filename": "04_network.md",
-      "link": "/zh-cn/docs/04_network.html",
+      "link": "\\zh-cn\\docs\\04_network.html",
       "meta": {}
     },
     {
       "filename": "05_mining.md",
-      "link": "/zh-cn/docs/05_mining.html",
+      "link": "\\zh-cn\\docs\\05_mining.html",
       "meta": {}
     },
     {
       "filename": "06_build_environment.md",
-      "link": "/zh-cn/docs/06_build_environment.html",
+      "link": "\\zh-cn\\docs\\06_build_environment.html",
       "meta": {}
     },
     {
       "filename": "07_compile_and_run_node.md",
-      "link": "/zh-cn/docs/07_compile_and_run_node.html",
+      "link": "\\zh-cn\\docs\\07_compile_and_run_node.html",
       "meta": {}
     },
     {
       "filename": "08_rpc_call.md",
-      "link": "/zh-cn/docs/08_rpc_call.html",
+      "link": "\\zh-cn\\docs\\08_rpc_call.html",
       "meta": {}
     },
     {
       "filename": "09_ws_call.md",
-      "link": "/zh-cn/docs/09_ws_call.html",
+      "link": "\\zh-cn\\docs\\09_ws_call.html",
       "meta": {}
     },
     {
       "filename": "10_other_sdk.md",
-      "link": "/zh-cn/docs/10_other_sdk.html",
+      "link": "\\zh-cn\\docs\\10_other_sdk.html",
       "meta": {}
     },
     {
       "filename": "11_other_tools.md",
-      "link": "/zh-cn/docs/11_other_tools.html",
+      "link": "\\zh-cn\\docs\\11_other_tools.html",
       "meta": {
         "title": "其他工具",
         "tags": "[publishing]",
@@ -279,142 +279,142 @@
     },
     {
       "filename": "13_architecture_overview.md",
-      "link": "/zh-cn/docs/13_architecture_overview.html",
+      "link": "\\zh-cn\\docs\\13_architecture_overview.html",
       "meta": {}
     },
     {
       "filename": "14_key.md",
-      "link": "/zh-cn/docs/14_key.html",
+      "link": "\\zh-cn\\docs\\14_key.html",
       "meta": {}
     },
     {
       "filename": "15_address.md",
-      "link": "/zh-cn/docs/15_address.html",
+      "link": "\\zh-cn\\docs\\15_address.html",
       "meta": {}
     },
     {
       "filename": "16_account.md",
-      "link": "/zh-cn/docs/16_account.html",
+      "link": "\\zh-cn\\docs\\16_account.html",
       "meta": {}
     },
     {
       "filename": "17_transaction.md",
-      "link": "/zh-cn/docs/17_transaction.html",
+      "link": "\\zh-cn\\docs\\17_transaction.html",
       "meta": {}
     },
     {
       "filename": "18_block.md",
-      "link": "/zh-cn/docs/18_block.html",
+      "link": "\\zh-cn\\docs\\18_block.html",
       "meta": {}
     },
     {
       "filename": "19_utxo.md",
-      "link": "/zh-cn/docs/19_utxo.html",
+      "link": "\\zh-cn\\docs\\19_utxo.html",
       "meta": {}
     },
     {
       "filename": "20_consensus.md",
-      "link": "/zh-cn/docs/20_consensus.html",
+      "link": "\\zh-cn\\docs\\20_consensus.html",
       "meta": {}
     },
     {
       "filename": "21_p2p.md",
-      "link": "/zh-cn/docs/21_p2p.html",
+      "link": "\\zh-cn\\docs\\21_p2p.html",
       "meta": {}
     },
     {
       "filename": "22_smart_contract_overview.md",
-      "link": "/zh-cn/docs/22_smart_contract_overview.html",
+      "link": "\\zh-cn\\docs\\22_smart_contract_overview.html",
       "meta": {}
     },
     {
       "filename": "23_smart_contract_build.md",
-      "link": "/zh-cn/docs/23_smart_contract_build.html",
+      "link": "\\zh-cn\\docs\\23_smart_contract_build.html",
       "meta": {}
     },
     {
       "filename": "24_contract_operator.md",
-      "link": "/zh-cn/docs/24_contract_operator.html",
+      "link": "\\zh-cn\\docs\\24_contract_operator.html",
       "meta": {}
     },
     {
       "filename": "25_contract_template.md",
-      "link": "/zh-cn/docs/25_contract_template.html",
+      "link": "\\zh-cn\\docs\\25_contract_template.html",
       "meta": {}
     },
     {
       "filename": "26_wallet.md",
-      "link": "/zh-cn/docs/26_wallet.html",
+      "link": "\\zh-cn\\docs\\26_wallet.html",
       "meta": {}
     },
     {
       "filename": "27_ligth_wallet.md",
-      "link": "/zh-cn/docs/27_ligth_wallet.html",
+      "link": "\\zh-cn\\docs\\27_ligth_wallet.html",
       "meta": {}
     },
     {
       "filename": "28_block_explorer.md",
-      "link": "/zh-cn/docs/28_block_explorer.html",
+      "link": "\\zh-cn\\docs\\28_block_explorer.html",
       "meta": {}
     },
     {
       "filename": "29_mining_pool.md",
-      "link": "/zh-cn/docs/29_mining_pool.html",
+      "link": "\\zh-cn\\docs\\29_mining_pool.html",
       "meta": {}
     },
     {
       "filename": "30_sidechain_overview.md",
-      "link": "/zh-cn/docs/30_sidechain_overview.html",
+      "link": "\\zh-cn\\docs\\30_sidechain_overview.html",
       "meta": {}
     },
     {
       "filename": "31_sidechain.md",
-      "link": "/zh-cn/docs/31_sidechain.html",
+      "link": "\\zh-cn\\docs\\31_sidechain.html",
       "meta": {}
     },
     {
       "filename": "demo1.md",
-      "link": "/zh-cn/docs/demo1.html",
+      "link": "\\zh-cn\\docs\\demo1.html",
       "meta": {}
     },
     {
       "filename": "demo2.md",
-      "link": "/zh-cn/docs/demo2.html",
+      "link": "\\zh-cn\\docs\\demo2.html",
       "meta": {}
     },
     {
       "filename": "demo3.md",
-      "link": "/zh-cn/docs/dir/demo3.html",
+      "link": "\\zh-cn\\docs\\dir\\demo3.html",
       "meta": {}
     },
     {
       "filename": "mydoc_BVM.md",
-      "link": "/zh-cn/docs/mydoc_BVM.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_FAQ.md",
-      "link": "/zh-cn/docs/mydoc_FAQ.html",
+      "link": "\\zh-cn\\docs\\mydoc_BVM.html",
       "meta": {}
     },
     {
       "filename": "mydoc_control_program.md",
-      "link": "/zh-cn/docs/mydoc_control_program.html",
+      "link": "\\zh-cn\\docs\\mydoc_control_program.html",
+      "meta": {}
+    },
+    {
+      "filename": "mydoc_FAQ.md",
+      "link": "\\zh-cn\\docs\\mydoc_FAQ.html",
       "meta": {}
     },
     {
       "filename": "mydoc_license.md",
-      "link": "/zh-cn/docs/mydoc_license.html",
+      "link": "\\zh-cn\\docs\\mydoc_license.html",
       "meta": {}
     },
     {
       "filename": "mydoc_roadmap.md",
-      "link": "/zh-cn/docs/mydoc_roadmap.html",
+      "link": "\\zh-cn\\docs\\mydoc_roadmap.html",
       "meta": {}
     },
     {
       "filename": "mydoc_smart_contract.md",
-      "link": "/zh-cn/docs/mydoc_smart_contract.html",
+      "link": "\\zh-cn\\docs\\mydoc_smart_contract.html",
       "meta": {}
     }
   ]
