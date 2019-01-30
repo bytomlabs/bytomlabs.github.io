@@ -4,7 +4,7 @@ export default {
                 title: 'Understanding Bytom',
                 children: [{
                         title: 'Overview',
-                        link: '/en-us/docs/00_index.html',
+                        link: '/en-us/docs/index.html',
                     }, {
                         title: 'Architecture and Design',
                         opened: true,
@@ -213,7 +213,7 @@ export default {
                             title: 'application',
                             link: '/en-us/docs/application/1_application.html',
                         },
-                        
+
                     ],
                 }, ],
             },
@@ -225,7 +225,7 @@ export default {
                 title: '认识比原',
                 children: [{
                         title: '概述',
-                        link: '/zh-cn/docs/00_index.html',
+                        link: '/zh-cn/docs/index.html',
                     }, {
                         title: '设计原理和架构',
                         opened: true,
@@ -434,7 +434,7 @@ export default {
                             title: '应用',
                             link: '/zh-cn/docs/application/1_application.html',
                         },
-                        
+
                     ],
                 }, ],
             },

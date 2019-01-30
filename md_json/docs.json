@@ -1,11 +1,6 @@
 {
   "en-us": [
     {
-      "filename": "00_index.md",
-      "link": "/en-us/docs/00_index.html",
-      "meta": {}
-    },
-    {
       "filename": "01_install.md",
       "link": "/en-us/docs/01_install.html",
       "meta": {}
@@ -196,6 +191,11 @@
       "meta": {}
     },
     {
+      "filename": "index.md",
+      "link": "/en-us/docs/index.html",
+      "meta": {}
+    },
+    {
       "filename": "mydoc_BVM.md",
       "link": "/en-us/docs/mydoc_BVM.html",
       "meta": {}
@@ -230,15 +230,6 @@
     }
   ],
   "zh-cn": [
-    {
-      "filename": "00_index.md",
-      "link": "/zh-cn/docs/00_index.html",
-      "meta": {
-        "keywords": "sample homepage",
-        "sidebar": "mydoc_sidebar_cn",
-        "permalink": "index.cn.html"
-      }
-    },
     {
       "filename": "01_install.md",
       "link": "/zh-cn/docs/01_install.html",
@@ -456,6 +447,15 @@
       "filename": "3_exchange.md",
       "link": "/zh-cn/docs/exchange/3_exchange.html",
       "meta": {}
+    },
+    {
+      "filename": "index.md",
+      "link": "/zh-cn/docs/index.html",
+      "meta": {
+        "keywords": "sample homepage",
+        "sidebar": "mydoc_sidebar_cn",
+        "permalink": "index.cn.html"
+      }
     },
     {
       "filename": "mydoc_BVM.md",
