@@ -9,7 +9,7 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: 'DOCS',
-            link: '/en-us/docs/00_index.html',
+            link: '/en-us/docs/index.html',
         }, ],
         disclaimer: {
             title: 'friendship tips',
@@ -19,7 +19,7 @@ export default {
             title: 'Documentation',
             list: [{
                     text: 'Overview',
-                    link: '/en-us/docs/00_index.html',
+                    link: '/en-us/docs/index.html',
                 },
                 {
                     text: 'Quick start',
@@ -34,9 +34,9 @@ export default {
         resources: {
             title: 'Resources',
             list: [{
-                    text: 'Github',
-                    link: 'https://github.com/bytomlabs/bytomlabs.github.io',
-                },],
+                text: 'Github',
+                link: 'https://github.com/bytomlabs/bytomlabs.github.io',
+            }, ],
         },
         copyright: 'Copyright © 2018 Bytom',
     },
@@ -44,7 +44,7 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: '文档',
-            link: '/zh-cn/docs/00_index.html',
+            link: '/zh-cn/docs/index.html',
         }, ],
         disclaimer: {
             title: '友情提示',
@@ -54,7 +54,7 @@ export default {
             title: '文档',
             list: [{
                     text: 'Overview',
-                    link: '/zh-cn/docs/00_index.html',
+                    link: '/zh-cn/docs/index.html',
                 },
                 {
                     text: 'Quick start',
@@ -69,9 +69,9 @@ export default {
         resources: {
             title: '编辑文档',
             list: [{
-                    text: 'Github',
-                    link: 'https://github.com/bytomlabs/bytomlabs.github.io',
-                },],
+                text: 'Github',
+                link: 'https://github.com/bytomlabs/bytomlabs.github.io',
+            }, ],
         },
         copyright: 'Copyright © 2018 Bytom',
     },
