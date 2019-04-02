@@ -1520,3 +1520,165 @@
       "time_range": 1521625823
     }
     ```    
+###游戏合约
+
+
+###储蓄合约
+
+## 储蓄分红合约简介
+
+储蓄分红合约指的是项目方发起了一个锁仓计划（即储蓄合约和取现合约），用户可以在准备期自由选择锁仓金额参与该计划，等到锁仓到期之后还可以自动获取锁仓的利润。用户可以在准备期内（`dueBlockHeight`）参与储蓄，按照合约规定可以 `1：1` 获取同等数量的储蓄票据资产，同时用户锁仓的资产（`deposit`）将放到取现合约中，并且项目方是无法动用的，等到锁仓期限（`expireBlockHeight`）一到，用户便可以调用取现合约将自己储蓄的资产连本待息一同取出来。其示意图如下:
+
+![image](/docs/zh-cn/img/diagram.png)
+
+从上图中可以看出，项目方发布了一个利润为`20%`的锁仓项目，其中储蓄合约`FixedLimitCollect`锁定了`1000`个票据资产（`bill`），同时项目方将`200`个储蓄资产（`deposit`）锁定到利息合约中。待项目方发布完合约之后，所有用户便可以参与了。例如上图中`user1`调用合约储蓄了`500`，这`500`个储蓄资产将被锁定在取现合约`FixedLimitProfit`中，同时`user1`获得了`500`个票据资产，剩余找零的资产将继续锁定在储蓄合约`FixedLimitCollect`中，以此类推，`user2`和`user3`也是相同的流程，直到储蓄合约没有资产为止。取现合约`FixedLimitProfit`跟储蓄合约的模型大致相同，只是取现合约是由多个`UTXO`组成的，用户在取现的时候可以并行操作。但是如果合约中的面值不能支持用户一次性取现的话，需要分多次提取。例如`user1`拥有`500`个票据资产，而可以获得的本息总额为`600`，但是取现的`UTXO`面值为`500`,那么`user1`一次最多只能取`500`,剩下的`100`需要再构造一笔交易来提现。
+
+## 合约源代码
+
+```js
+// 储蓄合约
+import "./FixedLimitProfit"
+contract FixedLimitCollect(assetDeposited: Asset,
+                        totalAmountBill: Amount,
+                        totalAmountCapital: Amount,
+                        dueBlockHeight: Integer,
+                        expireBlockHeight: Integer,
+                        additionalBlockHeight: Integer,
+                        banker: Program,
+                        bankerKey: PublicKey) locks billAmount of billAsset {
+    clause collect(amountDeposited: Amount, saver: Program) {
+        verify below(dueBlockHeight)
+        verify amountDeposited <= billAmount && totalAmountBill <= totalAmountCapital
+        define sAmountDeposited: Integer = amountDeposited/100000000
+        define sTotalAmountBill: Integer = totalAmountBill/100000000
+        verify sAmountDeposited > 0 && sTotalAmountBill > 0
+        if amountDeposited < billAmount {
+            lock amountDeposited of assetDeposited with FixedLimitProfit(billAsset, totalAmountBill, totalAmountCapital, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+            lock amountDeposited of billAsset with saver
+            lock billAmount-amountDeposited of billAsset with FixedLimitCollect(assetDeposited, totalAmountBill, totalAmountCapital, dueBlockHeight, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+        } else {
+            lock amountDeposited of assetDeposited with FixedLimitProfit(billAsset, totalAmountBill, totalAmountCapital, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+            lock billAmount of billAsset with saver
+        }
+    }
+    clause cancel(bankerSig: Signature) {
+        verify above(dueBlockHeight)
+        verify checkTxSig(bankerKey, bankerSig)
+        unlock billAmount of billAsset
+    }
+}
+```
+
+```js
+// 取现合约(本金加利息)
+contract FixedLimitProfit(assetBill: Asset,
+                        totalAmountBill: Amount,
+                        totalAmountCapital: Amount,
+                        expireBlockHeight: Integer,
+                        additionalBlockHeight: Integer,
+                        banker: Program,
+                        bankerKey: PublicKey) locks capitalAmount of capitalAsset {
+    clause profit(amountBill: Amount, saver: Program) {
+        verify above(expireBlockHeight)
+        define sAmountBill: Integer = amountBill/100000000
+        define sTotalAmountBill: Integer = totalAmountBill/100000000
+        verify sAmountBill > 0 && sTotalAmountBill > 0 && amountBill < totalAmountBill
+        define gain: Integer = totalAmountCapital*sAmountBill/sTotalAmountBill
+        verify gain > 0 && gain <= capitalAmount
+        if gain < capitalAmount {
+            lock amountBill of assetBill with banker
+            lock gain of capitalAsset with saver
+            lock capitalAmount - gain of capitalAsset with FixedLimitProfit(assetBill, totalAmountBill, totalAmountCapital, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+        } else {
+            lock amountBill of assetBill with banker
+            lock capitalAmount of capitalAsset with saver
+        }
+    }
+    clause cancel(bankerSig: Signature) {
+        verify above(additionalBlockHeight)
+        verify checkTxSig(bankerKey, bankerSig)
+        unlock capitalAmount of capitalAsset
+    }
+}
+```
+
+合约的源代码说明可以具体参考[`Equity合约介绍`](https://docs.bytom.io/mydoc_smart_contract_overview.cn.html).
+
+### 注意事项：
+
+- 时间期限不是具体的时间，而是通过区块高度来大概估算的（平均区块时间间隔大概为`2.5`分钟）
+- 比原的精度是`8`, 即 `1BTM = 100000000 neu`，正常情况下参与计算都是以`neu`为单位的，然而虚拟机的`int64`类型的最大值是`9223372036854775807`，为了避免数值太大导致计算溢出，所以对计算的金额提出了金额限制（即`amountBill/100000000`）
+- 另外`clause cancel`是项目方的管理方法，如果储蓄或者取现没有满额，项目方也可以回收剩余的资产
+
+## 编译并实例化合约
+    
+编译`Equity`合约可以参考一下[`Equity`编译器](https://github.com/Bytom/equity)的介绍说明。假如储蓄合约`FixedLimitCollect`的参数如下：
+
+```
+assetDeposited          :c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+totalAmountBill         :10000000000
+totalAmountCapital      :20000000000
+dueBlockHeight          :1070
+expireBlockHeight       :1090
+additionalBlockHeight   :1100
+banker                  :0014dedfd406c591aa221a047a260107f877da92fec5
+bankerKey               :055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+```
+
+其中`bankerKey`是管理员的`publicKey`，可以通过比原链的接口[`list-pubkeys`](https://github.com/Bytom/bytom/wiki/API-Reference#list-pubkeys)来获取，注意管理员需要保存一下对应的`rootXpub`和`Path`，否则无法正确调用`clause cancel`。
+
+实例化合约命令如下：
+
+```sh
+// 储蓄合约
+./equity FixedLimitCollect --instance c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee 10000000000 20000000000 1070 1090 1100 0014dedfd406c591aa221a047a260107f877da92fec5 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+
+// 取现合约
+./equity FixedLimitProfit --instance c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee 10000000000 20000000000 1090 1100 0014dedfd406c591aa221a047a260107f877da92fec5 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+```
+
+## 发布合约交易
+
+ 发布合约交易即将资产锁定到合约中。由于目前无法在比原的`dashboard`上构造合约交易，所以需要借助外部工具来发送合约交易，比如`postman`。按照上述示意图所示，项目方需要发布`1000`个储蓄资产的储蓄合约和`200`个利息资产取现合约。假设项目方需要发布`1000`个储蓄资产（假如精度为`8`,那么`1000`个在比原链中表示为`100000000000`）的锁仓合约，那么他需要将对应数量的票据锁定在储蓄合约中，其交易模板如下：
+   
+```js
+{
+  "base_transaction": null,
+  "actions": [
+    {
+      "account_id": "0ILGLSTC00A02",
+      "amount": 20000000,
+      "asset_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "type": "spend_account"
+    },
+    {
+      "account_id": "0ILGLSTC00A02",
+      "amount": 100000000000,
+      "asset_id": "13016eff73ffb7539a69e122f80f5c1cc94446773ac3f64dec290429f87e73b3",
+      "type": "spend_account"
+    },
+    {
+      "amount": 100000000000,
+      "asset_id": "13016eff73ffb7539a69e122f80f5c1cc94446773ac3f64dec290429f87e73b3",
+      "control_program": "20055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf160014dedfd406c591aa221a047a260107f877da92fec5024c04024204022e040500c817a8040500e40b540220c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4d3b02597a642f0200005479cda069c35b797ca153795579a19a695a790400e1f5059653790400e1f505967c00a07c00a09a69c35b797c9f9161644d010000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec169515b79c2515d79c16952c35c7994c251005d79895c79895b79895a79895979895879895779895679895579890274787e008901c07ec169632a020000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec16951c3c2515d79c169633b020000547acd9f69587a587aae7cac747800c0",
+      "type": "control_program"
+    }
+  ],
+  "ttl": 0,
+  "time_range": 1521625823
+}
+```
+
+合约交易成功后，合约`control_program`对应的`UTXO`将会被所有用户查询到，使用比原链的接口[`list-unspent-outputs`](https://github.com/Bytom/bytom/wiki/API-Reference#list-unspent-outputs)即可查询。
+
+此外，开发者需要存储一下合约`UTXO`的`assetID`和`program`，以便在`DAPP`的前端页面的`config`配置文件和`bufferserver`缓冲服务器中调用。如上所示：
+
+```
+// 储蓄合约
+assetID：13016eff73ffb7539a69e122f80f5c1cc94446773ac3f64dec290429f87e73b3
+program：20055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf160014dedfd406c591aa221a047a260107f877da92fec5024c04024204022e040500c817a8040500e40b540220c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4d3b02597a642f0200005479cda069c35b797ca153795579a19a695a790400e1f5059653790400e1f505967c00a07c00a09a69c35b797c9f9161644d010000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec169515b79c2515d79c16952c35c7994c251005d79895c79895b79895a79895979895879895779895679895579890274787e008901c07ec169632a020000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec16951c3c2515d79c169633b020000547acd9f69587a587aae7cac747800c0
+
+// 取现合约
+assetID：c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+program：20055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf160014dedfd406c591aa221a047a260107f877da92fec5024c040242040500c817a8040500e40b540220c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac747800c0
+```
