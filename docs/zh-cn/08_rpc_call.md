@@ -85,16 +85,16 @@ curl -X POST http://localhost:9888/create-key -d '{"alias": "alice", "password":
 
 `Object`:
 
-- `String` - *alias*, name of the key.
-- `String` - *password*, password of the key.
+- `String` - *alias*,密钥名字.
+- `String` - *password*, 私钥的密码.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *alias*, name of the key.
-- `String` - *xpub*, root pubkey of the key.
-- `String` - *file*, path to the file of key.
+- `String` - *alias*, ，密钥的名字.
+- `String` - *xpub*, 公钥的root.
+- `String` - *file*, 私钥文件本地存放路径.
 
 ##### 例子
 
@@ -122,10 +122,11 @@ none
 
 ##### 返回
 
-- `Array of Object`, keys owned by the client.
+- `Array of Object`, 客户端所拥有的所有私钥信息.
   - `Object`:
-    - `String` - *alias*, name of the key.
-    - `String` - *xpub*, pubkey of the key.
+    - `String` - *alias*, 密钥名字.
+    - `String` - *xpub*, 公钥文件.
+    - `String` - *file*, 密钥文件在客户端本地存放地址
 
 ##### 例子
 
@@ -158,12 +159,14 @@ curl -X POST list-keys
 
 `Object`:
 
-- `String` - *xpub*, pubkey of the key.
-- `String` - *password*, password of the key.
+- `String` - *xpub*, 公钥.
+- `String` - *password*, 密钥的密码.
 
 ##### 返回
 
 如果密钥已成功删除，则为none。
+
+否则：
 
 ##### 例子
 
@@ -184,15 +187,15 @@ curl -X POST delete-key -d '{"xpub": "a7dae957c2d35b42efe7e6871cf5a75ebd2a0d0e51
 
 `Object`:
 
-- `String` - *xpub*, pubkey of the key.
-- `String` - *old_password*, old password of the key.
-- `String` - *new_password*, new password of the key.
+- `String` - *xpub*, 密钥的公钥.
+- `String` - *old_password*, 密钥文件旧的密码.
+- `String` - *new_password*, 密钥文件新的密码.
 
 ##### 返回
 
 `Object`:
 
-- `Boolean` - *changed*, result of reset key password, true is reset successfully, otherwise is false.
+- `Boolean` - *changed*, 返回重置的密钥密码，如果返回true表示返回成功，否则重置失败.
 
 ##### 例子
 
@@ -216,23 +219,23 @@ curl -X POST reset-key-password -d '{"xpub": "a7dae957c2d35b42efe7e6871cf5a75ebd
 
 `Object`:
 
-- `Array of String` - *root_xpubs*, pubkey array.
-- `String` - *alias*, name of the account.
-- `Integer` - *quorum*, the default value is `1`, threshold of keys that must sign a transaction to spend asset units controlled by the account.
+- `Array of String` - *root_xpubs*, 公钥数组.
+- `String` - *alias*, 账户名称.
+- `Integer` - *quorum*, 默认值是`1`, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
 
 Optional:
 
-- `String` - *access_token*, if optional when creating account locally. However, if you want to create account remotely, it's indispensable.
+- `String` - *access_token*, 如果在本地创建帐户时是可选的. 但是，如果您想远程创建帐户，它是必不可少的.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *id*, account id.
-- `String` - *alias*, name of account.
-- `Integer` - *key_index*, key index of account.
-- `Integer` - *quorom*, threshold of keys that must sign a transaction to spend asset units controlled by the account.
-- `Array of Object` - *xpubs*, pubkey array.
+- `String` - *id*, 账户id.
+- `String` - *alias*, 账户名称.
+- `Integer` - *key_index*, 账户key的索引.
+- `Integer` - *quorom*,  交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
+- `Array of Object` - *xpubs*, 公钥数组.
 
 ##### 例子
 
@@ -264,13 +267,13 @@ none
 
 ##### 返回
 
-- `Array of Object`, account array.
+- `Array of Object`, 账户数组.
   - `Object`:
-    - `String` - *id*, account id.
-    - `String` - *alias*, name of account.
-    - `Integer` - *key_index*, key index of account.
-    - `Integer` - *quorom*, threshold of keys that must sign a transaction to spend asset units controlled by the account.
-    - `Array of Object` - *xpubs*, pubkey array.
+    - `String` - *id*, 账户id.
+    - `String` - *alias*, 公钥名称.
+    - `Integer` - *key_index*, 账户密钥的索引.
+    - `Integer` - *quorom*,  交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
+    - `Array of Object` - *xpubs*, 公钥数组.
 
 ##### 例子
 
@@ -313,9 +316,9 @@ curl -X POST list-accounts -d {}
 
 `Object`:
 
-- `String` - *account_id*, id of account.
-- `String` - *account_alias*, alias of account.
-- `String` - *new_alias*, new alias of account.
+- `String` - *account_id*, 账户id.
+- `String` - *account_alias*, 账户别名.
+- `String` - *new_alias*, 账户的新别名.
 
 ##### 返回
 
@@ -343,7 +346,7 @@ curl -X POST update-account-alias -d '{"account_id":"0JA5BOS300A02","new_alias":
 
 `Object`:
 
-- `String` - *account_info*, alias or ID of account.
+- `String` - *account_info*, 账户的别名或者ID.
 
 ##### 返回
 
@@ -372,15 +375,15 @@ curl -X POST delete-account -d '{"account_info": "08FO663C00A02"}'
 
 可选:
 
-- `String` - *account_alias*, alias of account.
-- `String` - *account_id*, id of account.
+- `String` - *account_alias*, 账户别名.
+- `String` - *account_id*, 账户ID.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *address*, address of account.
-- `String` - *control_program*, control program of account.
+- `String` - *address*, 账户地址.
+- `String` - *control_program*,账户的控制程序.
 
 ##### 例子
 
@@ -404,17 +407,17 @@ curl -X POST create-account-receiver -d '{"account_alias": "alice", "account_id"
 
 ##### 参数
 
-- `String` - *account_alias*, alias of account.
-- `String` - *account_id*, id of account.
+- `String` - *account_alias*, 账户别名.
+- `String` - *account_id*, 账户id.
 
 ##### 返回
 
-- `Array of Object`, account address array.
+- `Array of Object`, 账户所有地址的集合.
   - `Object`:
-    - `String` - *account_alias*, alias of account.
-    - `String` - *account_id*, id of account.
-    - `String` - *address*, address of account.
-    - `Boolean` - *change*, whether the account address is change.
+    - `String` - *account_alias*, 账户别名.
+    - `String` - *account_id*, 账户id.
+    - `String` - *address*, 账户地址.
+    - `Boolean` - *change*, 账户地址是否改变.
 
 ##### 例子
 
@@ -457,14 +460,14 @@ curl -X POST list-addresses -d '{"account_alias": "alice", "account_id": "086KQD
 
 `Object`:
 
-- `string` - *address*, address of account.
+- `string` - *address*, 账户地址.
 
 ##### 返回
 
 `Object`:
 
-- `Boolean` - *vaild*, whether the account address is vaild.
-- `Boolean` - *is_local*, whether the account address is local.
+- `Boolean` - *vaild*, 账户的地址是否有效.
+- `Boolean` - *is_local*, 账户的地址是否是本地地址.
 
 ##### 例子
 
@@ -491,25 +494,25 @@ curl -X POST validate-address -d '{"address": "bm1qcn9lf7nxhswratvmg6d78nq7r7yup
 
 `Object`:
 
-- `Array of String` - *root_xpubs*, pubkey array.
-- `String` - *alias*, name of the asset.
-- `Integer` - *quorum*, the default value is `1`, threshold of keys that must sign a transaction to spend asset units controlled by the account.
+- `Array of String` - *root_xpubs*, 公钥集合.
+- `String` - *alias*, 资产名称.
+- `Integer` - *quorum*, 默认值是`1`, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
 
 Optional:
 
-- `Object` - *definition*, definition of asset.
-- `String` - *access_token*, if optional when creating asset locally. However, if you want to create asset remotely, it's indispensable.
+- `Object` - *definition*, 资产定义.
+- `String` - *access_token*, 如果在本地创建资产时是可选的.但是，如果您想远程创建资产，它是必需要填写的.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *id*, asset id.
-- `String` - *alias*, name of the asset.
-- `String` - *issuance_program*, control program of the issuance of asset.
-- `Array of Object` - *keys*, information of asset pubkey.
-- `String` - *definition*, definition of asset.
-- `Integer` - *quorum*, threshold of keys that must sign a transaction to spend asset units controlled by the account.
+- `String` - *id*, 资产id.
+- `String` - *alias*, 资产名称.
+- `String` - *issuance_program*, 资产发行控制方案.
+- `Array of Object` - *keys*, 资产公钥信息.
+- `String` - *definition*, 资产定义.
+- `Integer` - *quorum*,  交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
 
 ##### 例子
 
@@ -548,22 +551,22 @@ curl -X POST create-asset -d '{"alias": "GOLD", "root_xpubs": ["f6a16704f745a168
 
 `Object`:
 
-- `String` - *id*, id of asset.
+- `String` - *id*, 资产id.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *id*, asset id.
-- `String` - *alias*, name of the asset.
-- `String` - *issuance_program*, control program of the issuance of asset.
-- `Integer` - *key_index*, index of key for xpub.
-- `Integer` - *quorum*, threshold of keys that must sign a transaction to spend asset units controlled by the account.
-- `Array of Object` - *xpubs*, pubkey array.
-- `String` - *type*, type of asset.
-- `Integer` - *vm_version*, version of VM.
-- `String` - *raw_definition_byte*, byte of asset definition.
-- `Object` - *definition*, description of asset.
+- `String` - *id*, 资产id.
+- `String` - *alias*, 资产名字.
+- `String` - *issuance_program*, 资产发行控制方案.
+- `Integer` - *key_index*, xpub的密钥索引.
+- `Integer` - *quorum*, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
+- `Array of Object` - *xpubs*, 公钥数组.
+- `String` - *type*,资产类型.
+- `Integer` - *vm_version*, 虚拟机版本.
+- `String` - *raw_definition_byte*, 资产定义的字节.
+- `Object` - *definition*, 资产描述.
 
 ##### 例子
 
@@ -602,18 +605,18 @@ none
 
 ##### 返回
 
-- `Array of Object`, asset array.
+- `Array of Object`, 资产数组.
   - `Object`:
-    - `String` - *id*, asset id.
-    - `String` - *alias*, name of the asset.
-    - `String` - *issuance_program*, control program of the issuance of asset.
-    - `Integer` - *key_index*, index of key for xpub.
-    - `Integer` - *quorum*, threshold of keys that must sign a transaction to spend asset units controlled by the account.
-    - `Array of Object` - *xpubs*, pubkey array.
-    - `String` - *type*, type of asset.
-    - `Integer` - *vm_version*, version of VM.
-    - `String` - *raw_definition_byte*, byte of asset definition.
-    - `Object` - *definition*, description of asset.
+    - `String` - *id*, 资产 id.
+    - `String` - *alias*, 资产名称.
+    - `String` - *issuance_program*, 资产发行控制程序.
+    - `Integer` - *key_index*, 公钥索引.
+    - `Integer` - *quorum*, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.
+    - `Array of Object` - *xpubs*, 公钥数组.
+    - `String` - *type*, 资产类型.
+    - `Integer` - *vm_version*, 虚拟机版本.
+    - `String` - *raw_definition_byte*, 资产定义的字节.
+    - `Object` - *definition*, 资产的描述.
 
 ##### 例子
 
@@ -669,8 +672,8 @@ curl -X POST list-assets -d {}
 
 `Object`:
 
-- `String` - *id*, id of asset.
-- `String` - *alias*, new alias of asset.
+- `String` - *id*, 资产id.
+- `String` - *alias*, 资产的新别名.
 
 ##### 返回
 
@@ -699,13 +702,13 @@ none
 
 ##### 返回
 
-- `Array of Object`, balances owned by the account.
+- `Array of Object`,账户里面所有可用的余额.
   - `Object`:
-    - `String` - *account_id*, account id.
-    - `String` - *account_alias*, name of account.
-    - `String` - *asset_id*, asset id.
-    - `String` - *asset_alias*, name of asset.
-    - `Integer` - *amount*, specified asset balance of account.
+    - `String` - *account_id*, 账户id.
+    - `String` - *account_alias*,账户名称.
+    - `String` - *asset_id*, 资产id.
+    - `String` - *asset_alias*, 资产名称.
+    - `Integer` - *amount*, 指定的帐户资产余额.
 
 ##### 例子
 
@@ -745,25 +748,25 @@ curl -X POST list-balances -d {}
 `Object`:
 可选:
 
-- `String` - *id*, id of unspent output.
+- `String` - *id*, 未花费的输出id.
 
 ##### 返回
 
-- `Array of Object`, unspent output array.
+- `Array of Object`, 未花费的输出数组.
   - `Object`:
-    - `String` - *account_id*, account id.
-    - `String` - *account_alias*, name of account.
-    - `String` - *asset_id*, asset id.
-    - `String` - *asset_alias*, name of asset.
-    - `Integer` - *amount*, specified asset balance of account.
-    - `String` - *address*, address of account.
-    - `Boolean` - *change*, whether the account address is change.
-    - `String` - *id*, unspent output id.
-    - `String` - *program*, program of account.
-    - `String` - *control_program_index*, index of program.
-    - `String` - *source_id*, source unspent output id.
-    - `String` - *source_pos*, position of source unspent output id in block.
-    - `String` - *valid_height*, valid height.
+    - `String` - *account_id*, 账户id.
+    - `String` - *account_alias*,账户名称.
+    - `String` - *asset_id*, 资产id.
+    - `String` - *asset_alias*, 资产名字.
+    - `Integer` - *amount*, 指定的帐户资产余额.
+    - `String` - *address*, 账户地址.
+    - `Boolean` - *change*, 账户地址是否改变.
+    - `String` - *id*, 未花费的输出id.
+    - `String` - *program*, 账户程序.
+    - `String` - *control_program_index*, 控制程序索引.
+    - `String` - *source_id*, 未花费的输出源id
+    - `String` - *source_pos*, 位花费的输出源id在区块中的位置.
+    - `String` - *valid_height*, 有效高度.
 
 ##### 例子
 
@@ -846,9 +849,9 @@ none
 
 `Object`:
 
-- `Object` - *account_image*, account image.
-- `Object` - *asset_image*, asset image.
-- `Object` - *key_images*, key image.
+- `Object` - *account_image*, 账户镜像.
+- `Object` - *asset_image*, 资产镜像.
+- `Object` - *key_images*, 秘钥镜像.
 
 ##### 例子
 
@@ -941,9 +944,9 @@ curl -X backup-wallet -d {}
 
 `Object`:
 
-- `Object` - *account_image*, account image.
-- `Object` - *asset_image*, asset image.
-- `Object` - *key_images*, key image.
+- `Object` - *account_image*, 账户镜像.
+- `Object` - *asset_image*, 资产镜像.
+- `Object` - *key_images*, 秘钥镜像.
 
 ##### 返回
 
@@ -968,16 +971,16 @@ curl -X POST restore-wallet -d '{"account_image":{"slices":[{"account":{"type":"
 
 `Object`:
 
-- `String` - *address*, address for account.
-- `String` - *message*, message for signature by address xpub.
-- `String` - *password*, password of account.
+- `String` - *address*, 账户地址.
+- `String` - *message*, 地址xpub签名的消息.
+- `String` - *password*, 账户密码.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *derived_xpub*, derived xpub.
-- `String` - *signature*, signature of message.
+- `String` - *derived_xpub*, 派生的xpub.
+- `String` - *signature*, 消息的签名.
 
 ##### 例子
 
@@ -1002,45 +1005,45 @@ curl -X POST sign-message -d '{"address":"bm1qx2qgvvjz734ur8x5lpfdtlau74aaa5djs0
 
 `Object`:
 
-- `String` - *tx_id*, transaction id, hash of transaction.
+- `String` - *tx_id*, 交易 id, 交易hash.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *tx_id*, transaction id, hash of the transaction.
-- `Integer` - *block_time*, the unix timestamp for when the requst was responsed.
-- `String` - *block_hash*, hash of the block where this transaction was in.
-- `Integer` - *block_height*, block height where this transaction was in.
-- `Integer` - *block_index*, position of the transaction in the block.
-- `Integer` - *block_transactions_count*, transactions count where this transaction was in the block.
-- `Boolean` - *status_fail*, whether the state of the transaction request has failed.
-- `Integer` - *size*, size of transaction.
-- `Array of Object` - *inputs*, object of inputs for the transaction.
-  - `String` - *type*, the type of input action, available option include: 'spend', 'issue', 'coinbase'.
-  - `String` - *asset_id*, asset id.
-  - `String` - *asset_alias*, name of asset.
-  - `Object` - *asset_definition*, definition of asset(json object).
-  - `Integer` - *amount*, amount of asset.
-  - `Object` - *issuance_program*, issuance program, it only exist when type is 'issue'.
-  - `Object` - *control_program*, control program of account, it only exist when type is 'spend'.
-  - `String` - *address*, address of account, it only exist when type is 'spend'.
-  - `String` - *spent_output_id*, the front of outputID to be spent in this input, it only exist when type is 'spend'.
-  - `String` - *account_id*, account id.
-  - `String` - *account_alias*, name of account.
-  - `Object` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
-- `Array of Object` - *outputs*, object of outputs for the transaction.
-  - `String` - *type*, the type of output action, available option include: 'retire', 'control'.
-  - `String` - *id*, outputid related to utxo.
-  - `Integer` - *position*, position of outputs.
-  - `String` - *asset_id*, asset id.
-  - `String` - *asset_alias*, name of asset.
-  - `Object` - *asset_definition*, definition of asset(json object).
-  - `Integer` - *amount*, amount of asset.
-  - `String` - *account_id*, account id.
-  - `String` - *account_alias*, name of account.
-  - `Object` - *control_program*, control program of account.
-  - `String` - *address*, address of account.
+- `String` - *tx_id*, 交易id, 交易hash.
+- `Integer` - *block_time*, 响应请求时的unix时间戳.
+- `String` - *block_hash*, 交易所在区块的hash值.
+- `Integer` - *block_height*, 交易所在的区块高度.
+- `Integer` - *block_index*, 交易所在区块的位置.
+- `Integer` - *block_transactions_count*, 此区块中的所有交易.
+- `Boolean` - *status_fail*, 交易请求的状态是否失败.
+- `Integer` - *size*, 交易占的内存大小.
+- `Array of Object` - *inputs*, 交易的输入对象.
+  - `String` - *type*, 输入类型,可选用的选项包括: 'spend'(), 'issue'(), 'coinbase'().
+  - `String` - *asset_id*, 资产id.
+  - `String` - *asset_alias*, 资产名字.
+  - `Object` - *asset_definition*, 定义资产(json对象).
+  - `Integer` - *amount*, 资产数量.
+  - `Object` - *issuance_program*, 发行程序, 它仅仅当类型为'issue'时存在.
+  - `Object` - *control_program*, 账户控制程序, 它仅仅存在当交易类型为'spend'时.
+  - `String` - *address*, 账户地址, 它仅仅存在当交易类型为'spend'时.
+  - `String` - *spent_output_id*, 在输入中前一笔交易的输出ID将被花费, 它仅仅存在当交易类型为'spend'时.
+  - `String` - *account_id*, 账户id.
+  - `String` - *account_alias*, 账户名称.
+  - `Object` - *arbitrary*, 矿工可以设置任意信息, 只有当交易类型为 'coinbase'时存在.
+- `Array of Object` - *outputs*, 交易的输出对象.
+  - `String` - *type*, 输出动作类型, 可用选项包括: 'retire', 'control'.
+  - `String` - *id*, 与utxo相关的输出id.
+  - `Integer` - *position*, 交易输出的位置.
+  - `String` - *asset_id*, 资产id.
+  - `String` - *asset_alias*, 资产名称.
+  - `Object` - *asset_definition*, 资产的定义(json对象).
+  - `Integer` - *amount*, 资产数量.
+  - `String` - *account_id*, 账户id.
+  - `String` - *account_alias*, 账户名称.
+  - `Object` - *control_program*, 账户的控制程序.
+  - `String` - *address*, 账户地址.
 
 ##### 例子
 
@@ -1130,71 +1133,71 @@ curl -X POST get-transaction -d '{"tx_id": "15b8d66e227feff47b3de0f278934ea16d6c
 
 可选:
 
-- `String` - *id*, transaction id, hash of transaction.
-- `String` - *account_id*, id of account.
-- `Boolean` - *detail* , flag of detail transactions, default false (only return transaction summary) 
-- `Boolean` - *unconfirmed*, flag of unconfirmed transactions(query result include all confirmed and unconfirmed transactions), default false.
+- `String` - *id*, 交易id,交易hash.
+- `String` - *account_id*, 账户id.
+- `Boolean` - *detail* , 详细事务标志，默认为false（仅返回事务摘要).
+- `Boolean` - *unconfirmed*, 确认事务的标志（查询结果包括所有已确认和未确认的事务），默认为false.
 
 ##### 返回
 
-`Array of Object`, transaction array.
+`Array of Object`, 交易数组.
 
 可选:
 
-  - `Object`:(summary transaction)
-    - `String` - *tx_id*, transaction id, hash of the transaction.
-    - `Integer` - *block_time*, the unix timestamp for when the requst was responsed.
-    - `Array of Object` - *inputs*, object of summary inputs for the transaction.
-      - `String` - *type*, the type of input action, available option include: 'spend', 'issue', 'coinbase'.
-      - `String` - *asset_id*, asset id.
-      - `String` - *asset_alias*, name of asset.
-      - `Integer` - *amount*, amount of asset.
-      - `String` - *account_id*, account id.
-      - `String` - *account_alias*, name of account.
+  - `Object`:(交易汇总)
+    - `String` - *tx_id*, 交易id,交易hash.
+    - `Integer` - *block_time*, 响应请求时的unix时间戳.
+    - `Array of Object` - *inputs*, 交易的主要输入对象.
+      - `String` - *type*, 输入操作的类型，可用选项包括：'spend'，'issue'，'coinbase'.
+      - `String` - *asset_id*, 资产id.
+      - `String` - *asset_alias*, 资产名称.
+      - `Integer` - *amount*, 资产数量.
+      - `String` - *account_id*, 账户id.
+      - `String` - *account_alias*, 账户名字.
       - `Object` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
     - `Array of Object` - *outputs*, object of summary outputs for the transaction.
       - `String` - *type*, the type of output action, available option include: 'retire', 'control'.
-      - `String` - *asset_id*, asset id.
-      - `String` - *asset_alias*, name of asset.
-      - `Integer` - *amount*, amount of asset.
-      - `String` - *account_id*, account id.
-      - `String` - *account_alias*, name of account.
-      - `Object` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is input 'coinbase'(this place is empty).
+      - `String` - *asset_id*, 资产id.
+      - `String` - *asset_alias*, 资产名字.
+      - `Integer` - *amount*, 资产数量.
+      - `String` - *account_id*, 账户id.
+      - `String` - *account_alias*, 账户名字.
+      - `Object` - *arbitrary*, 矿工可以设置任意信息, 它仅存在当交易的输入类型'coinbase'(其他类型默认为空).
 
-  - `Object`:(detail transaction)
-    - `String` - *tx_id*, transaction id, hash of the transaction.
-    - `Integer` - *block_time*, the unix timestamp for when the requst was responsed.
-    - `String` - *block_hash*, hash of the block where this transaction was in.
-    - `Integer` - *block_height*, block height where this transaction was in.
-    - `Integer` - *block_index*, position of the transaction in the block.
-    - `Integer` - *block_transactions_count*, transactions count where this transaction was in the block.
-    - `Boolean` - *status_fail*, whether the state of the transaction request has failed.
-    - `Integer` - *size*, size of transaction.
-    - `Array of Object` - *inputs*, object of inputs for the transaction.
+  - `Object`:(交易详情)
+    - `String` - *tx_id*, 交易id, 交易hash.
+    - `Integer` - *block_time*, 请求的时间戳.
+    - `String` - *block_hash*, 交易所在区块的hash.
+    - `Integer` - *block_height*, 交易所在的区块高度.
+    - `Integer` - *block_index*, 交易所在区块的索引.
+    - `Integer` - *block_transactions_count*, 计算区块中的总交易笔数.
+    - `Boolean` - *status_fail*, 交易的请求状态是否失败.
+    - `Integer` - *size*, 交易所占内存大小.
+    - `Array of Object` - *inputs*, 交易的输入对象.
       - `String` - *type*, the type of input action, available option include: 'spend', 'issue', 'coinbase'.
-      - `String` - *asset_id*, asset id.
-      - `String` - *asset_alias*, name of asset.
-      - `Object` - *asset_definition*, definition of asset(json object).
-      - `Integer` - *amount*, amount of asset.
+      - `String` - *asset_id*, 资产id.
+      - `String` - *asset_alias*, 资产名字.
+      - `Object` - *asset_definition*, 资产定义(json对象).
+      - `Integer` - *amount*, 资产数量.
       - `Object` - *issuance_program*, issuance program, it only exist when type is 'issue'.
       - `Object` - *control_program*, control program of account, it only exist when type is 'spend'.
-      - `String` - *address*, address of account, it only exist when type is 'spend'.
+      - `String` - *address*, 帐户地址，仅当类型为“花费”时才存在.
       - `String` - *spent_output_id*, the front of outputID to be spent in this input, it only exist when type is 'spend'.
-      - `String` - *account_id*, account id.
-      - `String` - *account_alias*, name of account.
-      - `Object` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
-    - `Array of Object` - *outputs*, object of outputs for the transaction.
-      - `String` - *type*, the type of output action, available option include: 'retire', 'control'.
-      - `String` - *id*, outputid related to utxo.
-      - `Integer` - *position*, position of outputs.
-      - `String` - *asset_id*, asset id.
-      - `String` - *asset_alias*, name of asset.
-      - `Object` - *asset_definition*, definition of asset(json object).
-      - `Integer` - *amount*, amount of asset.
-      - `String` - *account_id*, account id.
-      - `String` - *account_alias*, name of account.
-      - `Object` - *control_program*, control program of account.
-      - `String` - *address*, address of account.
+      - `String` - *account_id*, 账户id.
+      - `String` - *account_alias*, 账户名字.
+      - `Object` - *arbitrary*, 矿工可以设置任意信息, 它仅存在当交易的输入类型'coinbase'.
+    - `Array of Object` - *outputs*, 交易的输出对象.
+      - `String` - *type*, 输出动作的类型,可用选项包括：’retire‘，’control‘.
+      - `String` - *id*, 与utxo相关的输出id.
+      - `Integer` - *position*, 输出的位置.
+      - `String` - *asset_id*, 资产id.
+      - `String` - *asset_alias*, 资产名称.
+      - `Object` - *asset_definition*, 资产的定义(json 对象).
+      - `Integer` - *amount*, 资产数量.
+      - `String` - *account_id*, 账户id.
+      - `String` - *account_alias*, 账户名字.
+      - `Object` - *control_program*, 账户的控制程序.
+      - `String` - *address*, 账户地址.
 
 ##### 例子
 
@@ -1561,14 +1564,14 @@ curl -X POST list-transactions -d '{"account_id": "0F1MQVI500A02", "unconfirmed"
 
 `Object`:
 
-- `String` - *base_transaction*, base data for the transaction, default is null.
+- `String` - *base_transaction*, 交易基本数据, 默认为空.
 - `Integer` - *ttl*, integer of the time to live in milliseconds, it means utxo will be reserved(locked) for builded transaction in this time range, if the transaction will not to be submitted into block, it will be auto unlocked for build transaction again after this ttl time. it will be set to 5 minutes(300 seconds) defaultly when ttl is 0.
 - `Integer` - *time_range*, time stamp(block height)is maximum survival time for the transaction, the transaction will be not submit into block after this time stamp.
 - `Arrary of Object` - *actions*:
   - `Object`:
-    - `String` - *account_id* | *account_alias*, alias or ID of account.
-    - `String` - *asset_id* | *asset_alias*, alias or ID of asset.
-    - `Integer` - *amount*, the specified asset of the amount sent with this transaction.
+    - `String` - *account_id* | *account_alias*, 别名或帐户ID.
+    - `String` - *asset_id* | *asset_alias*, 资产的别名或ID.
+    - `Integer` - *amount*, 与此交易一起发送的金额的指定资产.
     - `String`- *type*, type of transaction, valid types: 'spend_account', 'issue', 'spend_account_unspent_output', 'control_address', 'control_program', 'retire'.
     - `String` - *address*, (type is control_address) address of receiver, the style of address is P2PKH or P2SH.
     - `String` - *control_program*, (type is control_program) control program of receiver.
@@ -1682,15 +1685,15 @@ curl -X POST build-transaction -d '{"base_transaction":null,"actions":[{"type":"
 
 `Object`:
 
-- `String` - *password*, signature of the password.
-- `Object` - *transaction*, builded transaction.
+- `String` - *password*, 密码签名.
+- `Object` - *transaction*, 构建好的交易.
 
 ##### 返回
 
 `Object`:
 
-- `Boolean` - *sign_complete*, 返回 true if sign succesfully and false otherwise.
-- `Object of sign-transaction` - *transaction*, signed transaction.
+- `Boolean` - *sign_complete*, 如果签名成功返回true,false签名不成功.
+- `Object of sign-transaction` - *transaction*, 交易签名.
 
 ##### 例子
 
@@ -1771,13 +1774,13 @@ curl -X POST sign-transaction -d '{"password":"123456","transaction":{"allow_add
 
 `Object`:
 
-- `Object` - *raw_transaction*, raw_transaction of signed transaction.
+- `Object` - *raw_transaction*, 已经签名好的交易.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *tx_id*, transaction id, hash of transaction.
+- `String` - *tx_id*, 交易id 交易hash.
 
 ##### 例子
 
@@ -1801,15 +1804,15 @@ curl -X POST submit-transaction -d '{"raw_transaction":"07010000010161015ffe8bdb
 
 `Object`:
 
-- `Object` - *transaction_template*, builded transaction response.
+- `Object` - *transaction_template*, 构建交易响应.
 
 ##### 返回
 
 `Object`:
 
-- `Integer` - *total_neu*, total consumed neu(1BTM = 10^8NEU) for execute transaction, total_neu is rounded up storage_neu + vm_neu.
-- `Integer` - *storage_neu*, consumed neu for storage transaction .
-- `Integer` - *vm_neu*, consumed neu for execute VM.
+- `Integer` - *total_neu*,发送交易时总共消耗的neo(1BTM = 10^8NEU),total_neu 是 storage_neu + vm_neu 四舍五入得到的.
+- `Integer` - *storage_neu*, 存储交易时消耗的neu.
+- `Integer` - *vm_neu*, 虚拟机执行消耗的neu.
 
 ##### 例子
 
@@ -1839,16 +1842,16 @@ curl -X POST estimate-transaction-gas -d '{"transaction_template":{"allow_additi
 
 optional:
 
-- `String` - *type*, type of token.
+- `String` - *type*, token类型.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *token*, access token, authentication username and password are separated by a colon.
+- `String` - *token*, 访问令牌，身份验证用户名和密码（用冒号分隔）.
 - `String` - *id*, token ID.
-- `String` - *type*, type of token.
-- `Object` - *created_at*, time to create token.
+- `String` - *type*, token类型.
+- `Object` - *created_at*, token创建时间.
 
 ##### 例子
 
@@ -1878,12 +1881,12 @@ none
 
 ##### 返回
 
-- `Array of Object`, access token array.
+- `Array of Object`, 访问令牌数组.
   - `Object`:
-    - `String` - *token*, access token.
-    - `String` - *id*, token ID.
-    - `String` - *type*, type of token.
-    - `Object` - *created_at*, time to create token.
+    - `String` - *token*, 访问令牌.
+    - `String` - *id*, 令牌id.
+    - `String` - *type*, 令牌类型.
+    - `Object` - *created_at*, 令牌创建时间.
 
 ##### 例子
 
@@ -1918,7 +1921,7 @@ curl -X POST list-access-tokens -d {}
 
 `Object`:
 
-- `String` - *id*, token ID.
+- `String` - *id*, 令牌 id.
 
 ##### 返回
 
@@ -1945,7 +1948,7 @@ curl -X POST delete-access-token -d '{"id": "token1"}'
 
 `Object`:
 
-- `String` - *id*, token ID.
+- `String` - *id*, 令牌id.
 - `String` - *secret*, secret of token, the second part of the colon division for token.
 
 ##### 返回
@@ -1973,8 +1976,8 @@ curl -X POST check-access-token -d '{"id": "token1", "secret": "1fee70f537128a20
 
 `Object`:
 
-- `String` - *alias*, name of the transaction feed.
-- `String` - *filter*, filter of the transaction feed.
+- `String` - *alias*, 交易反馈的名字.
+- `String` - *filter*, 交易反馈的过滤器.
 
 ##### 返回
 
@@ -1999,20 +2002,20 @@ curl -X POST create-transaction-feed -d '{"alias": "test1", "filter": "asset_id=
 
 `Object`:
 
-- `String` - *alias*, name of the transaction feed.
+- `String` - *alias*, 交易反馈的名字.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *id*, id of the transaction feed.
-- `String` - *alias*, name of the transaction feed.
-- `String` - *filter*, filter of the transaction feed.
-- `Object` - *param*, param of the transaction feed.
-  - `String` - *assetid*, asset id.
-  - `Integer` - *lowerlimit*, the lower limit of asset amount.
-  - `Integer` - *upperlimit*, the upper limit of asset amount.
-  - `String` - *transtype*, type of transaction.
+- `String` - *id*, 交易反馈的id.
+- `String` - *alias*, 交易反馈的名字.
+- `String` - *filter*, 交易反馈的过滤器.
+- `Object` - *param*, 交易反馈的参数.
+  - `String` - *assetid*, 资产id.
+  - `Integer` - *lowerlimit*, 资产数额下限.
+  - `Integer` - *upperlimit*, 资产数额上限.
+  - `String` - *transtype*, 交易类型.
 
 ##### 例子
 
@@ -2042,16 +2045,16 @@ none
 
 ##### 返回
 
-- `Array of Object`, the transaction feeds.
+- `Array of Object`, 交易反馈列表.
   - `Object`:
-    - `String` - *id*, id of the transaction feed.
-    - `String` - *alias*, name of the transaction feed.
-    - `String` - *filter*, filter of the transaction feed.
-    - `Object` - *param*, param of the transaction feed.
-      - `String` - *assetid*, asset id.
-      - `Integer` - *lowerlimit*, the lower limit of asset amount.
-      - `Integer` - *upperlimit*, the upper limit of asset amount.
-      - `String` - *transtype*, type of transaction.
+    - `String` - *id*, 交易反馈id.
+    - `String` - *alias*, 交易反馈名字.
+    - `String` - *filter*, 交易反馈过滤器.
+    - `Object` - *param*, 交易反馈参数.
+      - `String` - *assetid*, 资产id.
+      - `Integer` - *lowerlimit*, 资产数额下限.
+      - `Integer` - *upperlimit*, 资产数额上限.
+      - `String` - *transtype*, 交易类型.
 
 ##### 例子
 列出所有可用的txfeed：
@@ -2079,17 +2082,17 @@ curl -X POST list-transaction-feeds -d {}
 
 #### `delete-transaction-feed`
 
-Delete transaction feed by name.
+根据交易名字删除交易反馈.
 
 ##### 参数
 
 `Object`:
 
-- `String` - *alias*, name of the transaction feed.
+- `String` - *alias*, 交易反馈名字.
 
 ##### 返回
 
-none if the transaction feed is deleted success.
+如果交易反馈删除成功，则无返回.
 
 ##### 例子
 
@@ -2104,22 +2107,22 @@ curl -X POST delete-transaction-feed -d '{"alias": "test1"}'
 
 #### `update-transaction-feed`
 
-Update transaction feed.
+更新交易反馈.
 
 ##### 参数
 
 `Object`:
 
-- `String` - *alias*, name of the transaction feed.
-- `String` - *filter*, filter of the transaction feed.
+- `String` - *alias*, 交易反馈名字.
+- `String` - *filter*, 交易反馈过滤器.
 
 ##### 返回
 
-none if the transaction feed is updated success.
+如果交易反馈更新成功无返回.
 
 ##### 例子
 
-deleted when the txfeed exists, and create it with alias and filter:
+当交易反馈存在的时候删除它，并使用别名和过滤器创建它:
 
 ```js
 // Request
@@ -2132,26 +2135,26 @@ curl -X POST update-transaction-feed -d '{"alias": "test1", "filter": "asset_id=
 
 #### `get-unconfirmed-transaction`
 
-Query mempool transaction by transaction ID.
+根据交易ID查询在缓冲池里面查询未确认的交易.
 
 ##### 参数
 
 `Object`:
 
-- `String` - *tx_id*, transaction id, hash of transaction.
+- `String` - *tx_id*, 交易id,交易hash.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *id*, transaction id, hash of the transaction.
-- `Integer` - *version*, version of transaction.
-- `Integer` - *size*, size of transaction.
-- `Integer` - *time_range*, the time range of transaction.
-- `Boolean` - *status_fail*, whether the state of the request has failed.
-- `String` - *mux_id*, the previous transaction mux id(wallet enable can be acquired, this place is empty).
-- `Array of Object` - *inputs*, object of inputs for the transaction(input struct please refer to get-transction API description).
-- `Array of Object` - *outputs*, object of outputs for the transaction(output struct please refer to get-transction API description).
+- `String` - *id*, 交易id,交易hash.
+- `Integer` - *version*, 交易版本.
+- `Integer` - *size*, 交易大小.
+- `Integer` - *time_range*, 交易的时间范围.
+- `Boolean` - *status_fail*, 请求的状态是否失败.
+- `String` - *mux_id*, 前一笔交易的mux id(钱包启用可以获得，这个地方是空的).
+- `Array of Object` - *inputs*, 交易的输入对象(输入结构请参考get-transaction API描述).
+- `Array of Object` - *outputs*, 交易输出对象(输出结构请参考get-transction API描述).
 
 ##### 例子
 
@@ -2207,7 +2210,7 @@ curl -X POST get-unconfirmed-transaction -d '{"tx_id": "382090f24fbfc2f737fa7372
 
 #### `list-unconfirmed-transactions`
 
-Returns the total number of mempool transactions and the list of transaction IDs.
+返回缓冲池交易的总数和交易ID列表.
 
 ##### 参数
 
@@ -2217,8 +2220,8 @@ none
 
 `Object`:
 
-- `Integer` - *total*, version of transaction.
-- `Array of Object` - *tx_ids*, list of transaction id.
+- `Integer` - *total*, 交易版本.
+- `Array of Object` - *tx_ids*, 列出所有交易id.
 
 ##### 例子
 
@@ -2240,25 +2243,25 @@ curl -X POST list-unconfirmed-transactions -d {}
 
 #### `decode-raw-transaction`
 
-Decode a serialized transaction hex string into a JSON object describing the transaction.
+反序列化交易十六进制字符串为json对象.
 
 ##### 参数
 
 `Object`:
 
-- `String` - *raw_transaction*, hexstring of raw transaction.
+- `String` - *raw_transaction*, 交易的序列化字符串.
 
 ##### 返回
 
 `Object`:
 
-- `Integer` - *version*, version of transaction.
-- `String` - *size*, size of transaction.
-- `String` - *time_range*, time range of transaction.
-- `String` - *fee*, fee for sending transaction.
-- `Array of Object` - *inputs*, object of inputs for the transaction(input struct please refer to get-transction API description).
-- `Array of Object` - *outputs*, object of outputs for the transaction
-(output struct please refer to get-transction API description).
+- `Integer` - *version*,交易版本.
+- `String` - *size*, 交易大小.
+- `String` - *time_range*, 交易时间范围.
+- `String` - *fee*, 发送交易的反馈.
+- `Array of Object` - *inputs*, 交易的输入对象(输入结构请参考get-transaction API描述).
+- `Array of Object` - *outputs*, 交易输出对象(输出结构请参考get-transction API描述).
+
 
 ##### 例子
 
@@ -2312,7 +2315,7 @@ curl -X POST decode-raw-transaction -d '{"raw_transaction": "070100010161015fc82
 
 #### `get-block-count`
 
-Returns the current block height for blockchain.
+返回当前区块链的高度.
 
 ##### 参数
 
@@ -2322,7 +2325,7 @@ none
 
 `Object`:
 
-- `Integer` - *block_count*, recent block height of the blockchain.
+- `Integer` - *block_count*, 当前的区块高度.
 
 ##### 例子
 
@@ -2340,7 +2343,7 @@ curl -X POST get-block-count
 
 #### `get-block-hash`
 
-Returns the current block hash for blockchain.
+返回当前区块的hash.
 
 ##### 参数
 
@@ -2350,7 +2353,7 @@ none
 
 `Object`:
 
-- `String` - *block_hash*, recent block hash of the blockchain.
+- `String` - *block_hash*, 最近的区块hash.
 
 ##### 例子
 
@@ -2368,7 +2371,7 @@ curl -X POST get-block-hash
 
 #### `get-block`
 
-按块高度或块哈希返回详细信息块。
+区块高度或块哈希返回详细信息块。
 
 ##### 参数
 
@@ -2376,56 +2379,56 @@ curl -X POST get-block-hash
 
 optional:
 
-- `String` - *block_hash*, hash of block.
-- `Integer` - *block_height*, height of block.
+- `String` - *block_hash*, 区块hash.
+- `Integer` - *block_height*, 区块高度.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *hash*, hash of block.
-- `Integer` - *size*, size of block.
-- `Integer` - *version*, version of block.
-- `Integer` - *height*, height of block.
-- `String` - *previous_block_hash*, previous block hash.
-- `Integer` - *timestamp*, timestamp of block.
-- `Integer` - *nonce*, nonce value.
-- `Integer` - *bits*, bits of difficulty.
-- `String` - *difficulty*, difficulty value(String type).
-- `String` - *transaction_merkle_root*, merkle root of transaction.
-- `String` - *transaction_status_hash*, merkle root of transaction status.
-- `Array of Object` - *transactions*, transaction object:
-  - `String` - *id*, transaction id, hash of the transaction.
-  - `Integer` - *version*, version of transaction.
-  - `Integer` - *size*, size of transaction.
-  - `Integer` - *time_range*, the unix timestamp for when the requst was responsed. 
-  - `Boolean` - *status_fail*, whether the state of the request has failed.
-  - `String` - *mux_id*, the previous transaction mux id(source id of utxo).
-  - `Array of Object` - *inputs*, object of inputs for the transaction.
-    - `String` - *type*, the type of input action, available option include: 'spend', 'issue', 'coinbase'.
-    - `String` - *asset_id*, asset id.
-    - `String` - *asset_alias*, name of asset.
-    - `Object` - *asset_definition*, definition of asset(json object).
-    - `Integer` - *amount*, amount of asset.
-    - `Object` - *issuance_program*, issuance program, it only exist when type is 'issue'.
-    - `Object` - *control_program*, control program of account, it only exist when type is 'spend'.
-    - `String` - *address*, address of account, it only exist when type is 'spend'.
-    - `String` - *spent_output_id*, the front of outputID to be spent in this input, it only exist when type is 'spend'.
-    - `String` - *account_id*, account id.
-    - `String` - *account_alias*, name of account.
-    - `Object` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
-  - `Array of Object` - *outputs*, object of outputs for the transaction.
-    - `String` - *type*, the type of output action, available option include: 'retire', 'control'.
-    - `String` - *id*, outputid related to utxo.
-    - `Integer` - *position*, position of outputs.
-    - `String` - *asset_id*, asset id.
-    - `String` - *asset_alias*, name of asset.
-    - `Object` - *asset_definition*, definition of asset(json object).
-    - `Integer` - *amount*, amount of asset.
-    - `String` - *account_id*, account id.
-    - `String` - *account_alias*, name of account.
-    - `Object` - *control_program*, control program of account.
-    - `String` - *address*, address of account.
+- `String` - *hash*, 区块hash.
+- `Integer` - *size*, 区块大小.
+- `Integer` - *version*, 区块版本.
+- `Integer` - *height*, 区块高度.
+- `String` - *previous_block_hash*, 前一个区块hash.
+- `Integer` - *timestamp*, 区块时间戳.
+- `Integer` - *nonce*, 随机数值.
+- `Integer` - *bits*, 区块难度.
+- `String` - *difficulty*, 难度值(String type).
+- `String` - *transaction_merkle_root*, 交易的默克尔根.
+- `String` - *transaction_status_hash*, 交易状态的默克尔根.
+- `Array of Object` - *transactions*, 交易对象:
+  - `String` - *id*, transaction id, 交易hash.
+  - `Integer` - *version*, 交易版本.
+  - `Integer` - *size*, 交易大小.
+  - `Integer` - *time_range*, 响应请求时的unix时间戳. 
+  - `Boolean` - *status_fail*, 请求状态是否是失败的.
+  - `String` - *mux_id*, 前一笔交易的mux id(utxo的源ID).
+  - `Array of Object` - *inputs*, 交易对象的输入.
+    - `String` - *type*, 输入操作的类型，可用选项包括: 'spend', 'issue', 'coinbase'.
+    - `String` - *asset_id*, 资产id.
+    - `String` - *asset_alias*, 资产名字.
+    - `Object` - *asset_definition*, 资产定义(json 对象).
+    - `Integer` - *amount*, 资产数量.
+    - `Object` - *issuance_program*, issuance program, 当交易类型为'issue'.
+    - `Object` - *control_program*, control program of account, 当交易类型为'spend'.
+    - `String` - *address*, 账户地址, 当类型是'spend'时存在.
+    - `String` - *spent_output_id*, the front of outputID to be spent in this input, 当交易类型为'spend'.
+    - `String` - *account_id*, 账户id.
+    - `String` - *account_alias*, 账户名字.
+    - `Object` - *arbitrary*, 任意信息都可以由矿工设置，当交易类型为'coinbase'时.
+  - `Array of Object` - *outputs*, 交易输出对象.
+    - `String` - *type*, 输出action的类型，可选项包括:"retire","control".
+    - `String` - *id*, 与utxo相关的交易输出id.
+    - `Integer` - *position*, 输出的位置.
+    - `String` - *asset_id*, 资产id.
+    - `String` - *asset_alias*, 资产名字.
+    - `Object` - *asset_definition*, 资产定义(json 对象).
+    - `Integer` - *amount*, 资产数量.
+    - `String` - *account_id*, 账户id.
+    - `String` - *account_alias*, 账户名字.
+    - `Object` - *control_program*, 账户的控制程序.
+    - `String` - *address*, 账户地址.
 
 ##### 例子
 
@@ -2494,15 +2497,15 @@ curl -X POST get-block -d '{"block_height": 43, "block_hash": "886a8e85b275e7d65
 
 optional:
 
-- `String` - *block_hash*, hash of block.
-- `Integer` - *block_height*, height of block.
+- `String` - *block_hash*, 区块hash.
+- `Integer` - *block_height*, 区块高度.
 
 ##### 返回
 
 `Object`:
 
-- `Object` - *block_header*, header of block.
-- `Integer` - *reward*, reward.
+- `Object` - *block_header*, 区块头.
+- `Integer` - *reward*, 区块奖励.
 
 ##### 例子
 
@@ -2529,17 +2532,17 @@ curl -X POST get-block-header -d '{"block_height": 43, "block_hash": "886a8e85b2
 
 optional:
 
-- `String` - *block_hash*, hash of block.
-- `Integer` - *block_height*, height of block.
+- `String` - *block_hash*, 区块hash.
+- `Integer` - *block_height*, 区块高度.
 
 ##### 返回
 
 `Object`:
 
-- `Integer` - *bits*, bits of block.
-- `String` - *difficulty*, difficulty of block.
-- `String` - *hash*, block hash.
-- `Integer` - *height*, block height.
+- `Integer` - *bits*, 区块的位.
+- `String` - *difficulty*, 区块难度.
+- `String` - *hash*, 区块hash.
+- `Integer` - *height*, 区块高度.
 
 ##### 例子
 
@@ -2570,16 +2573,16 @@ curl -X POST get-difficulty -d '{"block_height": 506, "block_hash": "d1fce60caea
 
 optional:
 
-- `String` - *block_hash*, hash of block.
-- `Integer` - *block_height*, height of block.
+- `String` - *block_hash*, 区块hash.
+- `Integer` - *block_height*, 区块高度.
 
 ##### 返回
 
 `Object`:
 
-- `Integer` - *hash_rate*, difficulty of block.
-- `String` - *hash*, block hash.
-- `Integer` - *height*, block height.
+- `Integer` - *hash_rate*, 区块的出块难度.
+- `String` - *hash*, 区块 hash.
+- `Integer` - *height*, 区块 height.
 
 ##### 例子
 
@@ -2605,20 +2608,20 @@ curl -X POST get-hash-rate -d '{"block_height": 506, "block_hash": "d1fce60caea5
 
 ##### 参数
 
-none
+无
 
 ##### 返回
 
 `Object`:
 
-- `Boolean` - *listening*, whether the node is listening.
-- `Boolean` - *syncing*, whether the node is syncing.
-- `Boolean` - *mining*, whether the node is mining.
-- `Integer` - *peer_count*, current count of connected peers.
-- `Integer` - *current_block*, current block height in the node's blockchain.
-- `Integer` - *highest_block*, current highest block of the connected peers.
-- `String` - *network_id*, network id.
-- `String` - *version*, bytom version.
+- `Boolean` - *listening*, 节点是否正在监听.
+- `Boolean` - *syncing*, 节点是否正在同步.
+- `Boolean` - *mining*, 节点是否在挖矿.
+- `Integer` - *peer_count*, 当前节点连接数.
+- `Integer` - *current_block*, 当前节点中链的高度.
+- `Integer` - *highest_block*, 当前节点的最新区块高度.
+- `String` - *network_id*, 网络id.
+- `String` - *version*, 比原版本.
 
 ##### 例子
 
@@ -2647,13 +2650,13 @@ curl -X POST net-info
 
 ##### 参数
 
-none
+无
 
 ##### 返回
 
 `Object`:
 
-- `Boolean` - *is_mining*, whether the node is mining.
+- `Boolean` - *is_mining*, 节点是否启动了挖矿.
 
 ##### 例子
 
@@ -2677,7 +2680,7 @@ curl -X POST is-mining
 
 `Object`:
 
-- `Boolean` - *is_mining*, whether the node is mining.
+- `Boolean` - *is_mining*, 节点是否启动了挖矿.
 
 ##### 例子
 
@@ -2696,13 +2699,13 @@ gas消耗率。
 
 ##### 参数
 
-none
+无
 
 ##### 返回
 
 `Object`:
 
-- `Integer` - *gas_rate*, gas rate.
+- `Integer` - *gas_rate*, gas 费率.
 
 ##### 例子
 
@@ -2726,16 +2729,16 @@ curl -X POST gas-rate -d '{}'
 
 `Object`:
 
-- `String` - *address*, address for account.
-- `String` - *derived_xpub*, derived xpub.
-- `String` - *message*, message for signature by derived_xpub.
-- `String` - *signature*, signature for message.
+- `String` - *address*, 账户地址.
+- `String` - *derived_xpub*, 派生的xpub.
+- `String` - *message*, 来自derived_xpub的签名消息.
+- `String` - *signature*, 消息签名.
 
 ##### 返回
 
 `Object`:
 
-- `Boolean` - *result*, verify result.
+- `Boolean` - *result*, 验证结果.
 
 ##### 例子
 
@@ -2759,13 +2762,13 @@ curl -X POST verify-message -d '{"address":"bm1qx2qgvvjz734ur8x5lpfdtlau74aaa5dj
 
 `Object`:
 
-- `String` - *program*, program for account.
+- `String` - *program*, 账户程序.
 
 ##### 返回
 
 `Object`:
 
-- `String` - *instructions*, instructions and data for program.
+- `String` - *instructions*, 程序的说明和数据.
 
 ##### 例子
 
@@ -2793,8 +2796,8 @@ none
 
 `Object`:
 
-- `Object` - *block_header*, raw block header.
-- `Object` - *seed*, seed.
+- `Object` - *block_header*, 原始区块头.
+- `Object` - *seed*, 随机种子.
 
 ```go
 type GetWorkResp struct {
@@ -2826,7 +2829,7 @@ curl -X POST get-work -d '{}'
 
 `Object`:
 
-- `Object` - *block_header*, raw block header.
+- `Object` - *block_header*, 原始区块头.
 
 ```go
 type SubmitWorkReq struct {
@@ -2836,7 +2839,7 @@ type SubmitWorkReq struct {
 
 ##### 返回
 
-true if success
+如果成功返回true
 
 ##### 例子
 
