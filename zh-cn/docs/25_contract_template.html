@@ -1523,6 +1523,139 @@
 </code></pre>
 </li>
 </ul>
+<p>###储蓄合约</p>
+<h2>储蓄分红合约简介</h2>
+<p>储蓄分红合约指的是项目方发起了一个锁仓计划（即储蓄合约和取现合约），用户可以在准备期自由选择锁仓金额参与该计划，等到锁仓到期之后还可以自动获取锁仓的利润。用户可以在准备期内（<code>dueBlockHeight</code>）参与储蓄，按照合约规定可以 <code>1：1</code> 获取同等数量的储蓄票据资产，同时用户锁仓的资产（<code>deposit</code>）将放到取现合约中，并且项目方是无法动用的，等到锁仓期限（<code>expireBlockHeight</code>）一到，用户便可以调用取现合约将自己储蓄的资产连本待息一同取出来。其示意图如下:</p>
+<p><img src="/docs/zh-cn/img/diagram.png" alt="image"></p>
+<p>从上图中可以看出，项目方发布了一个利润为<code>20%</code>的锁仓项目，其中储蓄合约<code>FixedLimitCollect</code>锁定了<code>1000</code>个票据资产（<code>bill</code>），同时项目方将<code>200</code>个储蓄资产（<code>deposit</code>）锁定到利息合约中。待项目方发布完合约之后，所有用户便可以参与了。例如上图中<code>user1</code>调用合约储蓄了<code>500</code>，这<code>500</code>个储蓄资产将被锁定在取现合约<code>FixedLimitProfit</code>中，同时<code>user1</code>获得了<code>500</code>个票据资产，剩余找零的资产将继续锁定在储蓄合约<code>FixedLimitCollect</code>中，以此类推，<code>user2</code>和<code>user3</code>也是相同的流程，直到储蓄合约没有资产为止。取现合约<code>FixedLimitProfit</code>跟储蓄合约的模型大致相同，只是取现合约是由多个<code>UTXO</code>组成的，用户在取现的时候可以并行操作。但是如果合约中的面值不能支持用户一次性取现的话，需要分多次提取。例如<code>user1</code>拥有<code>500</code>个票据资产，而可以获得的本息总额为<code>600</code>，但是取现的<code>UTXO</code>面值为<code>500</code>,那么<code>user1</code>一次最多只能取<code>500</code>,剩下的<code>100</code>需要再构造一笔交易来提现。</p>
+<h2>合约源代码</h2>
+<pre><code class="language-js"><span class="hljs-comment">// 储蓄合约</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./FixedLimitProfit"</span>
+contract FixedLimitCollect(assetDeposited: Asset,
+                        <span class="hljs-attr">totalAmountBill</span>: Amount,
+                        <span class="hljs-attr">totalAmountCapital</span>: Amount,
+                        <span class="hljs-attr">dueBlockHeight</span>: Integer,
+                        <span class="hljs-attr">expireBlockHeight</span>: Integer,
+                        <span class="hljs-attr">additionalBlockHeight</span>: Integer,
+                        <span class="hljs-attr">banker</span>: Program,
+                        <span class="hljs-attr">bankerKey</span>: PublicKey) locks billAmount <span class="hljs-keyword">of</span> billAsset {
+    clause collect(amountDeposited: Amount, <span class="hljs-attr">saver</span>: Program) {
+        verify below(dueBlockHeight)
+        verify amountDeposited &lt;= billAmount &amp;&amp; totalAmountBill &lt;= totalAmountCapital
+        define sAmountDeposited: Integer = amountDeposited/<span class="hljs-number">100000000</span>
+        define sTotalAmountBill: Integer = totalAmountBill/<span class="hljs-number">100000000</span>
+        verify sAmountDeposited &gt; <span class="hljs-number">0</span> &amp;&amp; sTotalAmountBill &gt; <span class="hljs-number">0</span>
+        <span class="hljs-keyword">if</span> amountDeposited &lt; billAmount {
+            lock amountDeposited <span class="hljs-keyword">of</span> assetDeposited <span class="hljs-keyword">with</span> FixedLimitProfit(billAsset, totalAmountBill, totalAmountCapital, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+            lock amountDeposited <span class="hljs-keyword">of</span> billAsset <span class="hljs-keyword">with</span> saver
+            lock billAmount-amountDeposited <span class="hljs-keyword">of</span> billAsset <span class="hljs-keyword">with</span> FixedLimitCollect(assetDeposited, totalAmountBill, totalAmountCapital, dueBlockHeight, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+        } <span class="hljs-keyword">else</span> {
+            lock amountDeposited <span class="hljs-keyword">of</span> assetDeposited <span class="hljs-keyword">with</span> FixedLimitProfit(billAsset, totalAmountBill, totalAmountCapital, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+            lock billAmount <span class="hljs-keyword">of</span> billAsset <span class="hljs-keyword">with</span> saver
+        }
+    }
+    clause cancel(bankerSig: Signature) {
+        verify above(dueBlockHeight)
+        verify checkTxSig(bankerKey, bankerSig)
+        unlock billAmount <span class="hljs-keyword">of</span> billAsset
+    }
+}
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// 取现合约(本金加利息)</span>
+contract FixedLimitProfit(assetBill: Asset,
+                        <span class="hljs-attr">totalAmountBill</span>: Amount,
+                        <span class="hljs-attr">totalAmountCapital</span>: Amount,
+                        <span class="hljs-attr">expireBlockHeight</span>: Integer,
+                        <span class="hljs-attr">additionalBlockHeight</span>: Integer,
+                        <span class="hljs-attr">banker</span>: Program,
+                        <span class="hljs-attr">bankerKey</span>: PublicKey) locks capitalAmount <span class="hljs-keyword">of</span> capitalAsset {
+    clause profit(amountBill: Amount, <span class="hljs-attr">saver</span>: Program) {
+        verify above(expireBlockHeight)
+        define sAmountBill: Integer = amountBill/<span class="hljs-number">100000000</span>
+        define sTotalAmountBill: Integer = totalAmountBill/<span class="hljs-number">100000000</span>
+        verify sAmountBill &gt; <span class="hljs-number">0</span> &amp;&amp; sTotalAmountBill &gt; <span class="hljs-number">0</span> &amp;&amp; amountBill &lt; totalAmountBill
+        define gain: Integer = totalAmountCapital*sAmountBill/sTotalAmountBill
+        verify gain &gt; <span class="hljs-number">0</span> &amp;&amp; gain &lt;= capitalAmount
+        <span class="hljs-keyword">if</span> gain &lt; capitalAmount {
+            lock amountBill <span class="hljs-keyword">of</span> assetBill <span class="hljs-keyword">with</span> banker
+            lock gain <span class="hljs-keyword">of</span> capitalAsset <span class="hljs-keyword">with</span> saver
+            lock capitalAmount - gain <span class="hljs-keyword">of</span> capitalAsset <span class="hljs-keyword">with</span> FixedLimitProfit(assetBill, totalAmountBill, totalAmountCapital, expireBlockHeight, additionalBlockHeight, banker, bankerKey)
+        } <span class="hljs-keyword">else</span> {
+            lock amountBill <span class="hljs-keyword">of</span> assetBill <span class="hljs-keyword">with</span> banker
+            lock capitalAmount <span class="hljs-keyword">of</span> capitalAsset <span class="hljs-keyword">with</span> saver
+        }
+    }
+    clause cancel(bankerSig: Signature) {
+        verify above(additionalBlockHeight)
+        verify checkTxSig(bankerKey, bankerSig)
+        unlock capitalAmount <span class="hljs-keyword">of</span> capitalAsset
+    }
+}
+</code></pre>
+<p>合约的源代码说明可以具体参考<a href="https://docs.bytom.io/mydoc_smart_contract_overview.cn.html"><code>Equity合约介绍</code></a>.</p>
+<h3>注意事项：</h3>
+<ul>
+<li>时间期限不是具体的时间，而是通过区块高度来大概估算的（平均区块时间间隔大概为<code>2.5</code>分钟）</li>
+<li>比原的精度是<code>8</code>, 即 <code>1BTM = 100000000 neu</code>，正常情况下参与计算都是以<code>neu</code>为单位的，然而虚拟机的<code>int64</code>类型的最大值是<code>9223372036854775807</code>，为了避免数值太大导致计算溢出，所以对计算的金额提出了金额限制（即<code>amountBill/100000000</code>）</li>
+<li>另外<code>clause cancel</code>是项目方的管理方法，如果储蓄或者取现没有满额，项目方也可以回收剩余的资产</li>
+</ul>
+<h2>编译并实例化合约</h2>
+<p>编译<code>Equity</code>合约可以参考一下<a href="https://github.com/Bytom/equity"><code>Equity</code>编译器</a>的介绍说明。假如储蓄合约<code>FixedLimitCollect</code>的参数如下：</p>
+<pre><code>assetDeposited          :c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+totalAmountBill         :10000000000
+totalAmountCapital      :20000000000
+dueBlockHeight          :1070
+expireBlockHeight       :1090
+additionalBlockHeight   :1100
+banker                  :0014dedfd406c591aa221a047a260107f877da92fec5
+bankerKey               :055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+</code></pre>
+<p>其中<code>bankerKey</code>是管理员的<code>publicKey</code>，可以通过比原链的接口<a href="https://github.com/Bytom/bytom/wiki/API-Reference#list-pubkeys"><code>list-pubkeys</code></a>来获取，注意管理员需要保存一下对应的<code>rootXpub</code>和<code>Path</code>，否则无法正确调用<code>clause cancel</code>。</p>
+<p>实例化合约命令如下：</p>
+<pre><code class="language-sh">// 储蓄合约
+./equity FixedLimitCollect --instance c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee 10000000000 20000000000 1070 1090 1100 0014dedfd406c591aa221a047a260107f877da92fec5 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+
+// 取现合约
+./equity FixedLimitProfit --instance c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee 10000000000 20000000000 1090 1100 0014dedfd406c591aa221a047a260107f877da92fec5 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+</code></pre>
+<h2>发布合约交易</h2>
+<p>发布合约交易即将资产锁定到合约中。由于目前无法在比原的<code>dashboard</code>上构造合约交易，所以需要借助外部工具来发送合约交易，比如<code>postman</code>。按照上述示意图所示，项目方需要发布<code>1000</code>个储蓄资产的储蓄合约和<code>200</code>个利息资产取现合约。假设项目方需要发布<code>1000</code>个储蓄资产（假如精度为<code>8</code>,那么<code>1000</code>个在比原链中表示为<code>100000000000</code>）的锁仓合约，那么他需要将对应数量的票据锁定在储蓄合约中，其交易模板如下：</p>
+<pre><code class="language-js">{
+  <span class="hljs-string">"base_transaction"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-string">"actions"</span>: [
+    {
+      <span class="hljs-string">"account_id"</span>: <span class="hljs-string">"0ILGLSTC00A02"</span>,
+      <span class="hljs-string">"amount"</span>: <span class="hljs-number">20000000</span>,
+      <span class="hljs-string">"asset_id"</span>: <span class="hljs-string">"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"spend_account"</span>
+    },
+    {
+      <span class="hljs-string">"account_id"</span>: <span class="hljs-string">"0ILGLSTC00A02"</span>,
+      <span class="hljs-string">"amount"</span>: <span class="hljs-number">100000000000</span>,
+      <span class="hljs-string">"asset_id"</span>: <span class="hljs-string">"13016eff73ffb7539a69e122f80f5c1cc94446773ac3f64dec290429f87e73b3"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"spend_account"</span>
+    },
+    {
+      <span class="hljs-string">"amount"</span>: <span class="hljs-number">100000000000</span>,
+      <span class="hljs-string">"asset_id"</span>: <span class="hljs-string">"13016eff73ffb7539a69e122f80f5c1cc94446773ac3f64dec290429f87e73b3"</span>,
+      <span class="hljs-string">"control_program"</span>: <span class="hljs-string">"20055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf160014dedfd406c591aa221a047a260107f877da92fec5024c04024204022e040500c817a8040500e40b540220c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4d3b02597a642f0200005479cda069c35b797ca153795579a19a695a790400e1f5059653790400e1f505967c00a07c00a09a69c35b797c9f9161644d010000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec169515b79c2515d79c16952c35c7994c251005d79895c79895b79895a79895979895879895779895679895579890274787e008901c07ec169632a020000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec16951c3c2515d79c169633b020000547acd9f69587a587aae7cac747800c0"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"control_program"</span>
+    }
+  ],
+  <span class="hljs-string">"ttl"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-string">"time_range"</span>: <span class="hljs-number">1521625823</span>
+}
+</code></pre>
+<p>合约交易成功后，合约<code>control_program</code>对应的<code>UTXO</code>将会被所有用户查询到，使用比原链的接口<a href="https://github.com/Bytom/bytom/wiki/API-Reference#list-unspent-outputs"><code>list-unspent-outputs</code></a>即可查询。</p>
+<p>此外，开发者需要存储一下合约<code>UTXO</code>的<code>assetID</code>和<code>program</code>，以便在<code>DAPP</code>的前端页面的<code>config</code>配置文件和<code>bufferserver</code>缓冲服务器中调用。如上所示：</p>
+<pre><code>// 储蓄合约
+assetID：13016eff73ffb7539a69e122f80f5c1cc94446773ac3f64dec290429f87e73b3
+program：20055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf160014dedfd406c591aa221a047a260107f877da92fec5024c04024204022e040500c817a8040500e40b540220c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4d3b02597a642f0200005479cda069c35b797ca153795579a19a695a790400e1f5059653790400e1f505967c00a07c00a09a69c35b797c9f9161644d010000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec169515b79c2515d79c16952c35c7994c251005d79895c79895b79895a79895979895879895779895679895579890274787e008901c07ec169632a020000005b79c2547951005e79895d79895c79895b7989597989587989537a894caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac890274787e008901c07ec16951c3c2515d79c169633b020000547acd9f69587a587aae7cac747800c0
+
+// 取现合约
+assetID：c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+program：20055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf160014dedfd406c591aa221a047a260107f877da92fec5024c040242040500c817a8040500e40b540220c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4caa587a649e0000005479cd9f6959790400e1f5059653790400e1f505967800a07800a09a5c7956799f9a6955797b957c96c37800a052797ba19a69c3787c9f91616487000000005b795479515b79c1695178c2515d79c16952c3527994c251005d79895c79895b79895a79895979895879895779895679890274787e008901c07ec1696399000000005b795479515b79c16951c3c2515d79c16963aa000000557acd9f69577a577aae7cac747800c0
+</code></pre>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/dubbo_gray.png"/><div class="cols-container"><div class="col col-12"><h3>友情提示</h3><p>如果文档编辑有错误，请联系我们!</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/index.html" target="_self">Overview</a></dd><dd><a href="/zh-cn/docs/13_architecture_overview.html" target="_self">Quick start</a></dd><dd><a href="/zh-cn/docs/06_build_environment.html" target="_self">Developer guide</a></dd></dl></div><div class="col col-6"><dl><dt>编辑文档</dt><dd><a href="https://github.com/bytomlabs/bytomlabs.github.io" target="_self">Github</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2018 Bytom</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>

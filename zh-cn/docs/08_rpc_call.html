@@ -98,15 +98,15 @@ curl -X POST http:<span class="hljs-comment">//localhost:9888/create-key -d '{"a
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the key.</li>
-<li><code>String</code> - <em>password</em>, password of the key.</li>
+<li><code>String</code> - <em>alias</em>,密钥名字.</li>
+<li><code>String</code> - <em>password</em>, 私钥的密码.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the key.</li>
-<li><code>String</code> - <em>xpub</em>, root pubkey of the key.</li>
-<li><code>String</code> - <em>file</em>, path to the file of key.</li>
+<li><code>String</code> - <em>alias</em>, ，密钥的名字.</li>
+<li><code>String</code> - <em>xpub</em>, 公钥的root.</li>
+<li><code>String</code> - <em>file</em>, 私钥文件本地存放路径.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -126,12 +126,13 @@ curl -X POST create-key -d <span class="hljs-string">'{"alias": "alice", "passwo
 <p>none</p>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, keys owned by the client.
+<li><code>Array of Object</code>, 客户端所拥有的所有私钥信息.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the key.</li>
-<li><code>String</code> - <em>xpub</em>, pubkey of the key.</li>
+<li><code>String</code> - <em>alias</em>, 密钥名字.</li>
+<li><code>String</code> - <em>xpub</em>, 公钥文件.</li>
+<li><code>String</code> - <em>file</em>, 密钥文件在客户端本地存放地址</li>
 </ul>
 </li>
 </ul>
@@ -161,11 +162,12 @@ curl -X POST list-keys
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>xpub</em>, pubkey of the key.</li>
-<li><code>String</code> - <em>password</em>, password of the key.</li>
+<li><code>String</code> - <em>xpub</em>, 公钥.</li>
+<li><code>String</code> - <em>password</em>, 密钥的密码.</li>
 </ul>
 <h5>返回</h5>
 <p>如果密钥已成功删除，则为none。</p>
+<p>否则：</p>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
 curl -X POST <span class="hljs-keyword">delete</span>-key -d <span class="hljs-string">'{"xpub": "a7dae957c2d35b42efe7e6871cf5a75ebd2a0d0e51caffe767db42d3e6d69dbe211d1ca492ecf05908fe6fa625ad61b3253375ea744c9442dd5551613ba50aea", "password": "123456"}'</span>
@@ -178,14 +180,14 @@ curl -X POST <span class="hljs-keyword">delete</span>-key -d <span class="hljs-s
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>xpub</em>, pubkey of the key.</li>
-<li><code>String</code> - <em>old_password</em>, old password of the key.</li>
-<li><code>String</code> - <em>new_password</em>, new password of the key.</li>
+<li><code>String</code> - <em>xpub</em>, 密钥的公钥.</li>
+<li><code>String</code> - <em>old_password</em>, 密钥文件旧的密码.</li>
+<li><code>String</code> - <em>new_password</em>, 密钥文件新的密码.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>changed</em>, result of reset key password, true is reset successfully, otherwise is false.</li>
+<li><code>Boolean</code> - <em>changed</em>, 返回重置的密钥密码，如果返回true表示返回成功，否则重置失败.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -202,22 +204,22 @@ curl -X POST reset-key-password -d <span class="hljs-string">'{"xpub": "a7dae957
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Array of String</code> - <em>root_xpubs</em>, pubkey array.</li>
-<li><code>String</code> - <em>alias</em>, name of the account.</li>
-<li><code>Integer</code> - <em>quorum</em>, the default value is <code>1</code>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
+<li><code>Array of String</code> - <em>root_xpubs</em>, 公钥数组.</li>
+<li><code>String</code> - <em>alias</em>, 账户名称.</li>
+<li><code>Integer</code> - <em>quorum</em>, 默认值是<code>1</code>, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
 </ul>
 <p>Optional:</p>
 <ul>
-<li><code>String</code> - <em>access_token</em>, if optional when creating account locally. However, if you want to create account remotely, it's indispensable.</li>
+<li><code>String</code> - <em>access_token</em>, 如果在本地创建帐户时是可选的. 但是，如果您想远程创建帐户，它是必不可少的.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, account id.</li>
-<li><code>String</code> - <em>alias</em>, name of account.</li>
-<li><code>Integer</code> - <em>key_index</em>, key index of account.</li>
-<li><code>Integer</code> - <em>quorom</em>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
-<li><code>Array of Object</code> - <em>xpubs</em>, pubkey array.</li>
+<li><code>String</code> - <em>id</em>, 账户id.</li>
+<li><code>String</code> - <em>alias</em>, 账户名称.</li>
+<li><code>Integer</code> - <em>key_index</em>, 账户key的索引.</li>
+<li><code>Integer</code> - <em>quorom</em>,  交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
+<li><code>Array of Object</code> - <em>xpubs</em>, 公钥数组.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -241,15 +243,15 @@ curl -X POST create-account -d <span class="hljs-string">'{"root_xpubs":["2d6c07
 <p>none</p>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, account array.
+<li><code>Array of Object</code>, 账户数组.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>id</em>, account id.</li>
-<li><code>String</code> - <em>alias</em>, name of account.</li>
-<li><code>Integer</code> - <em>key_index</em>, key index of account.</li>
-<li><code>Integer</code> - <em>quorom</em>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
-<li><code>Array of Object</code> - <em>xpubs</em>, pubkey array.</li>
+<li><code>String</code> - <em>id</em>, 账户id.</li>
+<li><code>String</code> - <em>alias</em>, 公钥名称.</li>
+<li><code>Integer</code> - <em>key_index</em>, 账户密钥的索引.</li>
+<li><code>Integer</code> - <em>quorom</em>,  交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
+<li><code>Array of Object</code> - <em>xpubs</em>, 公钥数组.</li>
 </ul>
 </li>
 </ul>
@@ -288,9 +290,9 @@ curl -X POST list-accounts -d {}
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>account_id</em>, id of account.</li>
-<li><code>String</code> - <em>account_alias</em>, alias of account.</li>
-<li><code>String</code> - <em>new_alias</em>, new alias of account.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户别名.</li>
+<li><code>String</code> - <em>new_alias</em>, 账户的新别名.</li>
 </ul>
 <h5>返回</h5>
 <p>如果账户别名更新成功，status为success。</p>
@@ -308,7 +310,7 @@ curl -X POST update-account-alias -d <span class="hljs-string">'{"account_id":"0
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>account_info</em>, alias or ID of account.</li>
+<li><code>String</code> - <em>account_info</em>, 账户的别名或者ID.</li>
 </ul>
 <h5>返回</h5>
 <p>如果帐户已成功删除，则为none。</p>
@@ -327,14 +329,14 @@ curl -X POST <span class="hljs-keyword">delete</span>-account -d <span class="hl
 <p><code>Object</code>: account_alias | account_id</p>
 <p>可选:</p>
 <ul>
-<li><code>String</code> - <em>account_alias</em>, alias of account.</li>
-<li><code>String</code> - <em>account_id</em>, id of account.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户别名.</li>
+<li><code>String</code> - <em>account_id</em>, 账户ID.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>address</em>, address of account.</li>
-<li><code>String</code> - <em>control_program</em>, control program of account.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
+<li><code>String</code> - <em>control_program</em>,账户的控制程序.</li>
 </ul>
 <h5>例子</h5>
 <p>//Request</p>
@@ -351,19 +353,19 @@ curl -X POST <span class="hljs-keyword">delete</span>-account -d <span class="hl
 <p>按帐户返回所有可用地址的列表。</p>
 <h5>参数</h5>
 <ul>
-<li><code>String</code> - <em>account_alias</em>, alias of account.</li>
-<li><code>String</code> - <em>account_id</em>, id of account.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户别名.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
 </ul>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, account address array.
+<li><code>Array of Object</code>, 账户所有地址的集合.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>account_alias</em>, alias of account.</li>
-<li><code>String</code> - <em>account_id</em>, id of account.</li>
-<li><code>String</code> - <em>address</em>, address of account.</li>
-<li><code>Boolean</code> - <em>change</em>, whether the account address is change.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户别名.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
+<li><code>Boolean</code> - <em>change</em>, 账户地址是否改变.</li>
 </ul>
 </li>
 </ul>
@@ -402,13 +404,13 @@ curl -X POST list-addresses -d <span class="hljs-string">'{"account_alias": "ali
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>string</code> - <em>address</em>, address of account.</li>
+<li><code>string</code> - <em>address</em>, 账户地址.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>vaild</em>, whether the account address is vaild.</li>
-<li><code>Boolean</code> - <em>is_local</em>, whether the account address is local.</li>
+<li><code>Boolean</code> - <em>vaild</em>, 账户的地址是否有效.</li>
+<li><code>Boolean</code> - <em>is_local</em>, 账户的地址是否是本地地址.</li>
 </ul>
 <h5>例子</h5>
 <p>检查地址是否有效。</p>
@@ -427,24 +429,24 @@ curl -X POST validate-address -d <span class="hljs-string">'{"address": "bm1qcn9
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Array of String</code> - <em>root_xpubs</em>, pubkey array.</li>
-<li><code>String</code> - <em>alias</em>, name of the asset.</li>
-<li><code>Integer</code> - <em>quorum</em>, the default value is <code>1</code>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
+<li><code>Array of String</code> - <em>root_xpubs</em>, 公钥集合.</li>
+<li><code>String</code> - <em>alias</em>, 资产名称.</li>
+<li><code>Integer</code> - <em>quorum</em>, 默认值是<code>1</code>, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
 </ul>
 <p>Optional:</p>
 <ul>
-<li><code>Object</code> - <em>definition</em>, definition of asset.</li>
-<li><code>String</code> - <em>access_token</em>, if optional when creating asset locally. However, if you want to create asset remotely, it's indispensable.</li>
+<li><code>Object</code> - <em>definition</em>, 资产定义.</li>
+<li><code>String</code> - <em>access_token</em>, 如果在本地创建资产时是可选的.但是，如果您想远程创建资产，它是必需要填写的.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, asset id.</li>
-<li><code>String</code> - <em>alias</em>, name of the asset.</li>
-<li><code>String</code> - <em>issuance_program</em>, control program of the issuance of asset.</li>
-<li><code>Array of Object</code> - <em>keys</em>, information of asset pubkey.</li>
-<li><code>String</code> - <em>definition</em>, definition of asset.</li>
-<li><code>Integer</code> - <em>quorum</em>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
+<li><code>String</code> - <em>id</em>, 资产id.</li>
+<li><code>String</code> - <em>alias</em>, 资产名称.</li>
+<li><code>String</code> - <em>issuance_program</em>, 资产发行控制方案.</li>
+<li><code>Array of Object</code> - <em>keys</em>, 资产公钥信息.</li>
+<li><code>String</code> - <em>definition</em>, 资产定义.</li>
+<li><code>Integer</code> - <em>quorum</em>,  交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
 </ul>
 <h5>例子</h5>
 <p>创建资产</p>
@@ -475,21 +477,21 @@ curl -X POST create-asset -d <span class="hljs-string">'{"alias": "GOLD", "root_
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, id of asset.</li>
+<li><code>String</code> - <em>id</em>, 资产id.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, asset id.</li>
-<li><code>String</code> - <em>alias</em>, name of the asset.</li>
-<li><code>String</code> - <em>issuance_program</em>, control program of the issuance of asset.</li>
-<li><code>Integer</code> - <em>key_index</em>, index of key for xpub.</li>
-<li><code>Integer</code> - <em>quorum</em>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
-<li><code>Array of Object</code> - <em>xpubs</em>, pubkey array.</li>
-<li><code>String</code> - <em>type</em>, type of asset.</li>
-<li><code>Integer</code> - <em>vm_version</em>, version of VM.</li>
-<li><code>String</code> - <em>raw_definition_byte</em>, byte of asset definition.</li>
-<li><code>Object</code> - <em>definition</em>, description of asset.</li>
+<li><code>String</code> - <em>id</em>, 资产id.</li>
+<li><code>String</code> - <em>alias</em>, 资产名字.</li>
+<li><code>String</code> - <em>issuance_program</em>, 资产发行控制方案.</li>
+<li><code>Integer</code> - <em>key_index</em>, xpub的密钥索引.</li>
+<li><code>Integer</code> - <em>quorum</em>, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
+<li><code>Array of Object</code> - <em>xpubs</em>, 公钥数组.</li>
+<li><code>String</code> - <em>type</em>,资产类型.</li>
+<li><code>Integer</code> - <em>vm_version</em>, 虚拟机版本.</li>
+<li><code>String</code> - <em>raw_definition_byte</em>, 资产定义的字节.</li>
+<li><code>Object</code> - <em>definition</em>, 资产描述.</li>
 </ul>
 <h5>例子</h5>
 <p>按assetID获取资产。</p>
@@ -519,20 +521,20 @@ curl -X POST get-asset -d <span class="hljs-string">'{"id": "50ec80b6bc48073f6aa
 <p>none</p>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, asset array.
+<li><code>Array of Object</code>, 资产数组.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>id</em>, asset id.</li>
-<li><code>String</code> - <em>alias</em>, name of the asset.</li>
-<li><code>String</code> - <em>issuance_program</em>, control program of the issuance of asset.</li>
-<li><code>Integer</code> - <em>key_index</em>, index of key for xpub.</li>
-<li><code>Integer</code> - <em>quorum</em>, threshold of keys that must sign a transaction to spend asset units controlled by the account.</li>
-<li><code>Array of Object</code> - <em>xpubs</em>, pubkey array.</li>
-<li><code>String</code> - <em>type</em>, type of asset.</li>
-<li><code>Integer</code> - <em>vm_version</em>, version of VM.</li>
-<li><code>String</code> - <em>raw_definition_byte</em>, byte of asset definition.</li>
-<li><code>Object</code> - <em>definition</em>, description of asset.</li>
+<li><code>String</code> - <em>id</em>, 资产 id.</li>
+<li><code>String</code> - <em>alias</em>, 资产名称.</li>
+<li><code>String</code> - <em>issuance_program</em>, 资产发行控制程序.</li>
+<li><code>Integer</code> - <em>key_index</em>, 公钥索引.</li>
+<li><code>Integer</code> - <em>quorum</em>, 交易必需签名用来支出由账户控制的资产单位的秘钥阀值.</li>
+<li><code>Array of Object</code> - <em>xpubs</em>, 公钥数组.</li>
+<li><code>String</code> - <em>type</em>, 资产类型.</li>
+<li><code>Integer</code> - <em>vm_version</em>, 虚拟机版本.</li>
+<li><code>String</code> - <em>raw_definition_byte</em>, 资产定义的字节.</li>
+<li><code>Object</code> - <em>definition</em>, 资产的描述.</li>
 </ul>
 </li>
 </ul>
@@ -584,8 +586,8 @@ curl -X POST list-assets -d {}
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, id of asset.</li>
-<li><code>String</code> - <em>alias</em>, new alias of asset.</li>
+<li><code>String</code> - <em>id</em>, 资产id.</li>
+<li><code>String</code> - <em>alias</em>, 资产的新别名.</li>
 </ul>
 <h5>返回</h5>
 <p>如果资产别名更新成功，则为none。</p>
@@ -603,15 +605,15 @@ curl -X POST update-asset-alias -d <span class="hljs-string">'{"id":"50ec80b6bc4
 <p>none</p>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, balances owned by the account.
+<li><code>Array of Object</code>,账户里面所有可用的余额.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Integer</code> - <em>amount</em>, specified asset balance of account.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>,账户名称.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名称.</li>
+<li><code>Integer</code> - <em>amount</em>, 指定的帐户资产余额.</li>
 </ul>
 </li>
 </ul>
@@ -647,27 +649,27 @@ curl -X POST list-balances -d {}
 <p><code>Object</code>:
 可选:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, id of unspent output.</li>
+<li><code>String</code> - <em>id</em>, 未花费的输出id.</li>
 </ul>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, unspent output array.
+<li><code>Array of Object</code>, 未花费的输出数组.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Integer</code> - <em>amount</em>, specified asset balance of account.</li>
-<li><code>String</code> - <em>address</em>, address of account.</li>
-<li><code>Boolean</code> - <em>change</em>, whether the account address is change.</li>
-<li><code>String</code> - <em>id</em>, unspent output id.</li>
-<li><code>String</code> - <em>program</em>, program of account.</li>
-<li><code>String</code> - <em>control_program_index</em>, index of program.</li>
-<li><code>String</code> - <em>source_id</em>, source unspent output id.</li>
-<li><code>String</code> - <em>source_pos</em>, position of source unspent output id in block.</li>
-<li><code>String</code> - <em>valid_height</em>, valid height.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>,账户名称.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名字.</li>
+<li><code>Integer</code> - <em>amount</em>, 指定的帐户资产余额.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
+<li><code>Boolean</code> - <em>change</em>, 账户地址是否改变.</li>
+<li><code>String</code> - <em>id</em>, 未花费的输出id.</li>
+<li><code>String</code> - <em>program</em>, 账户程序.</li>
+<li><code>String</code> - <em>control_program_index</em>, 控制程序索引.</li>
+<li><code>String</code> - <em>source_id</em>, 未花费的输出源id</li>
+<li><code>String</code> - <em>source_pos</em>, 位花费的输出源id在区块中的位置.</li>
+<li><code>String</code> - <em>valid_height</em>, 有效高度.</li>
 </ul>
 </li>
 </ul>
@@ -741,9 +743,9 @@ curl -X POST list-unspent-outputs -d <span class="hljs-string">'{"id": "58f29f0f
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>account_image</em>, account image.</li>
-<li><code>Object</code> - <em>asset_image</em>, asset image.</li>
-<li><code>Object</code> - <em>key_images</em>, key image.</li>
+<li><code>Object</code> - <em>account_image</em>, 账户镜像.</li>
+<li><code>Object</code> - <em>asset_image</em>, 资产镜像.</li>
+<li><code>Object</code> - <em>key_images</em>, 秘钥镜像.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -829,9 +831,9 @@ curl -X backup-wallet -d {}
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>account_image</em>, account image.</li>
-<li><code>Object</code> - <em>asset_image</em>, asset image.</li>
-<li><code>Object</code> - <em>key_images</em>, key image.</li>
+<li><code>Object</code> - <em>account_image</em>, 账户镜像.</li>
+<li><code>Object</code> - <em>asset_image</em>, 资产镜像.</li>
+<li><code>Object</code> - <em>key_images</em>, 秘钥镜像.</li>
 </ul>
 <h5>返回</h5>
 <p>如果恢复钱包成功，返回none</p>
@@ -847,15 +849,15 @@ curl -X POST restore-wallet -d <span class="hljs-string">'{"account_image":{"sli
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>address</em>, address for account.</li>
-<li><code>String</code> - <em>message</em>, message for signature by address xpub.</li>
-<li><code>String</code> - <em>password</em>, password of account.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
+<li><code>String</code> - <em>message</em>, 地址xpub签名的消息.</li>
+<li><code>String</code> - <em>password</em>, 账户密码.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>derived_xpub</em>, derived xpub.</li>
-<li><code>String</code> - <em>signature</em>, signature of message.</li>
+<li><code>String</code> - <em>derived_xpub</em>, 派生的xpub.</li>
+<li><code>String</code> - <em>signature</em>, 消息的签名.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -873,48 +875,48 @@ curl -X POST sign-message -d <span class="hljs-string">'{"address":"bm1qx2qgvvjz
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>tx_id</em>, transaction id, hash of transaction.</li>
+<li><code>String</code> - <em>tx_id</em>, 交易 id, 交易hash.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>tx_id</em>, transaction id, hash of the transaction.</li>
-<li><code>Integer</code> - <em>block_time</em>, the unix timestamp for when the requst was responsed.</li>
-<li><code>String</code> - <em>block_hash</em>, hash of the block where this transaction was in.</li>
-<li><code>Integer</code> - <em>block_height</em>, block height where this transaction was in.</li>
-<li><code>Integer</code> - <em>block_index</em>, position of the transaction in the block.</li>
-<li><code>Integer</code> - <em>block_transactions_count</em>, transactions count where this transaction was in the block.</li>
-<li><code>Boolean</code> - <em>status_fail</em>, whether the state of the transaction request has failed.</li>
-<li><code>Integer</code> - <em>size</em>, size of transaction.</li>
-<li><code>Array of Object</code> - <em>inputs</em>, object of inputs for the transaction.
+<li><code>String</code> - <em>tx_id</em>, 交易id, 交易hash.</li>
+<li><code>Integer</code> - <em>block_time</em>, 响应请求时的unix时间戳.</li>
+<li><code>String</code> - <em>block_hash</em>, 交易所在区块的hash值.</li>
+<li><code>Integer</code> - <em>block_height</em>, 交易所在的区块高度.</li>
+<li><code>Integer</code> - <em>block_index</em>, 交易所在区块的位置.</li>
+<li><code>Integer</code> - <em>block_transactions_count</em>, 此区块中的所有交易.</li>
+<li><code>Boolean</code> - <em>status_fail</em>, 交易请求的状态是否失败.</li>
+<li><code>Integer</code> - <em>size</em>, 交易占的内存大小.</li>
+<li><code>Array of Object</code> - <em>inputs</em>, 交易的输入对象.
 <ul>
-<li><code>String</code> - <em>type</em>, the type of input action, available option include: 'spend', 'issue', 'coinbase'.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Object</code> - <em>asset_definition</em>, definition of asset(json object).</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>Object</code> - <em>issuance_program</em>, issuance program, it only exist when type is 'issue'.</li>
-<li><code>Object</code> - <em>control_program</em>, control program of account, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>address</em>, address of account, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>spent_output_id</em>, the front of outputID to be spent in this input, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>arbitrary</em>, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.</li>
+<li><code>String</code> - <em>type</em>, 输入类型,可选用的选项包括: 'spend'(), 'issue'(), 'coinbase'().</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名字.</li>
+<li><code>Object</code> - <em>asset_definition</em>, 定义资产(json对象).</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>Object</code> - <em>issuance_program</em>, 发行程序, 它仅仅当类型为'issue'时存在.</li>
+<li><code>Object</code> - <em>control_program</em>, 账户控制程序, 它仅仅存在当交易类型为'spend'时.</li>
+<li><code>String</code> - <em>address</em>, 账户地址, 它仅仅存在当交易类型为'spend'时.</li>
+<li><code>String</code> - <em>spent_output_id</em>, 在输入中前一笔交易的输出ID将被花费, 它仅仅存在当交易类型为'spend'时.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名称.</li>
+<li><code>Object</code> - <em>arbitrary</em>, 矿工可以设置任意信息, 只有当交易类型为 'coinbase'时存在.</li>
 </ul>
 </li>
-<li><code>Array of Object</code> - <em>outputs</em>, object of outputs for the transaction.
+<li><code>Array of Object</code> - <em>outputs</em>, 交易的输出对象.
 <ul>
-<li><code>String</code> - <em>type</em>, the type of output action, available option include: 'retire', 'control'.</li>
-<li><code>String</code> - <em>id</em>, outputid related to utxo.</li>
-<li><code>Integer</code> - <em>position</em>, position of outputs.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Object</code> - <em>asset_definition</em>, definition of asset(json object).</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>control_program</em>, control program of account.</li>
-<li><code>String</code> - <em>address</em>, address of account.</li>
+<li><code>String</code> - <em>type</em>, 输出动作类型, 可用选项包括: 'retire', 'control'.</li>
+<li><code>String</code> - <em>id</em>, 与utxo相关的输出id.</li>
+<li><code>Integer</code> - <em>position</em>, 交易输出的位置.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名称.</li>
+<li><code>Object</code> - <em>asset_definition</em>, 资产的定义(json对象).</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名称.</li>
+<li><code>Object</code> - <em>control_program</em>, 账户的控制程序.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
 </ul>
 </li>
 </ul>
@@ -998,84 +1000,84 @@ curl -X POST get-transaction -d <span class="hljs-string">'{"tx_id": "15b8d66e22
 <p><code>Object</code>:</p>
 <p>可选:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, transaction id, hash of transaction.</li>
-<li><code>String</code> - <em>account_id</em>, id of account.</li>
-<li><code>Boolean</code> - <em>detail</em> , flag of detail transactions, default false (only return transaction summary)</li>
-<li><code>Boolean</code> - <em>unconfirmed</em>, flag of unconfirmed transactions(query result include all confirmed and unconfirmed transactions), default false.</li>
+<li><code>String</code> - <em>id</em>, 交易id,交易hash.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>Boolean</code> - <em>detail</em> , 详细事务标志，默认为false（仅返回事务摘要).</li>
+<li><code>Boolean</code> - <em>unconfirmed</em>, 确认事务的标志（查询结果包括所有已确认和未确认的事务），默认为false.</li>
 </ul>
 <h5>返回</h5>
-<p><code>Array of Object</code>, transaction array.</p>
+<p><code>Array of Object</code>, 交易数组.</p>
 <p>可选:</p>
 <ul>
 <li>
-<p><code>Object</code>:(summary transaction)</p>
+<p><code>Object</code>:(交易汇总)</p>
 <ul>
-<li><code>String</code> - <em>tx_id</em>, transaction id, hash of the transaction.</li>
-<li><code>Integer</code> - <em>block_time</em>, the unix timestamp for when the requst was responsed.</li>
-<li><code>Array of Object</code> - <em>inputs</em>, object of summary inputs for the transaction.
+<li><code>String</code> - <em>tx_id</em>, 交易id,交易hash.</li>
+<li><code>Integer</code> - <em>block_time</em>, 响应请求时的unix时间戳.</li>
+<li><code>Array of Object</code> - <em>inputs</em>, 交易的主要输入对象.
 <ul>
-<li><code>String</code> - <em>type</em>, the type of input action, available option include: 'spend', 'issue', 'coinbase'.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
+<li><code>String</code> - <em>type</em>, 输入操作的类型，可用选项包括：'spend'，'issue'，'coinbase'.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名称.</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名字.</li>
 <li><code>Object</code> - <em>arbitrary</em>, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.</li>
 </ul>
 </li>
 <li><code>Array of Object</code> - <em>outputs</em>, object of summary outputs for the transaction.
 <ul>
 <li><code>String</code> - <em>type</em>, the type of output action, available option include: 'retire', 'control'.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>arbitrary</em>, arbitrary infomation can be set by miner, it only exist when type is input 'coinbase'(this place is empty).</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名字.</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名字.</li>
+<li><code>Object</code> - <em>arbitrary</em>, 矿工可以设置任意信息, 它仅存在当交易的输入类型'coinbase'(其他类型默认为空).</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><code>Object</code>:(detail transaction)</p>
+<p><code>Object</code>:(交易详情)</p>
 <ul>
-<li><code>String</code> - <em>tx_id</em>, transaction id, hash of the transaction.</li>
-<li><code>Integer</code> - <em>block_time</em>, the unix timestamp for when the requst was responsed.</li>
-<li><code>String</code> - <em>block_hash</em>, hash of the block where this transaction was in.</li>
-<li><code>Integer</code> - <em>block_height</em>, block height where this transaction was in.</li>
-<li><code>Integer</code> - <em>block_index</em>, position of the transaction in the block.</li>
-<li><code>Integer</code> - <em>block_transactions_count</em>, transactions count where this transaction was in the block.</li>
-<li><code>Boolean</code> - <em>status_fail</em>, whether the state of the transaction request has failed.</li>
-<li><code>Integer</code> - <em>size</em>, size of transaction.</li>
-<li><code>Array of Object</code> - <em>inputs</em>, object of inputs for the transaction.
+<li><code>String</code> - <em>tx_id</em>, 交易id, 交易hash.</li>
+<li><code>Integer</code> - <em>block_time</em>, 请求的时间戳.</li>
+<li><code>String</code> - <em>block_hash</em>, 交易所在区块的hash.</li>
+<li><code>Integer</code> - <em>block_height</em>, 交易所在的区块高度.</li>
+<li><code>Integer</code> - <em>block_index</em>, 交易所在区块的索引.</li>
+<li><code>Integer</code> - <em>block_transactions_count</em>, 计算区块中的总交易笔数.</li>
+<li><code>Boolean</code> - <em>status_fail</em>, 交易的请求状态是否失败.</li>
+<li><code>Integer</code> - <em>size</em>, 交易所占内存大小.</li>
+<li><code>Array of Object</code> - <em>inputs</em>, 交易的输入对象.
 <ul>
 <li><code>String</code> - <em>type</em>, the type of input action, available option include: 'spend', 'issue', 'coinbase'.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Object</code> - <em>asset_definition</em>, definition of asset(json object).</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名字.</li>
+<li><code>Object</code> - <em>asset_definition</em>, 资产定义(json对象).</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
 <li><code>Object</code> - <em>issuance_program</em>, issuance program, it only exist when type is 'issue'.</li>
 <li><code>Object</code> - <em>control_program</em>, control program of account, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>address</em>, address of account, it only exist when type is 'spend'.</li>
+<li><code>String</code> - <em>address</em>, 帐户地址，仅当类型为“花费”时才存在.</li>
 <li><code>String</code> - <em>spent_output_id</em>, the front of outputID to be spent in this input, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>arbitrary</em>, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名字.</li>
+<li><code>Object</code> - <em>arbitrary</em>, 矿工可以设置任意信息, 它仅存在当交易的输入类型'coinbase'.</li>
 </ul>
 </li>
-<li><code>Array of Object</code> - <em>outputs</em>, object of outputs for the transaction.
+<li><code>Array of Object</code> - <em>outputs</em>, 交易的输出对象.
 <ul>
-<li><code>String</code> - <em>type</em>, the type of output action, available option include: 'retire', 'control'.</li>
-<li><code>String</code> - <em>id</em>, outputid related to utxo.</li>
-<li><code>Integer</code> - <em>position</em>, position of outputs.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Object</code> - <em>asset_definition</em>, definition of asset(json object).</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>control_program</em>, control program of account.</li>
-<li><code>String</code> - <em>address</em>, address of account.</li>
+<li><code>String</code> - <em>type</em>, 输出动作的类型,可用选项包括：’retire‘，’control‘.</li>
+<li><code>String</code> - <em>id</em>, 与utxo相关的输出id.</li>
+<li><code>Integer</code> - <em>position</em>, 输出的位置.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名称.</li>
+<li><code>Object</code> - <em>asset_definition</em>, 资产的定义(json 对象).</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名字.</li>
+<li><code>Object</code> - <em>control_program</em>, 账户的控制程序.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
 </ul>
 </li>
 </ul>
@@ -1432,16 +1434,16 @@ curl -X POST list-transactions -d <span class="hljs-string">'{"account_id": "0F1
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>base_transaction</em>, base data for the transaction, default is null.</li>
+<li><code>String</code> - <em>base_transaction</em>, 交易基本数据, 默认为空.</li>
 <li><code>Integer</code> - <em>ttl</em>, integer of the time to live in milliseconds, it means utxo will be reserved(locked) for builded transaction in this time range, if the transaction will not to be submitted into block, it will be auto unlocked for build transaction again after this ttl time. it will be set to 5 minutes(300 seconds) defaultly when ttl is 0.</li>
 <li><code>Integer</code> - <em>time_range</em>, time stamp(block height)is maximum survival time for the transaction, the transaction will be not submit into block after this time stamp.</li>
 <li><code>Arrary of Object</code> - <em>actions</em>:
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>account_id</em> | <em>account_alias</em>, alias or ID of account.</li>
-<li><code>String</code> - <em>asset_id</em> | <em>asset_alias</em>, alias or ID of asset.</li>
-<li><code>Integer</code> - <em>amount</em>, the specified asset of the amount sent with this transaction.</li>
+<li><code>String</code> - <em>account_id</em> | <em>account_alias</em>, 别名或帐户ID.</li>
+<li><code>String</code> - <em>asset_id</em> | <em>asset_alias</em>, 资产的别名或ID.</li>
+<li><code>Integer</code> - <em>amount</em>, 与此交易一起发送的金额的指定资产.</li>
 <li><code>String</code>- <em>type</em>, type of transaction, valid types: 'spend_account', 'issue', 'spend_account_unspent_output', 'control_address', 'control_program', 'retire'.</li>
 <li><code>String</code> - <em>address</em>, (type is control_address) address of receiver, the style of address is P2PKH or P2SH.</li>
 <li><code>String</code> - <em>control_program</em>, (type is control_program) control program of receiver.</li>
@@ -1554,14 +1556,14 @@ curl -X POST build-transaction -d <span class="hljs-string">'{"base_transaction"
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>password</em>, signature of the password.</li>
-<li><code>Object</code> - <em>transaction</em>, builded transaction.</li>
+<li><code>String</code> - <em>password</em>, 密码签名.</li>
+<li><code>Object</code> - <em>transaction</em>, 构建好的交易.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>sign_complete</em>, 返回 true if sign succesfully and false otherwise.</li>
-<li><code>Object of sign-transaction</code> - <em>transaction</em>, signed transaction.</li>
+<li><code>Boolean</code> - <em>sign_complete</em>, 如果签名成功返回true,false签名不成功.</li>
+<li><code>Object of sign-transaction</code> - <em>transaction</em>, 交易签名.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -1635,12 +1637,12 @@ curl -X POST sign-transaction -d <span class="hljs-string">'{"password":"123456"
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>raw_transaction</em>, raw_transaction of signed transaction.</li>
+<li><code>Object</code> - <em>raw_transaction</em>, 已经签名好的交易.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>tx_id</em>, transaction id, hash of transaction.</li>
+<li><code>String</code> - <em>tx_id</em>, 交易id 交易hash.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -1657,14 +1659,14 @@ curl -X POST submit-transaction -d <span class="hljs-string">'{"raw_transaction"
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>transaction_template</em>, builded transaction response.</li>
+<li><code>Object</code> - <em>transaction_template</em>, 构建交易响应.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>total_neu</em>, total consumed neu(1BTM = 10^8NEU) for execute transaction, total_neu is rounded up storage_neu + vm_neu.</li>
-<li><code>Integer</code> - <em>storage_neu</em>, consumed neu for storage transaction .</li>
-<li><code>Integer</code> - <em>vm_neu</em>, consumed neu for execute VM.</li>
+<li><code>Integer</code> - <em>total_neu</em>,发送交易时总共消耗的neo(1BTM = 10^8NEU),total_neu 是 storage_neu + vm_neu 四舍五入得到的.</li>
+<li><code>Integer</code> - <em>storage_neu</em>, 存储交易时消耗的neu.</li>
+<li><code>Integer</code> - <em>vm_neu</em>, 虚拟机执行消耗的neu.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -1687,15 +1689,15 @@ curl -X POST estimate-transaction-gas -d <span class="hljs-string">'{"transactio
 </ul>
 <p>optional:</p>
 <ul>
-<li><code>String</code> - <em>type</em>, type of token.</li>
+<li><code>String</code> - <em>type</em>, token类型.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>token</em>, access token, authentication username and password are separated by a colon.</li>
+<li><code>String</code> - <em>token</em>, 访问令牌，身份验证用户名和密码（用冒号分隔）.</li>
 <li><code>String</code> - <em>id</em>, token ID.</li>
-<li><code>String</code> - <em>type</em>, type of token.</li>
-<li><code>Object</code> - <em>created_at</em>, time to create token.</li>
+<li><code>String</code> - <em>type</em>, token类型.</li>
+<li><code>Object</code> - <em>created_at</em>, token创建时间.</li>
 </ul>
 <h5>例子</h5>
 <p>创建访问token。</p>
@@ -1716,14 +1718,14 @@ curl -X POST create-access-token -d <span class="hljs-string">'{"id":"token1"}'<
 <p>none</p>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, access token array.
+<li><code>Array of Object</code>, 访问令牌数组.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>token</em>, access token.</li>
-<li><code>String</code> - <em>id</em>, token ID.</li>
-<li><code>String</code> - <em>type</em>, type of token.</li>
-<li><code>Object</code> - <em>created_at</em>, time to create token.</li>
+<li><code>String</code> - <em>token</em>, 访问令牌.</li>
+<li><code>String</code> - <em>id</em>, 令牌id.</li>
+<li><code>String</code> - <em>type</em>, 令牌类型.</li>
+<li><code>Object</code> - <em>created_at</em>, 令牌创建时间.</li>
 </ul>
 </li>
 </ul>
@@ -1754,7 +1756,7 @@ curl -X POST list-access-tokens -d {}
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, token ID.</li>
+<li><code>String</code> - <em>id</em>, 令牌 id.</li>
 </ul>
 <h5>返回</h5>
 <p>如果成功删除访问令牌，则为none。</p>
@@ -1771,7 +1773,7 @@ curl -X POST <span class="hljs-keyword">delete</span>-access-token -d <span clas
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, token ID.</li>
+<li><code>String</code> - <em>id</em>, 令牌id.</li>
 <li><code>String</code> - <em>secret</em>, secret of token, the second part of the colon division for token.</li>
 </ul>
 <h5>返回</h5>
@@ -1789,8 +1791,8 @@ curl -X POST check-access-token -d <span class="hljs-string">'{"id": "token1", "
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the transaction feed.</li>
-<li><code>String</code> - <em>filter</em>, filter of the transaction feed.</li>
+<li><code>String</code> - <em>alias</em>, 交易反馈的名字.</li>
+<li><code>String</code> - <em>filter</em>, 交易反馈的过滤器.</li>
 </ul>
 <h5>返回</h5>
 <p>如果交易反馈已成功创建，返回none。</p>
@@ -1806,20 +1808,20 @@ curl -X POST create-transaction-feed -d <span class="hljs-string">'{"alias": "te
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the transaction feed.</li>
+<li><code>String</code> - <em>alias</em>, 交易反馈的名字.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, id of the transaction feed.</li>
-<li><code>String</code> - <em>alias</em>, name of the transaction feed.</li>
-<li><code>String</code> - <em>filter</em>, filter of the transaction feed.</li>
-<li><code>Object</code> - <em>param</em>, param of the transaction feed.
+<li><code>String</code> - <em>id</em>, 交易反馈的id.</li>
+<li><code>String</code> - <em>alias</em>, 交易反馈的名字.</li>
+<li><code>String</code> - <em>filter</em>, 交易反馈的过滤器.</li>
+<li><code>Object</code> - <em>param</em>, 交易反馈的参数.
 <ul>
-<li><code>String</code> - <em>assetid</em>, asset id.</li>
-<li><code>Integer</code> - <em>lowerlimit</em>, the lower limit of asset amount.</li>
-<li><code>Integer</code> - <em>upperlimit</em>, the upper limit of asset amount.</li>
-<li><code>String</code> - <em>transtype</em>, type of transaction.</li>
+<li><code>String</code> - <em>assetid</em>, 资产id.</li>
+<li><code>Integer</code> - <em>lowerlimit</em>, 资产数额下限.</li>
+<li><code>Integer</code> - <em>upperlimit</em>, 资产数额上限.</li>
+<li><code>String</code> - <em>transtype</em>, 交易类型.</li>
 </ul>
 </li>
 </ul>
@@ -1842,19 +1844,19 @@ curl -X POST get-transaction-feed -d <span class="hljs-string">'{"alias": "test1
 <p>none</p>
 <h5>返回</h5>
 <ul>
-<li><code>Array of Object</code>, the transaction feeds.
+<li><code>Array of Object</code>, 交易反馈列表.
 <ul>
 <li><code>Object</code>:
 <ul>
-<li><code>String</code> - <em>id</em>, id of the transaction feed.</li>
-<li><code>String</code> - <em>alias</em>, name of the transaction feed.</li>
-<li><code>String</code> - <em>filter</em>, filter of the transaction feed.</li>
-<li><code>Object</code> - <em>param</em>, param of the transaction feed.
+<li><code>String</code> - <em>id</em>, 交易反馈id.</li>
+<li><code>String</code> - <em>alias</em>, 交易反馈名字.</li>
+<li><code>String</code> - <em>filter</em>, 交易反馈过滤器.</li>
+<li><code>Object</code> - <em>param</em>, 交易反馈参数.
 <ul>
-<li><code>String</code> - <em>assetid</em>, asset id.</li>
-<li><code>Integer</code> - <em>lowerlimit</em>, the lower limit of asset amount.</li>
-<li><code>Integer</code> - <em>upperlimit</em>, the upper limit of asset amount.</li>
-<li><code>String</code> - <em>transtype</em>, type of transaction.</li>
+<li><code>String</code> - <em>assetid</em>, 资产id.</li>
+<li><code>Integer</code> - <em>lowerlimit</em>, 资产数额下限.</li>
+<li><code>Integer</code> - <em>upperlimit</em>, 资产数额上限.</li>
+<li><code>String</code> - <em>transtype</em>, 交易类型.</li>
 </ul>
 </li>
 </ul>
@@ -1883,14 +1885,14 @@ curl -X POST list-transaction-feeds -d {}
 </code></pre>
 <hr>
 <h4><code>delete-transaction-feed</code></h4>
-<p>Delete transaction feed by name.</p>
+<p>根据交易名字删除交易反馈.</p>
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the transaction feed.</li>
+<li><code>String</code> - <em>alias</em>, 交易反馈名字.</li>
 </ul>
 <h5>返回</h5>
-<p>none if the transaction feed is deleted success.</p>
+<p>如果交易反馈删除成功，则无返回.</p>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
 curl -X POST <span class="hljs-keyword">delete</span>-transaction-feed -d <span class="hljs-string">'{"alias": "test1"}'</span>
@@ -1899,17 +1901,17 @@ curl -X POST <span class="hljs-keyword">delete</span>-transaction-feed -d <span 
 </code></pre>
 <hr>
 <h4><code>update-transaction-feed</code></h4>
-<p>Update transaction feed.</p>
+<p>更新交易反馈.</p>
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>alias</em>, name of the transaction feed.</li>
-<li><code>String</code> - <em>filter</em>, filter of the transaction feed.</li>
+<li><code>String</code> - <em>alias</em>, 交易反馈名字.</li>
+<li><code>String</code> - <em>filter</em>, 交易反馈过滤器.</li>
 </ul>
 <h5>返回</h5>
-<p>none if the transaction feed is updated success.</p>
+<p>如果交易反馈更新成功无返回.</p>
 <h5>例子</h5>
-<p>deleted when the txfeed exists, and create it with alias and filter:</p>
+<p>当交易反馈存在的时候删除它，并使用别名和过滤器创建它:</p>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
 curl -X POST update-transaction-feed -d <span class="hljs-string">'{"alias": "test1", "filter": "asset_id='</span><span class="hljs-number">84778</span>a666fe453cf73b2e8c783dbc9e04bc4fd7cbb4f50caeaee99cf9967ebed<span class="hljs-string">' AND amount_lower_limit = 60 AND amount_upper_limit = 80"}'</span>
 
@@ -1917,23 +1919,23 @@ curl -X POST update-transaction-feed -d <span class="hljs-string">'{"alias": "te
 </code></pre>
 <hr>
 <h4><code>get-unconfirmed-transaction</code></h4>
-<p>Query mempool transaction by transaction ID.</p>
+<p>根据交易ID查询在缓冲池里面查询未确认的交易.</p>
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>tx_id</em>, transaction id, hash of transaction.</li>
+<li><code>String</code> - <em>tx_id</em>, 交易id,交易hash.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>id</em>, transaction id, hash of the transaction.</li>
-<li><code>Integer</code> - <em>version</em>, version of transaction.</li>
-<li><code>Integer</code> - <em>size</em>, size of transaction.</li>
-<li><code>Integer</code> - <em>time_range</em>, the time range of transaction.</li>
-<li><code>Boolean</code> - <em>status_fail</em>, whether the state of the request has failed.</li>
-<li><code>String</code> - <em>mux_id</em>, the previous transaction mux id(wallet enable can be acquired, this place is empty).</li>
-<li><code>Array of Object</code> - <em>inputs</em>, object of inputs for the transaction(input struct please refer to get-transction API description).</li>
-<li><code>Array of Object</code> - <em>outputs</em>, object of outputs for the transaction(output struct please refer to get-transction API description).</li>
+<li><code>String</code> - <em>id</em>, 交易id,交易hash.</li>
+<li><code>Integer</code> - <em>version</em>, 交易版本.</li>
+<li><code>Integer</code> - <em>size</em>, 交易大小.</li>
+<li><code>Integer</code> - <em>time_range</em>, 交易的时间范围.</li>
+<li><code>Boolean</code> - <em>status_fail</em>, 请求的状态是否失败.</li>
+<li><code>String</code> - <em>mux_id</em>, 前一笔交易的mux id(钱包启用可以获得，这个地方是空的).</li>
+<li><code>Array of Object</code> - <em>inputs</em>, 交易的输入对象(输入结构请参考get-transaction API描述).</li>
+<li><code>Array of Object</code> - <em>outputs</em>, 交易输出对象(输出结构请参考get-transction API描述).</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -1984,14 +1986,14 @@ curl -X POST get-unconfirmed-transaction -d <span class="hljs-string">'{"tx_id":
 </code></pre>
 <hr>
 <h4><code>list-unconfirmed-transactions</code></h4>
-<p>Returns the total number of mempool transactions and the list of transaction IDs.</p>
+<p>返回缓冲池交易的总数和交易ID列表.</p>
 <h5>参数</h5>
 <p>none</p>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>total</em>, version of transaction.</li>
-<li><code>Array of Object</code> - <em>tx_ids</em>, list of transaction id.</li>
+<li><code>Integer</code> - <em>total</em>, 交易版本.</li>
+<li><code>Array of Object</code> - <em>tx_ids</em>, 列出所有交易id.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2008,22 +2010,21 @@ curl -X POST list-unconfirmed-transactions -d {}
 </code></pre>
 <hr>
 <h4><code>decode-raw-transaction</code></h4>
-<p>Decode a serialized transaction hex string into a JSON object describing the transaction.</p>
+<p>反序列化交易十六进制字符串为json对象.</p>
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>raw_transaction</em>, hexstring of raw transaction.</li>
+<li><code>String</code> - <em>raw_transaction</em>, 交易的序列化字符串.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>version</em>, version of transaction.</li>
-<li><code>String</code> - <em>size</em>, size of transaction.</li>
-<li><code>String</code> - <em>time_range</em>, time range of transaction.</li>
-<li><code>String</code> - <em>fee</em>, fee for sending transaction.</li>
-<li><code>Array of Object</code> - <em>inputs</em>, object of inputs for the transaction(input struct please refer to get-transction API description).</li>
-<li><code>Array of Object</code> - <em>outputs</em>, object of outputs for the transaction
-(output struct please refer to get-transction API description).</li>
+<li><code>Integer</code> - <em>version</em>,交易版本.</li>
+<li><code>String</code> - <em>size</em>, 交易大小.</li>
+<li><code>String</code> - <em>time_range</em>, 交易时间范围.</li>
+<li><code>String</code> - <em>fee</em>, 发送交易的反馈.</li>
+<li><code>Array of Object</code> - <em>inputs</em>, 交易的输入对象(输入结构请参考get-transaction API描述).</li>
+<li><code>Array of Object</code> - <em>outputs</em>, 交易输出对象(输出结构请参考get-transction API描述).</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2072,13 +2073,13 @@ curl -X POST decode-raw-transaction -d <span class="hljs-string">'{"raw_transact
 </code></pre>
 <hr>
 <h4><code>get-block-count</code></h4>
-<p>Returns the current block height for blockchain.</p>
+<p>返回当前区块链的高度.</p>
 <h5>参数</h5>
 <p>none</p>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>block_count</em>, recent block height of the blockchain.</li>
+<li><code>Integer</code> - <em>block_count</em>, 当前的区块高度.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2091,13 +2092,13 @@ curl -X POST get-block-count
 </code></pre>
 <hr>
 <h4><code>get-block-hash</code></h4>
-<p>Returns the current block hash for blockchain.</p>
+<p>返回当前区块的hash.</p>
 <h5>参数</h5>
 <p>none</p>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>block_hash</em>, recent block hash of the blockchain.</li>
+<li><code>String</code> - <em>block_hash</em>, 最近的区块hash.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2110,65 +2111,65 @@ curl -X POST get-block-hash
 </code></pre>
 <hr>
 <h4><code>get-block</code></h4>
-<p>按块高度或块哈希返回详细信息块。</p>
+<p>区块高度或块哈希返回详细信息块。</p>
 <h5>参数</h5>
 <p><code>Object</code>: block_height | block_hash</p>
 <p>optional:</p>
 <ul>
-<li><code>String</code> - <em>block_hash</em>, hash of block.</li>
-<li><code>Integer</code> - <em>block_height</em>, height of block.</li>
+<li><code>String</code> - <em>block_hash</em>, 区块hash.</li>
+<li><code>Integer</code> - <em>block_height</em>, 区块高度.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>hash</em>, hash of block.</li>
-<li><code>Integer</code> - <em>size</em>, size of block.</li>
-<li><code>Integer</code> - <em>version</em>, version of block.</li>
-<li><code>Integer</code> - <em>height</em>, height of block.</li>
-<li><code>String</code> - <em>previous_block_hash</em>, previous block hash.</li>
-<li><code>Integer</code> - <em>timestamp</em>, timestamp of block.</li>
-<li><code>Integer</code> - <em>nonce</em>, nonce value.</li>
-<li><code>Integer</code> - <em>bits</em>, bits of difficulty.</li>
-<li><code>String</code> - <em>difficulty</em>, difficulty value(String type).</li>
-<li><code>String</code> - <em>transaction_merkle_root</em>, merkle root of transaction.</li>
-<li><code>String</code> - <em>transaction_status_hash</em>, merkle root of transaction status.</li>
-<li><code>Array of Object</code> - <em>transactions</em>, transaction object:
+<li><code>String</code> - <em>hash</em>, 区块hash.</li>
+<li><code>Integer</code> - <em>size</em>, 区块大小.</li>
+<li><code>Integer</code> - <em>version</em>, 区块版本.</li>
+<li><code>Integer</code> - <em>height</em>, 区块高度.</li>
+<li><code>String</code> - <em>previous_block_hash</em>, 前一个区块hash.</li>
+<li><code>Integer</code> - <em>timestamp</em>, 区块时间戳.</li>
+<li><code>Integer</code> - <em>nonce</em>, 随机数值.</li>
+<li><code>Integer</code> - <em>bits</em>, 区块难度.</li>
+<li><code>String</code> - <em>difficulty</em>, 难度值(String type).</li>
+<li><code>String</code> - <em>transaction_merkle_root</em>, 交易的默克尔根.</li>
+<li><code>String</code> - <em>transaction_status_hash</em>, 交易状态的默克尔根.</li>
+<li><code>Array of Object</code> - <em>transactions</em>, 交易对象:
 <ul>
-<li><code>String</code> - <em>id</em>, transaction id, hash of the transaction.</li>
-<li><code>Integer</code> - <em>version</em>, version of transaction.</li>
-<li><code>Integer</code> - <em>size</em>, size of transaction.</li>
-<li><code>Integer</code> - <em>time_range</em>, the unix timestamp for when the requst was responsed.</li>
-<li><code>Boolean</code> - <em>status_fail</em>, whether the state of the request has failed.</li>
-<li><code>String</code> - <em>mux_id</em>, the previous transaction mux id(source id of utxo).</li>
-<li><code>Array of Object</code> - <em>inputs</em>, object of inputs for the transaction.
+<li><code>String</code> - <em>id</em>, transaction id, 交易hash.</li>
+<li><code>Integer</code> - <em>version</em>, 交易版本.</li>
+<li><code>Integer</code> - <em>size</em>, 交易大小.</li>
+<li><code>Integer</code> - <em>time_range</em>, 响应请求时的unix时间戳.</li>
+<li><code>Boolean</code> - <em>status_fail</em>, 请求状态是否是失败的.</li>
+<li><code>String</code> - <em>mux_id</em>, 前一笔交易的mux id(utxo的源ID).</li>
+<li><code>Array of Object</code> - <em>inputs</em>, 交易对象的输入.
 <ul>
-<li><code>String</code> - <em>type</em>, the type of input action, available option include: 'spend', 'issue', 'coinbase'.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Object</code> - <em>asset_definition</em>, definition of asset(json object).</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>Object</code> - <em>issuance_program</em>, issuance program, it only exist when type is 'issue'.</li>
-<li><code>Object</code> - <em>control_program</em>, control program of account, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>address</em>, address of account, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>spent_output_id</em>, the front of outputID to be spent in this input, it only exist when type is 'spend'.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>arbitrary</em>, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.</li>
+<li><code>String</code> - <em>type</em>, 输入操作的类型，可用选项包括: 'spend', 'issue', 'coinbase'.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名字.</li>
+<li><code>Object</code> - <em>asset_definition</em>, 资产定义(json 对象).</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>Object</code> - <em>issuance_program</em>, issuance program, 当交易类型为'issue'.</li>
+<li><code>Object</code> - <em>control_program</em>, control program of account, 当交易类型为'spend'.</li>
+<li><code>String</code> - <em>address</em>, 账户地址, 当类型是'spend'时存在.</li>
+<li><code>String</code> - <em>spent_output_id</em>, the front of outputID to be spent in this input, 当交易类型为'spend'.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名字.</li>
+<li><code>Object</code> - <em>arbitrary</em>, 任意信息都可以由矿工设置，当交易类型为'coinbase'时.</li>
 </ul>
 </li>
-<li><code>Array of Object</code> - <em>outputs</em>, object of outputs for the transaction.
+<li><code>Array of Object</code> - <em>outputs</em>, 交易输出对象.
 <ul>
-<li><code>String</code> - <em>type</em>, the type of output action, available option include: 'retire', 'control'.</li>
-<li><code>String</code> - <em>id</em>, outputid related to utxo.</li>
-<li><code>Integer</code> - <em>position</em>, position of outputs.</li>
-<li><code>String</code> - <em>asset_id</em>, asset id.</li>
-<li><code>String</code> - <em>asset_alias</em>, name of asset.</li>
-<li><code>Object</code> - <em>asset_definition</em>, definition of asset(json object).</li>
-<li><code>Integer</code> - <em>amount</em>, amount of asset.</li>
-<li><code>String</code> - <em>account_id</em>, account id.</li>
-<li><code>String</code> - <em>account_alias</em>, name of account.</li>
-<li><code>Object</code> - <em>control_program</em>, control program of account.</li>
-<li><code>String</code> - <em>address</em>, address of account.</li>
+<li><code>String</code> - <em>type</em>, 输出action的类型，可选项包括:&quot;retire&quot;,&quot;control&quot;.</li>
+<li><code>String</code> - <em>id</em>, 与utxo相关的交易输出id.</li>
+<li><code>Integer</code> - <em>position</em>, 输出的位置.</li>
+<li><code>String</code> - <em>asset_id</em>, 资产id.</li>
+<li><code>String</code> - <em>asset_alias</em>, 资产名字.</li>
+<li><code>Object</code> - <em>asset_definition</em>, 资产定义(json 对象).</li>
+<li><code>Integer</code> - <em>amount</em>, 资产数量.</li>
+<li><code>String</code> - <em>account_id</em>, 账户id.</li>
+<li><code>String</code> - <em>account_alias</em>, 账户名字.</li>
+<li><code>Object</code> - <em>control_program</em>, 账户的控制程序.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
 </ul>
 </li>
 </ul>
@@ -2232,14 +2233,14 @@ curl -X POST get-block -d <span class="hljs-string">'{"block_height": 43, "block
 <p><code>Object</code>: block_height | block_hash</p>
 <p>optional:</p>
 <ul>
-<li><code>String</code> - <em>block_hash</em>, hash of block.</li>
-<li><code>Integer</code> - <em>block_height</em>, height of block.</li>
+<li><code>String</code> - <em>block_hash</em>, 区块hash.</li>
+<li><code>Integer</code> - <em>block_height</em>, 区块高度.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>block_header</em>, header of block.</li>
-<li><code>Integer</code> - <em>reward</em>, reward.</li>
+<li><code>Object</code> - <em>block_header</em>, 区块头.</li>
+<li><code>Integer</code> - <em>reward</em>, 区块奖励.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2258,16 +2259,16 @@ curl -X POST get-block-header -d <span class="hljs-string">'{"block_height": 43,
 <p><code>Object</code>:</p>
 <p>optional:</p>
 <ul>
-<li><code>String</code> - <em>block_hash</em>, hash of block.</li>
-<li><code>Integer</code> - <em>block_height</em>, height of block.</li>
+<li><code>String</code> - <em>block_hash</em>, 区块hash.</li>
+<li><code>Integer</code> - <em>block_height</em>, 区块高度.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>bits</em>, bits of block.</li>
-<li><code>String</code> - <em>difficulty</em>, difficulty of block.</li>
-<li><code>String</code> - <em>hash</em>, block hash.</li>
-<li><code>Integer</code> - <em>height</em>, block height.</li>
+<li><code>Integer</code> - <em>bits</em>, 区块的位.</li>
+<li><code>String</code> - <em>difficulty</em>, 区块难度.</li>
+<li><code>String</code> - <em>hash</em>, 区块hash.</li>
+<li><code>Integer</code> - <em>height</em>, 区块高度.</li>
 </ul>
 <h5>例子</h5>
 <p>为当前块或指定的块散列/高度获取困难。</p>
@@ -2289,15 +2290,15 @@ curl -X POST get-difficulty -d <span class="hljs-string">'{"block_height": 506, 
 <p><code>Object</code>:</p>
 <p>optional:</p>
 <ul>
-<li><code>String</code> - <em>block_hash</em>, hash of block.</li>
-<li><code>Integer</code> - <em>block_height</em>, height of block.</li>
+<li><code>String</code> - <em>block_hash</em>, 区块hash.</li>
+<li><code>Integer</code> - <em>block_height</em>, 区块高度.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>hash_rate</em>, difficulty of block.</li>
-<li><code>String</code> - <em>hash</em>, block hash.</li>
-<li><code>Integer</code> - <em>height</em>, block height.</li>
+<li><code>Integer</code> - <em>hash_rate</em>, 区块的出块难度.</li>
+<li><code>String</code> - <em>hash</em>, 区块 hash.</li>
+<li><code>Integer</code> - <em>height</em>, 区块 height.</li>
 </ul>
 <h5>例子</h5>
 <p>获取当前块或指定块散列/高度的哈希率。</p>
@@ -2315,18 +2316,18 @@ curl -X POST get-hash-rate -d <span class="hljs-string">'{"block_height": 506, "
 <h4><code>net-info</code></h4>
 <p>返回当前网络节点的信息。</p>
 <h5>参数</h5>
-<p>none</p>
+<p>无</p>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>listening</em>, whether the node is listening.</li>
-<li><code>Boolean</code> - <em>syncing</em>, whether the node is syncing.</li>
-<li><code>Boolean</code> - <em>mining</em>, whether the node is mining.</li>
-<li><code>Integer</code> - <em>peer_count</em>, current count of connected peers.</li>
-<li><code>Integer</code> - <em>current_block</em>, current block height in the node's blockchain.</li>
-<li><code>Integer</code> - <em>highest_block</em>, current highest block of the connected peers.</li>
-<li><code>String</code> - <em>network_id</em>, network id.</li>
-<li><code>String</code> - <em>version</em>, bytom version.</li>
+<li><code>Boolean</code> - <em>listening</em>, 节点是否正在监听.</li>
+<li><code>Boolean</code> - <em>syncing</em>, 节点是否正在同步.</li>
+<li><code>Boolean</code> - <em>mining</em>, 节点是否在挖矿.</li>
+<li><code>Integer</code> - <em>peer_count</em>, 当前节点连接数.</li>
+<li><code>Integer</code> - <em>current_block</em>, 当前节点中链的高度.</li>
+<li><code>Integer</code> - <em>highest_block</em>, 当前节点的最新区块高度.</li>
+<li><code>String</code> - <em>network_id</em>, 网络id.</li>
+<li><code>String</code> - <em>version</em>, 比原版本.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2348,11 +2349,11 @@ curl -X POST net-info
 <h4><code>is-mining</code></h4>
 <p>返回挖矿状态。</p>
 <h5>参数</h5>
-<p>none</p>
+<p>无</p>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>is_mining</em>, whether the node is mining.</li>
+<li><code>Boolean</code> - <em>is_mining</em>, 节点是否启动了挖矿.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2369,7 +2370,7 @@ curl -X POST is-mining
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>is_mining</em>, whether the node is mining.</li>
+<li><code>Boolean</code> - <em>is_mining</em>, 节点是否启动了挖矿.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2381,11 +2382,11 @@ curl -X POST set-mining -d <span class="hljs-string">'{"is_mining": true}'</span
 <h4><code>gas-rate</code></h4>
 <p>gas消耗率。</p>
 <h5>参数</h5>
-<p>none</p>
+<p>无</p>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Integer</code> - <em>gas_rate</em>, gas rate.</li>
+<li><code>Integer</code> - <em>gas_rate</em>, gas 费率.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2402,15 +2403,15 @@ curl -X POST gas-rate -d <span class="hljs-string">'{}'</span>
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>address</em>, address for account.</li>
-<li><code>String</code> - <em>derived_xpub</em>, derived xpub.</li>
-<li><code>String</code> - <em>message</em>, message for signature by derived_xpub.</li>
-<li><code>String</code> - <em>signature</em>, signature for message.</li>
+<li><code>String</code> - <em>address</em>, 账户地址.</li>
+<li><code>String</code> - <em>derived_xpub</em>, 派生的xpub.</li>
+<li><code>String</code> - <em>message</em>, 来自derived_xpub的签名消息.</li>
+<li><code>String</code> - <em>signature</em>, 消息签名.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Boolean</code> - <em>result</em>, verify result.</li>
+<li><code>Boolean</code> - <em>result</em>, 验证结果.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2427,12 +2428,12 @@ curl -X POST verify-message -d <span class="hljs-string">'{"address":"bm1qx2qgvv
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>program</em>, program for account.</li>
+<li><code>String</code> - <em>program</em>, 账户程序.</li>
 </ul>
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>String</code> - <em>instructions</em>, instructions and data for program.</li>
+<li><code>String</code> - <em>instructions</em>, 程序的说明和数据.</li>
 </ul>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
@@ -2451,8 +2452,8 @@ curl -X POST decode-program -d <span class="hljs-string">'{"program":"0014a86c83
 <h5>返回</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>block_header</em>, raw block header.</li>
-<li><code>Object</code> - <em>seed</em>, seed.</li>
+<li><code>Object</code> - <em>block_header</em>, 原始区块头.</li>
+<li><code>Object</code> - <em>seed</em>, 随机种子.</li>
 </ul>
 <pre><code class="language-go"><span class="hljs-keyword">type</span> GetWorkResp <span class="hljs-keyword">struct</span> {
 	BlockHeader *types.BlockHeader <span class="hljs-string">`json:"block_header"`</span>
@@ -2475,14 +2476,14 @@ curl -X POST get-work -d <span class="hljs-string">'{}'</span>
 <h5>参数</h5>
 <p><code>Object</code>:</p>
 <ul>
-<li><code>Object</code> - <em>block_header</em>, raw block header.</li>
+<li><code>Object</code> - <em>block_header</em>, 原始区块头.</li>
 </ul>
 <pre><code class="language-go"><span class="hljs-keyword">type</span> SubmitWorkReq <span class="hljs-keyword">struct</span> {
 	BlockHeader *types.BlockHeader <span class="hljs-string">`json:"block_header"`</span>
 }
 </code></pre>
 <h5>返回</h5>
-<p>true if success</p>
+<p>如果成功返回true</p>
 <h5>例子</h5>
 <pre><code class="language-js"><span class="hljs-comment">// Request</span>
 curl -X POST submit-work -d <span class="hljs-string">'{"block_header": "0101870103f2c7495164c8f3af43697e81faa21dcb2d60aa5e10ce4f233491e62420742fbeadfcd50540bef2670a5fade2e58ad4955e2375a04ad1e4cb9c104faddab43f4a79e35be253c9c377e5192668bc0a367e4a4764f11e7c725ecced1d7b6a492974fab1b6d5bc00ffffff838080808020"}'</span>
