@@ -8,7 +8,7 @@
 
 ## Node.js SDK
 
-项目链接：[https://github.com/lxlxw/bytom-php-sdk](https://github.com/lxlxw/bytom-php-sdk)
+项目链接：[https://github.com/Bytom/Bytom-JS-SDK](https://github.com/Bytom/Bytom-JS-SDK)
 
 
 

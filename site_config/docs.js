@@ -293,7 +293,7 @@ export default {
                                 link: '/zh-cn/docs/30_sidechain_overview.html',
                             },
                             {
-                                title: '配置节点',
+                                title: '搭建使用',
                                 link: '/zh-cn/docs/31_sidechain.html',
                             },
                         ],
@@ -315,7 +315,7 @@ export default {
                         },
                         {
                             title: 'docker运行比原全节点',
-                            link: '/zh-cn/docs/demo2.html',
+                            link: '/zh-cn/docs/32_docker_build.html',
                         },
                     ],
                 }, {
