@@ -1,3 +1,9 @@
+---
+title:架构概览
+keywords: 架构
+description: 比原链整体架构
+---
+
 # 整体架构概览
 
 ![](./img/bytom_overview.png)

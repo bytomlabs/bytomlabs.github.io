@@ -1,3 +1,10 @@
+
+---
+title:支持比原的矿池
+keywords: 矿池算力统计,支持的矿池
+description: 比原矿池生态
+--
+
 # 查看矿池算力统计
 + [miningpoolstats](https://miningpoolstats.stream/bytom)
 + [btmscan](http://www.btmscan.com/)

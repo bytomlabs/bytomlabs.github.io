@@ -1,3 +1,9 @@
+---
+title: 共识算法
+keywords: POW,Tensority,人工智能友好
+description: 比原链共识算法详细介绍
+---
+
 # 1. AI-PoW 介绍
 
 Tensority 算法利用种子和区块头哈希作为输入值并产生相应的工作量。

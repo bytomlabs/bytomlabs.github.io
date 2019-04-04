@@ -1,3 +1,9 @@
+---
+title: 开发环境搭建
+keywords: 搭建开发环境
+description: 搭建比原链开发环境
+---
+
 ##  搭建开发环境
 
 假设你已经配置好 [`go` v1.8 or higher installed](https://golang.org/doc/install), 并且设置好 `GOPATH`。

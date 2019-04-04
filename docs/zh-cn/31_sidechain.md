@@ -1,3 +1,9 @@
+---
+title: 侧链部署
+keywords: 比原侧链,部署流程
+description: 比原侧链部署使用流程
+---
+
 # Vapor 侧链solonet部署说明
 
 ## 启动 vapor

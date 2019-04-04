@@ -1,3 +1,9 @@
+---
+title: BUTXO
+keywords: UTXO
+description: 比原链BUTXO模型
+---
+
 ## UTXO
 
 UTXO的全名是Unspend transaction output，中文意思即未花费的交易输出。在比原链上每一笔交易的每一个输入（issue, coinbase除外）都会消耗一个UTXO, 每一笔交易的每一个输出(retire除外)都会创造一个新的UTXO. 每一个比原的全节点都会维护个本地的UTXO池，为验证区块的流程提供UTXO合法性验证。在区块验证合法之后，节点会根据区块内的交易信息动态更新UTXO池。

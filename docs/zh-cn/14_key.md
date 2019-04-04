@@ -1,3 +1,9 @@
+---
+title: 助记词
+keywords: 助记词,公钥,私钥
+description: 助记词,公私钥生成
+---
+
 # 助记词
 
 比原链已经支持了BIP39协议, 关于协议的具体信息请查看: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki

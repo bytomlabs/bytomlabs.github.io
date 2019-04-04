@@ -1,3 +1,9 @@
+---
+title: 比原浏览器
+keywords: 区块链浏览器,API方法
+description: 比原区块链浏览器相关API
+---
+
 ##区块链浏览器
 
 ### 概要

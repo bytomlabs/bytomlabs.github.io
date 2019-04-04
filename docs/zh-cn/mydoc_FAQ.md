@@ -1,3 +1,9 @@
+---
+title: FAQ
+keywords: 基本信息,常见问题,错误码
+description: 比原链相关问题集锦
+---
+
 # FAQ
 
 

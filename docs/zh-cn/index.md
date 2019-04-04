@@ -1,6 +1,6 @@
 ---
-keywords: sample homepage
-sidebar: mydoc_sidebar_cn
+keywords: 首页
+sidebar: 比原链概述,特性，引导
 permalink: index.cn.html
 ---
 

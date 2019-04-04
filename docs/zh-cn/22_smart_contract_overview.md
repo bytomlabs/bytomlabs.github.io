@@ -1,3 +1,9 @@
+---
+title: 智能合约
+keywords: Equity,智能合约,合约介绍
+description: 智能合约介绍和基本结构
+---
+
 ## Equity简介
   Equity是用于表达合约程序的高级语言，专门用来编写运行在[Bytom](https://github.com/Bytom/bytom)上的合约程序，Equity智能合约主要用于描述对`Bytom`上的各类资产的操作管理。合约的主要特征如下：
 

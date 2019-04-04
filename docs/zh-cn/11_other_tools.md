@@ -1,11 +1,7 @@
 ---
 title: 其他工具
-tags: [publishing]
-keywords: building, serving, serve, build
-last_updated: July 3, 2016
-sidebar: mydoc_sidebar_cn
-permalink: mydoc_other_tools.cn.html
-folder: mydoc
+keywords: 工具
+description: 相关开发工具
 ---
 
 ## 其他工具

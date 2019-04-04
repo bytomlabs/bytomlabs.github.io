@@ -1,3 +1,9 @@
+---
+title: 比原钱包dashboard
+keywords: dashboard,名词解释
+description: 插件钱包，专用名词
+---
+
 ## Bytom dashboard的使用
 
 ```no-highlight

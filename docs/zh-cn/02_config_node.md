@@ -1,3 +1,9 @@
+---
+title: 配置节点
+keywords: 节点
+description: 配置比原链节点
+---
+
 ## 配置节点
 
 ## 可执行文件

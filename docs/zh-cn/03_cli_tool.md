@@ -1,3 +1,9 @@
+---
+title: 命令行工具简介
+keywords: 命令行
+description: 通过命令行工具操作
+---
+
 # 命令行工具简介
 `Bytom`提供`CLI`客户端(`bytomcli`), 它是进入`Bytom`网络的入口点,能够作为全节点运行. 
 

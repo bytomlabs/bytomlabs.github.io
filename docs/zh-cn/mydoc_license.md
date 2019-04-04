@@ -1,3 +1,9 @@
+---
+title: 声明
+keywords: 版权声明
+description: 版权声明描述
+---
+
 ## License
 
 [AGPL v3](https://github.com/Bytom/bytom/blob/master/LICENSE)
