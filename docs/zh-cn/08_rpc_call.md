@@ -99,7 +99,7 @@ curl -X POST http://localhost:9888/create-key -d '{"alias": "alice", "password":
 `Object`:
 
 - `String` - *alias*, ，密钥的名字.
-- `String` - *xpub*, 公钥的root.
+- `String` - *xpub*, 公钥.
 - `String` - *file*, 私钥文件本地存放路径.
 
 ##### 例子
