@@ -1,7 +1,7 @@
 // 全局的一些配置
 export default {
     rootPath: '', // 发布到服务器的根目录，需以/开头但不能有尾/，如果只有/，请填写空字符串
-    port: 8080, // 本地开发服务器的启动端口
+    port: 9090, // 本地开发服务器的启动端口
     domain: 'dubbo.apache.org', // 站点部署域名，无需协议和path等
     defaultSearch: 'google', // 默认搜索引擎，baidu或者google
     defaultLanguage: 'en-us',
@@ -9,7 +9,7 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: 'DOCS',
-            link: '/en-us/docs/index.html',
+            link: '/en-us/docs/01_bytom.html',
         }, ],
         disclaimer: {
             title: 'friendship tips',
@@ -19,15 +19,15 @@ export default {
             title: 'Documentation',
             list: [{
                     text: 'Overview',
-                    link: '/en-us/docs/index.html',
+                    link: '/en-us/docs/01_bytom.html',
                 },
                 {
                     text: 'Quick start',
-                    link: '/en-us/docs/13_architecture_overview.html',
+                    link: '/en-us/docs/01_bytom.html',
                 },
                 {
                     text: 'Developer guide',
-                    link: '/en-us/docs/06_build_environment.html',
+                    link: '/en-us/docs/01_bytom.html',
                 },
             ],
         },
@@ -44,7 +44,7 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: '文档',
-            link: '/zh-cn/docs/index.html',
+            link: '/zh-cn/docs/01_bytom.html',
         }, ],
         disclaimer: {
             title: '友情提示',
@@ -54,15 +54,15 @@ export default {
             title: '文档',
             list: [{
                     text: 'Overview',
-                    link: '/zh-cn/docs/index.html',
+                    link: '/zh-cn/docs/01_bytom.html',
                 },
                 {
                     text: 'Quick start',
-                    link: '/zh-cn/docs/13_architecture_overview.html',
+                    link: '/zh-cn/docs/01_bytom.html',
                 },
                 {
                     text: 'Developer guide',
-                    link: '/zh-cn/docs/06_build_environment.html',
+                    link: '/zh-cn/docs/01_bytom.html',
                 },
             ],
         },

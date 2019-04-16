@@ -65,7 +65,7 @@ class Home extends Language {
           <div className="animation animation4" />
           <div className="animation animation5" />
         </section>
-        {/* <section className="introduction-section">
+        <section className="introduction-section">
           <div className="introduction-body">
             <div className="introduction">
               <h3>{dataSource.introduction.title}</h3>
@@ -73,8 +73,8 @@ class Home extends Language {
             </div>
             <img src={getLink(dataSource.introduction.img)} />
           </div>
-        </section> */}
-        {/* <section className="feature-section">
+        </section>
+        <section className="feature-section">
           <h3>{dataSource.features.title}</h3>
           <ul>
           {
@@ -104,7 +104,7 @@ class Home extends Language {
             ))
           }
           </div>
-        </section> */}
+        </section>
         <Footer logo="/img/dubbo_gray.png" language={language} />
       </div>
     );

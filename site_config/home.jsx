@@ -8,7 +8,7 @@ export default {
       buttons: [
         {
           text: '立即开始',
-          link: '/zh-cn/docs/index.html',
+          link: '/zh-cn/docs/01_bytom.html',
           type: 'primary',
         },
         {
@@ -57,7 +57,7 @@ export default {
       buttons: [
         {
           text: 'Quick Start',
-          link: '/en-us/docs/index.html',
+          link: '/en-us/docs/01_bytom.html',
           type: 'primary',
         },
         {

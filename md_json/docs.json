@@ -1,641 +1,435 @@
 {
   "en-us": [
     {
-      "filename": "01_install.md",
-      "link": "/en-us/docs/01_install.html",
+      "filename": "01_bytom.md",
+      "link": "/en-us/docs/01_bytom.html",
       "meta": {}
     },
     {
-      "filename": "02_config_node.md",
-      "link": "/en-us/docs/02_config_node.html",
+      "filename": "02_release.md",
+      "link": "/en-us/docs/02_release.html",
       "meta": {}
     },
     {
-      "filename": "03_cli_tool.md",
-      "link": "/en-us/docs/03_cli_tool.html",
+      "filename": "03_technology.md",
+      "link": "/en-us/docs/03_technology.html",
       "meta": {}
     },
     {
-      "filename": "04_network.md",
-      "link": "/en-us/docs/04_network.html",
+      "filename": "04_1_bytom.md",
+      "link": "/en-us/docs/04_1_bytom.html",
       "meta": {}
     },
     {
-      "filename": "05_mining.md",
-      "link": "/en-us/docs/05_mining.html",
+      "filename": "04_2_simd.md",
+      "link": "/en-us/docs/04_2_simd.html",
       "meta": {}
     },
     {
-      "filename": "06_build_environment.md",
-      "link": "/en-us/docs/06_build_environment.html",
+      "filename": "04_3_spv.md",
+      "link": "/en-us/docs/04_3_spv.html",
       "meta": {}
     },
     {
-      "filename": "07_compile_and_run_node.md",
-      "link": "/en-us/docs/07_compile_and_run_node.html",
+      "filename": "04_4_vapor.md",
+      "link": "/en-us/docs/04_4_vapor.html",
       "meta": {}
     },
     {
-      "filename": "08_rpc_call.md",
-      "link": "/en-us/docs/08_rpc_call.html",
+      "filename": "04_5_gm.md",
+      "link": "/en-us/docs/04_5_gm.html",
       "meta": {}
     },
     {
-      "filename": "09_ws_call.md",
-      "link": "/en-us/docs/09_ws_call.html",
+      "filename": "05_compile.md",
+      "link": "/en-us/docs/05_compile.html",
       "meta": {}
     },
     {
-      "filename": "10_other_sdk.md",
-      "link": "/en-us/docs/10_other_sdk.html",
+      "filename": "06_network.md",
+      "link": "/en-us/docs/06_network.html",
       "meta": {}
     },
     {
-      "filename": "11_other_tools.md",
-      "link": "/en-us/docs/11_other_tools.html",
+      "filename": "07_dashboard.md",
+      "link": "/en-us/docs/07_dashboard.html",
       "meta": {}
     },
     {
-      "filename": "13_architecture_overview.md",
-      "link": "/en-us/docs/13_architecture_overview.html",
+      "filename": "08_cli_guide.md",
+      "link": "/en-us/docs/08_cli_guide.html",
       "meta": {}
     },
     {
-      "filename": "14_key.md",
-      "link": "/en-us/docs/14_key.html",
+      "filename": "09_1_tensority.md",
+      "link": "/en-us/docs/09_1_tensority.html",
       "meta": {}
     },
     {
-      "filename": "15_address.md",
-      "link": "/en-us/docs/15_address.html",
+      "filename": "09_2_cpu.md",
+      "link": "/en-us/docs/09_2_cpu.html",
       "meta": {}
     },
     {
-      "filename": "16_account.md",
-      "link": "/en-us/docs/16_account.html",
+      "filename": "09_3_gpu.md",
+      "link": "/en-us/docs/09_3_gpu.html",
       "meta": {}
     },
     {
-      "filename": "17_transaction.md",
-      "link": "/en-us/docs/17_transaction.html",
+      "filename": "09_4_asic.md",
+      "link": "/en-us/docs/09_4_asic.html",
       "meta": {}
     },
     {
-      "filename": "18_block.md",
-      "link": "/en-us/docs/18_block.html",
+      "filename": "09_5_mining_pools.md",
+      "link": "/en-us/docs/09_5_mining_pools.html",
       "meta": {}
     },
     {
-      "filename": "19_UTXO.md",
-      "link": "/en-us/docs/19_UTXO.html",
+      "filename": "10_1_blockmeta.md",
+      "link": "/en-us/docs/10_1_blockmeta.html",
       "meta": {}
     },
     {
-      "filename": "20_consensus.md",
-      "link": "/en-us/docs/20_consensus.html",
+      "filename": "10_2_bytom_kit.md",
+      "link": "/en-us/docs/10_2_bytom_kit.html",
       "meta": {}
     },
     {
-      "filename": "21_p2p.md",
-      "link": "/en-us/docs/21_p2p.html",
+      "filename": "10_3_byone.md",
+      "link": "/en-us/docs/10_3_byone.html",
       "meta": {}
     },
     {
-      "filename": "22_smart_contract_overview.md",
-      "link": "/en-us/docs/22_smart_contract_overview.html",
+      "filename": "10_4_bytom_spanner.md",
+      "link": "/en-us/docs/10_4_bytom_spanner.html",
       "meta": {}
     },
     {
-      "filename": "23_smart_contract_build.md",
-      "link": "/en-us/docs/23_smart_contract_build.html",
+      "filename": "11_1_architecture.md",
+      "link": "/en-us/docs/11_1_architecture.html",
       "meta": {}
     },
     {
-      "filename": "24_contract_operator.md",
-      "link": "/en-us/docs/24_contract_operator.html",
+      "filename": "11_2_1_utxo.md",
+      "link": "/en-us/docs/11_2_1_utxo.html",
       "meta": {}
     },
     {
-      "filename": "25_contract_template.md",
-      "link": "/en-us/docs/25_contract_template.html",
+      "filename": "11_2_2_account_management.md",
+      "link": "/en-us/docs/11_2_2_account_management.html",
       "meta": {}
     },
     {
-      "filename": "26_wallet.md",
-      "link": "/en-us/docs/26_wallet.html",
+      "filename": "11_3_mnemonic.md",
+      "link": "/en-us/docs/11_3_mnemonic.html",
       "meta": {}
     },
     {
-      "filename": "27_ligth_wallet.md",
-      "link": "/en-us/docs/27_ligth_wallet.html",
+      "filename": "11_4_websocket.md",
+      "link": "/en-us/docs/11_4_websocket.html",
       "meta": {}
     },
     {
-      "filename": "28_block_explorer.md",
-      "link": "/en-us/docs/28_block_explorer.html",
+      "filename": "11_5_json_rpc.md",
+      "link": "/en-us/docs/11_5_json_rpc.html",
       "meta": {}
     },
     {
-      "filename": "29_mining_pool.md",
-      "link": "/en-us/docs/29_mining_pool.html",
+      "filename": "11_6_sdk.md",
+      "link": "/en-us/docs/11_6_sdk.html",
       "meta": {}
     },
     {
-      "filename": "30_sidechain_overview.md",
-      "link": "/en-us/docs/30_sidechain_overview.html",
+      "filename": "12_1_equity.md",
+      "link": "/en-us/docs/12_1_equity.html",
       "meta": {}
     },
     {
-      "filename": "31_sidechain.md",
-      "link": "/en-us/docs/31_sidechain.html",
+      "filename": "12_2_smart_contract_build.md",
+      "link": "/en-us/docs/12_2_smart_contract_build.html",
       "meta": {}
     },
     {
-      "filename": "1_application.md",
-      "link": "/en-us/docs/application/1_application.html",
+      "filename": "12_3_contract_template.md",
+      "link": "/en-us/docs/12_3_contract_template.html",
       "meta": {}
     },
     {
-      "filename": "1_collection.md",
-      "link": "/en-us/docs/collection/1_collection.html",
+      "filename": "12_4_contract_operator.md",
+      "link": "/en-us/docs/12_4_contract_operator.html",
       "meta": {}
     },
     {
-      "filename": "2_collection.md",
-      "link": "/en-us/docs/collection/2_collection.html",
+      "filename": "13_1_mining_pool_docking_guide.md",
+      "link": "/en-us/docs/13_1_mining_pool_docking_guide.html",
       "meta": {}
     },
     {
-      "filename": "3_collection.md",
-      "link": "/en-us/docs/collection/3_collection.html",
+      "filename": "14_1_transaction.md",
+      "link": "/en-us/docs/14_1_transaction.html",
       "meta": {}
     },
     {
-      "filename": "1_dapp.md",
-      "link": "/en-us/docs/dapp/1_dapp.html",
+      "filename": "14_2_address.md",
+      "link": "/en-us/docs/14_2_address.html",
       "meta": {}
     },
     {
-      "filename": "2_dapp.md",
-      "link": "/en-us/docs/dapp/2_dapp.html",
+      "filename": "14_3_account.md",
+      "link": "/en-us/docs/14_3_account.html",
       "meta": {}
     },
     {
-      "filename": "3_dapp.md",
-      "link": "/en-us/docs/dapp/3_dapp.html",
+      "filename": "14_4_block.md",
+      "link": "/en-us/docs/14_4_block.html",
+      "meta": {}
+    },
+    {
+      "filename": "15_error_code.md",
+      "link": "/en-us/docs/15_error_code.html",
+      "meta": {}
+    },
+    {
+      "filename": "16_faq.md",
+      "link": "/en-us/docs/16_faq.html",
+      "meta": {}
+    },
+    {
+      "filename": "17_community.md",
+      "link": "/en-us/docs/17_community.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo1.md",
+      "link": "/en-us/docs/demo1.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo2.md",
+      "link": "/en-us/docs/demo2.html",
       "meta": {}
     },
     {
       "filename": "demo3.md",
       "link": "/en-us/docs/dir/demo3.html",
       "meta": {}
-    },
-    {
-      "filename": "index.md",
-      "link": "/en-us/docs/index.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_BVM.md",
-      "link": "/en-us/docs/mydoc_BVM.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_FAQ.md",
-      "link": "/en-us/docs/mydoc_FAQ.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_control_program.md",
-      "link": "/en-us/docs/mydoc_control_program.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_license.md",
-      "link": "/en-us/docs/mydoc_license.html",
-      "meta": {}
-    },
-    {
-      "filename": "mydoc_roadmap.md",
-      "link": "/en-us/docs/mydoc_roadmap.html",
-      "meta": {
-        "title": "Roadmap",
-        "tags": "[publishing]",
-        "keywords": "building, serving, serve, build",
-        "last_updated": "July 3, 2016",
-        "sidebar": "mydoc_sidebar",
-        "permalink": "mydoc_roadmap.html",
-        "folder": "mydoc"
-      }
     }
   ],
   "zh-cn": [
     {
-      "filename": "01_install.md",
-      "link": "/zh-cn/docs/01_install.html",
-      "meta": {
-        "title": "二进制安装比原链全节点",
-        "keywords": "全节点",
-        "description": "通过二进制安装比原链全节点"
-      }
-    },
-    {
-      "filename": "02_config_node.md",
-      "link": "/zh-cn/docs/02_config_node.html",
-      "meta": {
-        "title": "配置节点",
-        "keywords": "节点",
-        "description": "配置比原链节点"
-      }
-    },
-    {
-      "filename": "03_cli_tool.md",
-      "link": "/zh-cn/docs/03_cli_tool.html",
-      "meta": {
-        "title": "命令行工具简介",
-        "keywords": "命令行",
-        "description": "通过命令行工具操作"
-      }
-    },
-    {
-      "filename": "04_network.md",
-      "link": "/zh-cn/docs/04_network.html",
-      "meta": {
-        "title": "比原链网络介绍",
-        "keywords": "主网,测试网,单节点网",
-        "description": "比原链网络介绍"
-      }
-    },
-    {
-      "filename": "05_mining.md",
-      "link": "/zh-cn/docs/05_mining.html",
-      "meta": {
-        "title": "开启挖矿",
-        "keywords": "挖矿,命令行",
-        "description": "通过启动命令行挖矿"
-      }
-    },
-    {
-      "filename": "06_build_environment.md",
-      "link": "/zh-cn/docs/06_build_environment.html",
-      "meta": {
-        "title": "开发环境搭建",
-        "keywords": "搭建开发环境",
-        "description": "搭建比原链开发环境"
-      }
-    },
-    {
-      "filename": "07_compile_and_run_node.md",
-      "link": "/zh-cn/docs/07_compile_and_run_node.html",
-      "meta": {
-        "title": "编译运行节点",
-        "keywords": "节点",
-        "description": "编译运行比原节点"
-      }
-    },
-    {
-      "filename": "08_rpc_call.md",
-      "link": "/zh-cn/docs/08_rpc_call.html",
-      "meta": {
-        "title": "JSON-RPC调用",
-        "keywords": "RPC,节点调用",
-        "description": "通过json-rpc的方式调用节点"
-      }
-    },
-    {
-      "filename": "09_ws_call.md",
-      "link": "/zh-cn/docs/09_ws_call.html",
-      "meta": {
-        "title": "Websocket",
-        "keywords": "Websocket",
-        "description": "Websocket调用节点"
-      }
-    },
-    {
-      "filename": "10_other_sdk.md",
-      "link": "/zh-cn/docs/10_other_sdk.html",
-      "meta": {
-        "title": "开发SDK",
-        "keywords": "SDK",
-        "description": "开发所需要的SDK"
-      }
-    },
-    {
-      "filename": "11_other_tools.md",
-      "link": "/zh-cn/docs/11_other_tools.html",
-      "meta": {
-        "title": "其他工具",
-        "keywords": "工具",
-        "description": "相关开发工具"
-      }
-    },
-    {
-      "filename": "13_architecture_overview.md",
-      "link": "/zh-cn/docs/13_architecture_overview.html",
-      "meta": {
-        "title": "架构概览",
-        "keywords": "架构",
-        "description": "比原链整体架构"
-      }
-    },
-    {
-      "filename": "14_key.md",
-      "link": "/zh-cn/docs/14_key.html",
-      "meta": {
-        "title": "助记词",
-        "keywords": "助记词,公钥,私钥",
-        "description": "助记词,公私钥生成"
-      }
-    },
-    {
-      "filename": "15_address.md",
-      "link": "/zh-cn/docs/15_address.html",
-      "meta": {
-        "title": "地址",
-        "keywords": "账户地址",
-        "description": "资产地址"
-      }
-    },
-    {
-      "filename": "16_account.md",
-      "link": "/zh-cn/docs/16_account.html",
-      "meta": {
-        "title": "账户",
-        "keywords": "账户余额,创建账户",
-        "description": "比原账户相关介绍"
-      }
-    },
-    {
-      "filename": "17_transaction.md",
-      "link": "/zh-cn/docs/17_transaction.html",
-      "meta": {
-        "title": "交易",
-        "keywords": "",
-        "description": ""
-      }
-    },
-    {
-      "filename": "18_block.md",
-      "link": "/zh-cn/docs/18_block.html",
-      "meta": {
-        "title": "区块",
-        "keywords": "区块",
-        "description": "区块结构"
-      }
-    },
-    {
-      "filename": "19_utxo.md",
-      "link": "/zh-cn/docs/19_utxo.html",
-      "meta": {
-        "title": "BUTXO",
-        "keywords": "UTXO",
-        "description": "比原链BUTXO模型"
-      }
-    },
-    {
-      "filename": "20_consensus.md",
-      "link": "/zh-cn/docs/20_consensus.html",
-      "meta": {
-        "title": "共识算法",
-        "keywords": "POW,Tensority,人工智能友好",
-        "description": "比原链共识算法详细介绍"
-      }
-    },
-    {
-      "filename": "21_p2p.md",
-      "link": "/zh-cn/docs/21_p2p.html",
-      "meta": {
-        "title": "P2P网络",
-        "keywords": "P2P",
-        "description": "p2p网络介绍"
-      }
-    },
-    {
-      "filename": "22_smart_contract_overview.md",
-      "link": "/zh-cn/docs/22_smart_contract_overview.html",
-      "meta": {
-        "title": "智能合约",
-        "keywords": "Equity,智能合约,合约介绍",
-        "description": "智能合约介绍和基本结构"
-      }
-    },
-    {
-      "filename": "23_smart_contract_build.md",
-      "link": "/zh-cn/docs/23_smart_contract_build.html",
-      "meta": {
-        "title": "智能合约构建",
-        "keywords": "合约构造流程,合约参数构造",
-        "description": "合约实例化构造流程"
-      }
-    },
-    {
-      "filename": "24_contract_operator.md",
-      "link": "/zh-cn/docs/24_contract_operator.html",
-      "meta": {
-        "title": "合约操作码",
-        "keywords": "智能合约,操作码",
-        "description": "智能合约常见操作码"
-      }
-    },
-    {
-      "filename": "25_contract_template.md",
-      "link": "/zh-cn/docs/25_contract_template.html",
-      "meta": {
-        "title": "智能合约模板",
-        "keywords": "合约模板,智能合约",
-        "description": "智能合约模板"
-      }
-    },
-    {
-      "filename": "26_wallet.md",
-      "link": "/zh-cn/docs/26_wallet.html",
-      "meta": {
-        "title": "比原钱包dashboard",
-        "keywords": "dashboard,名词解释",
-        "description": "插件钱包，专用名词"
-      }
-    },
-    {
-      "filename": "27_ligth_wallet.md",
-      "link": "/zh-cn/docs/27_ligth_wallet.html",
-      "meta": {
-        "title": "搭建轻节点钱包",
-        "keywords": "轻节点,钱包",
-        "description": "比原链轻节点钱包搭建"
-      }
-    },
-    {
-      "filename": "28_block_explorer.md",
-      "link": "/zh-cn/docs/28_block_explorer.html",
-      "meta": {
-        "title": "比原浏览器",
-        "keywords": "区块链浏览器,API方法",
-        "description": "比原区块链浏览器相关API"
-      }
-    },
-    {
-      "filename": "29_mining_pool.md",
-      "link": "/zh-cn/docs/29_mining_pool.html",
+      "filename": "01_bytom.md",
+      "link": "/zh-cn/docs/01_bytom.html",
       "meta": {}
     },
     {
-      "filename": "30_sidechain_overview.md",
-      "link": "/zh-cn/docs/30_sidechain_overview.html",
-      "meta": {
-        "title": "侧链概述",
-        "keywords": "侧链特性,侧链说明",
-        "description": "比原侧链概述和说明"
-      }
-    },
-    {
-      "filename": "31_sidechain.md",
-      "link": "/zh-cn/docs/31_sidechain.html",
-      "meta": {
-        "title": "侧链部署",
-        "keywords": "比原侧链,部署流程",
-        "description": "比原侧链部署使用流程"
-      }
-    },
-    {
-      "filename": "32_docker_build.md",
-      "link": "/zh-cn/docs/32_docker_build.html",
-      "meta": {
-        "title": "docker搭建节点",
-        "keywords": "docker,比原链,节点",
-        "description": "docker搭建比原链节点"
-      }
-    },
-    {
-      "filename": "1_application.md",
-      "link": "/zh-cn/docs/application/1_application.html",
+      "filename": "02_release.md",
+      "link": "/zh-cn/docs/02_release.html",
       "meta": {}
     },
     {
-      "filename": "1_collection.md",
-      "link": "/zh-cn/docs/collection/1_collection.html",
+      "filename": "03_technology.md",
+      "link": "/zh-cn/docs/03_technology.html",
       "meta": {}
     },
     {
-      "filename": "2_collection.md",
-      "link": "/zh-cn/docs/collection/2_collection.html",
+      "filename": "04_1_bytom.md",
+      "link": "/zh-cn/docs/04_1_bytom.html",
       "meta": {}
     },
     {
-      "filename": "3_collection.md",
-      "link": "/zh-cn/docs/collection/3_collection.html",
+      "filename": "04_2_simd.md",
+      "link": "/zh-cn/docs/04_2_simd.html",
       "meta": {}
     },
     {
-      "filename": "1_dapp.md",
-      "link": "/zh-cn/docs/dapp/1_dapp.html",
+      "filename": "04_3_spv.md",
+      "link": "/zh-cn/docs/04_3_spv.html",
       "meta": {}
     },
     {
-      "filename": "2_dapp.md",
-      "link": "/zh-cn/docs/dapp/2_dapp.html",
+      "filename": "04_4_vapor.md",
+      "link": "/zh-cn/docs/04_4_vapor.html",
       "meta": {}
     },
     {
-      "filename": "3_dapp.md",
-      "link": "/zh-cn/docs/dapp/3_dapp.html",
+      "filename": "04_5_gm.md",
+      "link": "/zh-cn/docs/04_5_gm.html",
+      "meta": {}
+    },
+    {
+      "filename": "05_compile.md",
+      "link": "/zh-cn/docs/05_compile.html",
+      "meta": {}
+    },
+    {
+      "filename": "06_network.md",
+      "link": "/zh-cn/docs/06_network.html",
+      "meta": {}
+    },
+    {
+      "filename": "07_dashboard.md",
+      "link": "/zh-cn/docs/07_dashboard.html",
+      "meta": {}
+    },
+    {
+      "filename": "08_cli_guide.md",
+      "link": "/zh-cn/docs/08_cli_guide.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_1_tensority.md",
+      "link": "/zh-cn/docs/09_1_tensority.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_2_cpu.md",
+      "link": "/zh-cn/docs/09_2_cpu.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_3_gpu.md",
+      "link": "/zh-cn/docs/09_3_gpu.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_4_asic.md",
+      "link": "/zh-cn/docs/09_4_asic.html",
+      "meta": {}
+    },
+    {
+      "filename": "09_5_mining_pools.md",
+      "link": "/zh-cn/docs/09_5_mining_pools.html",
+      "meta": {}
+    },
+    {
+      "filename": "10_1_blockmeta.md",
+      "link": "/zh-cn/docs/10_1_blockmeta.html",
+      "meta": {}
+    },
+    {
+      "filename": "10_2_bytom_kit.md",
+      "link": "/zh-cn/docs/10_2_bytom_kit.html",
+      "meta": {}
+    },
+    {
+      "filename": "10_3_byone.md",
+      "link": "/zh-cn/docs/10_3_byone.html",
+      "meta": {}
+    },
+    {
+      "filename": "10_4_bytom_spanner.md",
+      "link": "/zh-cn/docs/10_4_bytom_spanner.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_1_architecture.md",
+      "link": "/zh-cn/docs/11_1_architecture.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_2_1_utxo.md",
+      "link": "/zh-cn/docs/11_2_1_utxo.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_2_2_account_management.md",
+      "link": "/zh-cn/docs/11_2_2_account_management.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_3_mnemonic.md",
+      "link": "/zh-cn/docs/11_3_mnemonic.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_4_websocket.md",
+      "link": "/zh-cn/docs/11_4_websocket.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_5_json_rpc.md",
+      "link": "/zh-cn/docs/11_5_json_rpc.html",
+      "meta": {}
+    },
+    {
+      "filename": "11_6_sdk.md",
+      "link": "/zh-cn/docs/11_6_sdk.html",
+      "meta": {}
+    },
+    {
+      "filename": "12_1_equity.md",
+      "link": "/zh-cn/docs/12_1_equity.html",
+      "meta": {}
+    },
+    {
+      "filename": "12_2_smart_contract_build.md",
+      "link": "/zh-cn/docs/12_2_smart_contract_build.html",
+      "meta": {}
+    },
+    {
+      "filename": "12_3_contract_template.md",
+      "link": "/zh-cn/docs/12_3_contract_template.html",
+      "meta": {}
+    },
+    {
+      "filename": "12_4_contract_operator.md",
+      "link": "/zh-cn/docs/12_4_contract_operator.html",
+      "meta": {}
+    },
+    {
+      "filename": "13_1_mining_pool_docking_guide.md",
+      "link": "/zh-cn/docs/13_1_mining_pool_docking_guide.html",
+      "meta": {}
+    },
+    {
+      "filename": "14_1_transaction.md",
+      "link": "/zh-cn/docs/14_1_transaction.html",
+      "meta": {}
+    },
+    {
+      "filename": "14_2_address.md",
+      "link": "/zh-cn/docs/14_2_address.html",
+      "meta": {}
+    },
+    {
+      "filename": "14_3_account.md",
+      "link": "/zh-cn/docs/14_3_account.html",
+      "meta": {}
+    },
+    {
+      "filename": "14_4_block.md",
+      "link": "/zh-cn/docs/14_4_block.html",
+      "meta": {}
+    },
+    {
+      "filename": "15_error_code.md",
+      "link": "/zh-cn/docs/15_error_code.html",
+      "meta": {}
+    },
+    {
+      "filename": "16_faq.md",
+      "link": "/zh-cn/docs/16_faq.html",
+      "meta": {}
+    },
+    {
+      "filename": "17_community.md",
+      "link": "/zh-cn/docs/17_community.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo1.md",
+      "link": "/zh-cn/docs/demo1.html",
+      "meta": {}
+    },
+    {
+      "filename": "demo2.md",
+      "link": "/zh-cn/docs/demo2.html",
       "meta": {}
     },
     {
       "filename": "demo3.md",
       "link": "/zh-cn/docs/dir/demo3.html",
-      "meta": {}
-    },
-    {
-      "filename": "1_exchange.md",
-      "link": "/zh-cn/docs/exchange/1_exchange.html",
-      "meta": {}
-    },
-    {
-      "filename": "2_exchange.md",
-      "link": "/zh-cn/docs/exchange/2_exchange.html",
-      "meta": {}
-    },
-    {
-      "filename": "3_exchange.md",
-      "link": "/zh-cn/docs/exchange/3_exchange.html",
-      "meta": {}
-    },
-    {
-      "filename": "index.md",
-      "link": "/zh-cn/docs/index.html",
-      "meta": {
-        "keywords": "首页",
-        "sidebar": "比原链概述,特性，引导",
-        "permalink": "index.cn.html"
-      }
-    },
-    {
-      "filename": "mydoc_BVM.md",
-      "link": "/zh-cn/docs/mydoc_BVM.html",
-      "meta": {
-        "title": "虚拟机",
-        "keywords": "比原链,虚拟机",
-        "description": "比原链虚拟机介绍"
-      }
-    },
-    {
-      "filename": "mydoc_FAQ.md",
-      "link": "/zh-cn/docs/mydoc_FAQ.html",
-      "meta": {
-        "title": "FAQ",
-        "keywords": "基本信息,常见问题,错误码",
-        "description": "比原链相关问题集锦"
-      }
-    },
-    {
-      "filename": "mydoc_control_program.md",
-      "link": "/zh-cn/docs/mydoc_control_program.html",
-      "meta": {
-        "title": "title",
-        "keywords": "合约程序",
-        "description": "比原链底层介绍"
-      }
-    },
-    {
-      "filename": "mydoc_license.md",
-      "link": "/zh-cn/docs/mydoc_license.html",
-      "meta": {
-        "title": "声明",
-        "keywords": "版权声明",
-        "description": "版权声明描述"
-      }
-    },
-    {
-      "filename": "mydoc_roadmap.md",
-      "link": "/zh-cn/docs/mydoc_roadmap.html",
-      "meta": {
-        "title": "2019路线图",
-        "keywords": "roadMap,2019技术路线,keywords3",
-        "description": "比原2019年技术路线"
-      }
-    },
-    {
-      "filename": "mydoc_smart_contract.md",
-      "link": "/zh-cn/docs/mydoc_smart_contract.html",
-      "meta": {
-        "title": "智能合约",
-        "keywords": "Equity,VM",
-        "description": "比原链智能合约"
-      }
-    },
-    {
-      "filename": "1_wallet.md",
-      "link": "/zh-cn/docs/wallet/1_wallet.html",
-      "meta": {}
-    },
-    {
-      "filename": "2_wallet.md",
-      "link": "/zh-cn/docs/wallet/2_wallet.html",
-      "meta": {}
-    },
-    {
-      "filename": "3_wallet.md",
-      "link": "/zh-cn/docs/wallet/3_wallet.html",
       "meta": {}
     }
   ]
