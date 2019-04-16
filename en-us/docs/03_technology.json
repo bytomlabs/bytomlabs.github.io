@@ -2,5 +2,7 @@
   "filename": "03_technology.md",
   "__html": "<h1>Technology</h1>\n",
   "link": "/en-us/docs/03_technology.html",
-  "meta": {}
+  "meta": {
+    "title": "Technology"
+  }
 }

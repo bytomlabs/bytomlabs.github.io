@@ -2,5 +2,7 @@
   "filename": "04_2_simd.md",
   "__html": "<h1>Simd</h1>\n<p><a name=\"Installation\"></a></p>\n<h2>Installation</h2>\n<p>Ensure Go with the supported version is installed properly:</p>\n<pre><code class=\"language-bash\">$ go version\n$ go env GOROOT GOPATH\n</code></pre>\n<p><a name=\"2898b2bb\"></a></p>\n<h4>Get the source code</h4>\n<pre><code class=\"language-bash\">$ git <span class=\"hljs-built_in\">clone</span> https://github.com/Bytom/bytom.git <span class=\"hljs-variable\">$GOPATH</span>/src/github.com/bytom\n</code></pre>\n<p><a name=\"Build\"></a></p>\n<h4><a href=\"https://www.yuque.com/zionfuo/pviq87/enocye#Build\"></a>Build</h4>\n<pre><code class=\"language-bash\">$ <span class=\"hljs-built_in\">cd</span> <span class=\"hljs-variable\">$GOPATH</span>/src/github.com/bytom\n$ make bytom-simd\n</code></pre>\n<p>Compile Bytom clients that support Intel <a href=\"https://en.wikipedia.org/wiki/Streaming_SIMD_Extensionsl\">SIMD</a> technology:</p>\n<ol>\n<li>If you use a MacOS system, you need to install llvm run command in advance: <code>brew install llvm</code>.</li>\n<li>If you use the Windows system, you need to install the MinGW-w64 in advance and set the corresponding PATH environment variables.</li>\n</ol>\n",
   "link": "/en-us/docs/04_2_simd.html",
-  "meta": {}
+  "meta": {
+    "title": "Simd"
+  }
 }

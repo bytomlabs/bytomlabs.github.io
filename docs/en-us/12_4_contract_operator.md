@@ -1,3 +1,7 @@
+---
+title: Contract Operator
+---
+
 # Contract Operator
 
 <a name="ec87e376"></a>

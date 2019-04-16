@@ -1,3 +1,7 @@
+---
+title: ASIC矿机
+---
+
 # ASIC矿机
 
 <a name="8fb09e7e"></a>

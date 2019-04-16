@@ -1,3 +1,7 @@
+---
+title: Mining Pool
+---
+
 # Mining Pool
 
 <a name="53469cf0"></a>

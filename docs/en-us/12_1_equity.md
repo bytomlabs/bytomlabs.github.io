@@ -1,3 +1,7 @@
+---
+title: Equity
+---
+
 # Equity
 
 <a name="93883fd2"></a>

@@ -1,3 +1,7 @@
+---
+title: Community
+---
+
 # Community
 
 Please choose your forum wisely when starting a discussion or asking a question, help keep our various forums clean and tidy.

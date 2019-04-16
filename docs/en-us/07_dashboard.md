@@ -1,3 +1,7 @@
+---
+title: Dashboard
+---
+
 # Dashboard
 
 <a name="af4243e4"></a>

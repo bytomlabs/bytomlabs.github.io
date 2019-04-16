@@ -1,3 +1,7 @@
+---
+title: ASIC Mining
+---
+
 # ASIC Mining
 
 <a name="97a3528f"></a>

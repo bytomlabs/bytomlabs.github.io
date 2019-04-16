@@ -1,3 +1,7 @@
+---
+title: JSON-RPC
+---
+
 # JSON-RPC
 
 <a name="e8a058bf"></a>

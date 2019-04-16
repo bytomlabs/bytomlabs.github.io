@@ -1,3 +1,7 @@
+---
+title: Architecture
+---
+
 # Architecture
 
 <a name="Overview"></a>

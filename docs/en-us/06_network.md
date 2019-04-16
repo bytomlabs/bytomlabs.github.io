@@ -1,3 +1,7 @@
+---
+title: Network
+---
+
 # Network
 
 There are mainly the following network types than the original chain network, which have different uses:

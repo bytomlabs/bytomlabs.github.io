@@ -1,3 +1,7 @@
+---
+title: Tensority算法
+---
+
 # Tensority算法
 
 <a name="61a3ec66"></a>

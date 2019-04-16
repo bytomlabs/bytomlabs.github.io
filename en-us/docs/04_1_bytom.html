@@ -7,7 +7,7 @@
 	<meta name="keywords" content="04_1_bytom" />
 	<meta name="description" content="04_1_bytom" />
 	<!-- 网页标签标题 -->
-	<title>04_1_bytom</title>
+	<title>Bytom</title>
 	<link rel="shortcut icon" href="/img/docsite.ico"/>
 	<link rel="stylesheet" href="/build/documentation.css" />
 </head>
@@ -21,20 +21,22 @@
 <h2><a href="https://github.com/Bytom/bytom#building-from-source"></a>Building from source</h2>
 <p><a name="Requirements"></a></p>
 <h3><a href="https://github.com/Bytom/bytom#requirements"></a>Requirements</h3>
-<ul>
-<li><a href="https://golang.org/doc/install">Go</a> version 1.8 or higher, with <code>$GOPATH</code> set to your preferred directory
-<a name="Installation"></a></li>
-</ul>
+<p><a href="https://golang.org/doc/install">Go</a> version 1.8 or higher, with <code>$GOPATH</code> set to your preferred directory
+<a name="Installation"></a></p>
 <h3><a href="https://github.com/Bytom/bytom#installation"></a>Installation</h3>
-<p>Ensure Go with the supported version is installed properly:<br />$ go version<br />$ go env GOROOT GOPATH</p>
-<ul>
-<li>Get the source code</li>
-</ul>
-<p>$ git clone <a href="https://github.com/Bytom/bytom.git">https://github.com/Bytom/bytom.git</a> $GOPATH/src/github.com/bytom</p>
-<ul>
-<li>Build source code</li>
-</ul>
-<p>$ cd <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>O</mi><mi>P</mi><mi>A</mi><mi>T</mi><mi>H</mi><mi mathvariant="normal">/</mi><mi>s</mi><mi>r</mi><mi>c</mi><mi mathvariant="normal">/</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>h</mi><mi>u</mi><mi>b</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi mathvariant="normal">/</mi><mi>b</mi><mi>y</mi><mi>t</mi><mi>o</mi><mi>m</mi><mo>&lt;</mo><mi>b</mi><mi>r</mi><mi mathvariant="normal">/</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">GOPATH/src/github.com/bytom&lt;br /&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">G</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mord mathrm">/</span><span class="mord mathit">s</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">c</span><span class="mord mathrm">/</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">i</span><span class="mord mathit">t</span><span class="mord mathit">h</span><span class="mord mathit">u</span><span class="mord mathit">b</span><span class="mord mathrm">.</span><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit">m</span><span class="mord mathrm">/</span><span class="mord mathit">b</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord mathit">t</span><span class="mord mathit">o</span><span class="mord mathit">m</span><span class="mrel">&lt;</span><span class="mord mathit">b</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathrm">/</span><span class="mrel">&gt;</span></span></span></span> make bytomd    # build bytomd<br />$ make bytomcli  # build bytomcli<br />When successfully building the project, the <code>bytom</code> and <code>bytomcli</code> binary should be present in <code>cmd/bytomd</code> and <code>cmd/bytomcli</code> directory, respectively.
+<p>Ensure Go with the supported version is installed properly:</p>
+<pre><code>$ go version
+$ go env GOROOT GOPATH
+</code></pre>
+<p>Get the source code</p>
+<pre><code>$ git clone https://github.com/Bytom/bytom.git $GOPATH/src/github.com/bytom
+</code></pre>
+<p>Build source code<br /><br /><br /></p>
+<pre><code>$ cd $GOPATH/src/github.com/bytom
+$ make bytomd    # build bytomd
+$ make bytomcli  # build bytomcli
+</code></pre>
+<p>When successfully building the project, the <code>bytom</code> and <code>bytomcli</code> binary should be present in <code>cmd/bytomd</code> and <code>cmd/bytomcli</code> directory, respectively.
 <a name="Executables"></a></p>
 <h3><a href="https://github.com/Bytom/bytom#executables"></a>Executables</h3>
 <p>The Bytom project comes with several executables found in the <code>cmd</code> directory.</p>
@@ -61,7 +63,11 @@
 <p>Currently, bytom is still in active development and a ton of work needs to be done, but we also provide the following content for these eager to do something with <code>bytom</code>. This section won't cover all the commands of <code>bytomd</code> and <code>bytomcli</code> at length, for more information, please the help of every command, e.g., <code>bytomcli help</code>.
 <a name="Initialize"></a></p>
 <h3><a href="https://github.com/Bytom/bytom#initialize"></a>Initialize</h3>
-<p>First of all, initialize the node:<br />$ cd ./cmd/bytomd<br />$ ./bytomd init --chain_id mainnet<br />There are three options for the flag <code>--chain_id</code>:</p>
+<p>First of all, initialize the node:</p>
+<pre><code class="language-bash">$ <span class="hljs-built_in">cd</span> ./cmd/bytomd
+$ ./bytomd init --chain_id mainnet
+</code></pre>
+<p>There are three options for the flag <code>--chain_id</code>:<br /></p>
 <ul>
 <li><code>mainnet</code>: connect to the mainnet.</li>
 <li><code>testnet</code>: connect to the testnet wisdom.</li>
@@ -70,7 +76,9 @@
 <p>After that, you'll see <code>config.toml</code> generated, then launch the node.
 <a name="launch"></a></p>
 <h3><a href="https://github.com/Bytom/bytom#launch"></a>launch</h3>
-<p>$ ./bytomd node<br />available flags for <code>bytomd node</code>:</p>
+<pre><code class="language-bash">$ ./bytomd node
+</code></pre>
+<p>available flags for <code>bytomd node</code>:</p>
 <pre><code>--auth.disable                Disable rpc access authenticate
       --chain_id string             Select network type
   -h, --help                        help for node

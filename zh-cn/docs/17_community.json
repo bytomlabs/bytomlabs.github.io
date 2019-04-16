@@ -2,5 +2,7 @@
   "filename": "17_community.md",
   "__html": "<h1>社区</h1>\n<p>发起讨论和问问题时，请正确选择论坛，并维护论坛环境整洁。</p>\n<p><a name=\"Reddit\"></a></p>\n<h2>Reddit</h2>\n<p><a href=\"https://www.reddit.com/r/BytomBlockchain\">https://www.reddit.com/r/BytomBlockchain</a></p>\n<p><a name=\"Discord\"></a></p>\n<h2>Discord</h2>\n<p><a href=\"https://discordapp.com/invite/U3RSYr5\">https://discordapp.com/invite/U3RSYr5</a></p>\n<p><a name=\"Telegram\"></a></p>\n<h2>Telegram</h2>\n<p>Telegram Chinese\t<a href=\"https://t.me/bytomchinese\">https://t.me/bytomchinese</a><br />Telegram English\t<a href=\"https://t.me/BytomInternational\">https://t.me/BytomInternational</a><br />Telegram Russian\t<a href=\"https://t.me/BytomRussianGroup\">https://t.me/BytomRussianGroup</a><br />Telegram African\t<a href=\"https://t.me/BytomAfrican\">https://t.me/BytomAfrican</a><br />Telegram Tech <a href=\"https://t.me/BytomTech\">https://t.me/BytomTech</a></p>\n<p><a name=\"Meetup\"></a></p>\n<h2>Meetup</h2>\n<p><a href=\"https://www.meetup.com/Bytomblockchain/\">https://www.meetup.com/Bytomblockchain/</a></p>\n<p><a name=\"bbb14f31\"></a></p>\n<h2>改进提案</h2>\n<p>比原链改进提案旨在规范比原链平台的开发标准，包括核心协议、客户端 api 、虚拟机规范和合同标准。<br />人们会首先向比原链改进提案资源库提出想法作为一个问题或pull请求。 经过基本的过滤，提议会收到一个数字并以草稿的形式发布。必须经过社区一致同意，比原链改进协议才能变成活跃状态。</p>\n<p>Review <a href=\"https://github.com/Bytom/bmips/blob/master/bmip-0001.mediawiki\">BMIP-001</a> and follow the instructions to submit a <a href=\"https://github.com/bytom/bmip/pulls\">Pull Request</a> to this repository.</p>\n",
   "link": "/zh-cn/docs/17_community.html",
-  "meta": {}
+  "meta": {
+    "title": "社区"
+  }
 }
