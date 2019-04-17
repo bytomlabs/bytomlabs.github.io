@@ -12,10 +12,15 @@ title: 智能合约构建
 * 调用编译合约API接口`compile`不加参数是直接编译合约，按照`contract`中的参数列表顺序加上参数是将合约实例化
 * 构造解锁合约交易需要添加`clause`中的参数列表
 * `Signature`参数类型只能在`clause`的参数列表中出现，不允许出现在`contract`的参数列表中
-* 如果合约包含多个`clause`，那么用户只需选择任意一个`clause`来解锁就可以了。在构造解锁合约的交易过程中，需要添加额外的参数`clause_selector`（无符号整数类型，小端存储格式），`clause_selector`是根据合约`clause`的顺序来指定的，假如`clause`的个数`n`，那么选择对应的`clause_selector`为`0 ~ n-1`，即第一个`clause`的`clause_selector`为`0`，第二个`clause`的`clause_selector`为`1`，以此类推。<br />如果合约的`clause`参数列表中包含`Signature`，那么在构造解锁合约交易的时候需要通过签名的必要条件`root_xpub`和`derivation_path`来间接获得，因为签名必须通过调用`sign-transaction`API接口才能得到。参数`root_xpub`和`derivation_path`是通过调用`list-pubkeys`接口获取的，此外`Signature`一般需要跟`PublicKey`配套使用，即参数`root_xpub`和`derivation_path`需要跟公钥`pubkey`一一对应，否则合约会执行失败。<br />其中[API接口`list-pubkeys`](https://github.com/Bytom/bytom/wiki/API-Reference#list-pubkeys)的参数如下：
+* 如果合约包含多个`clause`，那么用户只需选择任意一个`clause`来解锁就可以了。在构造解锁合约的交易过程中，需要添加额外的参数`clause_selector`（无符号整数类型，小端存储格式），`clause_selector`是根据合约`clause`的顺序来指定的，假如`clause`的个数`n`，那么选择对应的`clause_selector`为`0 ~ n-1`，即第一个`clause`的`clause_selector`为`0`，第二个`clause`的`clause_selector`为`1`，以此类推。<br />如果合约的`clause`参数列表中包含`Signature`，那么在构造解锁合约交易的时候需要通过签名的必要条件`root_xpub`和`derivation_path`来间接获得，因为签名必须通过调用`sign-transaction`API接口才能得到。参数`root_xpub`和`derivation_path`是通过调用`list-pubkeys`接口获取的，此外`Signature`一般需要跟`PublicKey`配套使用，即参数`root_xpub`和`derivation_path`需要跟公钥`pubkey`一一对应，否则合约会执行失败。<br />
+
+其中[API接口`list-pubkeys`](https://github.com/Bytom/bytom/wiki/API-Reference#list-pubkeys)的参数如下：
+
 * `String` - _account_id_, 账户ID.
 * `String` - _account_alias_, 账户别名.
-* `String` - _public_key_, 根据指定pubkey来查询.<br />其请求和响应的json格式如下：
+* `String` - _public_key_, 根据指定pubkey来查询.<br />
+
+其请求和响应的json格式如下：
 
 ```javascript
 // Request

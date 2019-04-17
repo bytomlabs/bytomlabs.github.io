@@ -6,7 +6,15 @@ title: 常见问题
 
 **1、如何连接远程全节点服务器**
 
-远程服务需要本地生成的Access-token，可以通过以下两种方式：<br />`./bytomcli create-access-token test`  或者 `curl -X POST create-access-token -d '{"id":"test"}'`<br />然后获得access-token：
+远程服务需要本地生成的Access-token，可以通过以下两种方式：<br />
+
+`$./bytomcli create-access-token test`  
+
+或者:
+
+`$ curl -X POST create-access-token -d '{"id":"test"}'`<br />
+
+然后获得access-token：
 
 "created_at": "2018-05-18T16:00:25.284677605+08:00",<br />"id": "test",<br />"token":"test:fe50927ddaa5bcca77021e9f50fa5ef236a6140c012d1fe2eb9241f61a9228e4
 
