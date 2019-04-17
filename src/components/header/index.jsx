@@ -50,6 +50,7 @@ class Header extends React.Component {
       search: siteConfig.defaultSearch,
       searchValue: '',
       inputVisible: false,
+      langVisible: false,
     };
   }
 
@@ -65,17 +66,23 @@ class Header extends React.Component {
     });
   }
 
-  switchLang() {
-    let language;
-    if (this.state.language === 'zh-cn') {
-      language = 'en-us';
-    } else {
-      language = 'zh-cn';
-    }
+  switchLangVisable() {
     this.setState({
-      language,
+      langVisible: !this.state.langVisible,
     });
-    this.props.onLanguageChange(language);
+  }
+
+  switchLang(lang) {
+    let language;
+    // if (this.state.language === 'zh-cn') {
+    //   language = 'en-us';
+    // } else {
+    //   language = 'zh-cn';
+    // }
+    // this.setState({
+    //   language,
+    // });
+    this.props.onLanguageChange(lang);
   }
 
   switchSearch() {
@@ -115,7 +122,7 @@ class Header extends React.Component {
 
   render() {
     const { type, logo, onLanguageChange, currentKey } = this.props;
-    const { menuBodyVisible, language, search, searchVisible } = this.state;
+    const { menuBodyVisible, language, search, searchVisible, langVisible } = this.state;
     return (
       <header
         className={
@@ -129,44 +136,9 @@ class Header extends React.Component {
           <a href={getLink(`/${language}/index.html`)}>
             <img className="logo" alt={siteConfig.name} title={siteConfig.name} src={getLink(logo)} />
           </a>
-          {
-            siteConfig.defaultSearch ?
-            (
-              <div
-                className={classnames({
-                  search: true,
-                  [`search-${type}`]: true,
-                })}
-              >
-                <span className="icon-search" onClick={this.toggleSearch} />
-                {
-                  searchVisible ?
-                  (
-                    <div className="search-input">
-                      <img src={searchSwitch[search].logo} onClick={this.switchSearch} />
-                      <input autoFocus onChange={this.onInputChange} onKeyDown={this.onKeyDown} />
-                    </div>
-                  ) : null
-                }
-              </div>
-            ) : null
-          }
-          {
-            onLanguageChange !== noop ?
-            (<span
-              className={
-                classnames({
-                  'language-switch': true,
-                  [`language-switch-${type}`]: true,
-                })
-              }
-              onClick={this.switchLang}
-            >
-              {languageSwitch.find(lang => lang.value === language).text}
-            </span>)
-            :
-            null
-          }
+          // <span className="langHover"></span>
+          <span onMouseEnter={this.switchLangVisable} onClick={this.switchLangVisable} className="lang"><img src={getLink('/img/lang.png')} alt=""/></span>
+          <span className="github"><a title="Github" target="_blank" href="https://github.com/Bytom/bytom"><img src={getLink('/img/github.png')} alt=""/></a></span>
           <div
             className={
               classnames({
@@ -193,7 +165,24 @@ class Header extends React.Component {
                   <a href={getLink(item.link)} target={item.target || '_self'}>{item.text}</a>
                 </li>))}
             </ul>
+            
           </div>
+          {
+            langVisible && 
+              <div
+                className={
+                  classnames({
+                    'langMenu': true,
+                    'header-menu-open': langVisible,
+                  })
+                }
+              >
+                <ul className="langList">
+                  <li><a onClick={() => this.switchLang('zh-cn')}>简体中文</a></li>
+                  <li><a onClick={() => this.switchLang('en-us')}>English</a></li>
+                </ul>
+              </div>
+          }
         </div>
       </header>
     );

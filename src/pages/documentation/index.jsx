@@ -98,7 +98,7 @@ class Documentation extends Language {
           language={language}
           onLanguageChange={this.onLanguageChange}
         />
-        <Bar img="/img/system/docs.png" text={dataSource.barText} />
+        <Bar bgImg="/img/banner.png" img="/img/system/docs.png" text={dataSource.barText} />
         <section className="content-section">
           <Sidemenu dataSource={dataSource.sidemenu} />
           <div

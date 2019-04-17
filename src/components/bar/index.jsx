@@ -10,16 +10,14 @@ const propTypes = {
 };
 
 const Bar = (props) => {
-  const { text, img } = props;
+  const { text, img, bgImg } = props;
   const cls = classnames({
     bar: true,
   });
   return (
-    <div className={cls}>
+    <div style={{background: `url(${getLink(bgImg)})  top center no-repeat`}} className={cls}>
       <div className="bar-body">
-        <img src={getLink(img)} className="front-img" />
-        <span>{text}</span>
-        <img src={getLink(img)} className="back-img" />
+        <p>{text}</p>
       </div>
     </div>
   );
