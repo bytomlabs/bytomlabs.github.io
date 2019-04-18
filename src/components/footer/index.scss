@@ -6,7 +6,6 @@
     max-width: $contentWidth;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 40px 40px 0;
     @media screen and (max-width: $mobileWidth) {
       padding-left: 20px;
       padding-right: 20px;
@@ -72,8 +71,7 @@
       }
     }
     .copyright {
-      border-top: 1px solid #ccc;
-      min-height: 60px;
+      min-height: 54px;
       line-height: 20px;
       text-align: center;
       font-family: Avenir-Medium;

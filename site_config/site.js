@@ -38,7 +38,7 @@ export default {
                 link: 'https://github.com/bytomlabs/bytomlabs.github.io',
             }, ],
         },
-        copyright: 'Copyright © 2018 Bytom',
+        copyright: 'Copyright © 2019 Bytom',
     },
     'zh-cn': {
         pageMenu: [{
@@ -73,6 +73,6 @@ export default {
                 link: 'https://github.com/bytomlabs/bytomlabs.github.io',
             }, ],
         },
-        copyright: 'Copyright © 2018 Bytom',
+        copyright: 'Copyright © 2019 Bytom',
     },
 }

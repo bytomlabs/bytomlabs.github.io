@@ -136,8 +136,8 @@ class Header extends React.Component {
           <a href={getLink(`/${language}/index.html`)}>
             <img className="logo" alt={siteConfig.name} title={siteConfig.name} src={getLink(logo)} />
           </a>
-          // <span className="langHover"></span>
-          <span onMouseEnter={this.switchLangVisable} onClick={this.switchLangVisable} className="lang"><img src={getLink('/img/lang.png')} alt=""/></span>
+          <span onMouseEnter={this.switchLangVisable} onMouseLeave={this.switchLangVisable} className="langHover"></span>
+          <span onClick={this.switchLangVisable} className="lang"><img src={getLink('/img/lang.png')} alt=""/></span>
           <span className="github"><a title="Github" target="_blank" href="https://github.com/Bytom/bytom"><img src={getLink('/img/github.png')} alt=""/></a></span>
           <div
             className={
@@ -170,6 +170,8 @@ class Header extends React.Component {
           {
             langVisible && 
               <div
+                onMouseEnter={() => this.setState({langVisible: true})}
+                onMouseLeave={this.switchLangVisable}
                 className={
                   classnames({
                     'langMenu': true,
