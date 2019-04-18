@@ -1,8 +1,0 @@
-{
-  "filename": "09_4_asic.md",
-  "__html": "<h1>ASIC Mining</h1>\n<p><a name=\"97a3528f\"></a></p>\n<h2>ASIC Hardware</h2>\n<p>Bitmain B3<br />Bitmain B7</p>\n<p><a name=\"b8d4e9eb\"></a></p>\n<h2>Miner Configuration</h2>\n<ul>\n<li>Click the “Miner Configuration” tab and then “General Settings” to setup the mining pools. Key in the mining pool URL and miner name (under Worker).</li>\n<li>There is no need to change the Password.</li>\n<li>Then click “Save&amp;Apply” to connect to the mining pools.</li>\n</ul>\n<p><a name=\"db729547\"></a></p>\n<h2>Miner Status</h2>\n<p>The configuration is now complete. It will take about 5 to 30 minutes to get the mining started.<br />**<br /><img src=\"https://cdn.nlark.com/yuque/0/2019/png/241708/1555046814325-94ed501a-51d0-4d73-90af-3b869949da23.png#align=left&amp;display=inline&amp;height=259&amp;originHeight=663&amp;originWidth=1910&amp;size=0&amp;status=done&amp;width=746\" alt=\"\"></p>\n<p>Document:<a href=\"https://support.bitmain.com/hc/en-us/articles/360008436094-How-to-set-up-a-new-B3\">How to set up a new B3</a></p>\n",
-  "link": "/en-us/docs/09_4_asic.html",
-  "meta": {
-    "title": "ASIC Mining"
-  }
-}

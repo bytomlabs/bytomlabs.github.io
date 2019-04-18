@@ -1,8 +1,0 @@
-{
-  "filename": "04_5_gm.md",
-  "__html": "<h1>GM</h1>\n<p>体验国密测试网方式</p>\n<p><a name=\"f26ef914\"></a></p>\n<h2>下载</h2>\n<pre><code>$ git clone ne https://github.com/bytom/bytom-gm.git $GO $GOPATH/src/rc/github.com/bytom-gm\n</code></pre>\n<p><a name=\"e655a410\"></a></p>\n<h2>安装</h2>\n<pre><code>$ cd $GOPATH/src/rc/github.com/bytom-gm $ m $ make install\n</code></pre>\n<p><a name=\"ea0952ee\"></a></p>\n<h2>初次配置</h2>\n<pre><code>$ bytomd init --chain_id --home\n</code></pre>\n<p>其中，可以选择<code>gm-testnet</code>或者<code>solonet</code>。</p>\n<ul>\n<li>gm-testnet 启动的是国密测试网。</li>\n<li>solonet 启动的是单节点网络。</li>\n</ul>\n<p><code>&lt;data_and_config_path&gt;</code>指定的是数据存放的目录。</p>\n<p><a name=\"87cdb9e3\"></a></p>\n<h2>启动节点</h2>\n<pre><code>$ bytomd node --mining --home\n</code></pre>\n<p>开发者获取国密网测试币的方式可以在启动节点时开启<code>--mining</code>选项。</p>\n<p>国密测试网的操作体验与主网类似，但是主网的地址前缀为<code>bm</code>，而国密测试网的地址前缀为<code>gm</code>。</p>\n",
-  "link": "/zh-cn/docs/04_5_gm.html",
-  "meta": {
-    "title": "GM"
-  }
-}
