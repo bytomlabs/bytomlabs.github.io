@@ -409,6 +409,6 @@ export default {
             },
             ],
         }, ],
-        barText: '比原开发文档',
+        barText: '比原链开发文档',
     },
 };

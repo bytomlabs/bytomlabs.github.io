@@ -23,7 +23,7 @@
     .logo {
       margin-left: 40px;
       width: 132px;
-      vertical-align: middle;
+      vertical-align: -16px;
     }
     .header-menu {
       margin-left: 60px;
@@ -48,6 +48,9 @@
       font-family: Avenir-Heavy;
       font-size: 14px;
       vertical-align: bottom;
+      &:hover a{
+        color: #035BD4;
+      }
     }
     .menu-item-primary {
       a {

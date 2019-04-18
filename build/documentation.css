@@ -13,19 +13,21 @@
   .header-container .header-body {
     max-width: 1280px;
     margin: 0 auto;
-    height: 66px;
-    line-height: 66px; }
+    height: 80px;
+    line-height: 80px;
+    position: relative; }
     .header-container .header-body .logo {
       margin-left: 40px;
-      width: 96px;
-      vertical-align: sub; }
+      width: 132px;
+      vertical-align: -16px; }
     .header-container .header-body .header-menu {
-      float: right; }
+      margin-left: 60px;
+      display: inline-block; }
       .header-container .header-body .header-menu .header-menu-toggle {
         display: none;
         width: 19px;
         margin-right: 40px;
-        margin-top: 18px;
+        margin-top: 25px;
         cursor: pointer; }
     .header-container .header-body ul {
       padding: 0;
@@ -37,6 +39,8 @@
       font-family: Avenir-Heavy;
       font-size: 14px;
       vertical-align: bottom; }
+      .header-container .header-body .menu-item:hover a {
+        color: #035BD4; }
     .header-container .header-body .menu-item-primary a {
       color: #fff;
       opacity: 0.6;
@@ -59,7 +63,7 @@
       width: 24px;
       height: 24px;
       line-height: 20px;
-      margin-top: 21px;
+      margin-top: 28px;
       margin-right: 40px;
       text-align: center;
       border-radius: 2px;
@@ -149,7 +153,7 @@
     display: inline-block;
     position: absolute;
     right: 0;
-    top: 66px;
+    top: 80px;
     z-index: 100; }
   .header-container .header-body .header-menu-open li {
     width: 200px;
@@ -172,9 +176,54 @@
     .header-container .header-body .header-menu-open .menu-item-primary-active a, .header-container .header-body .header-menu-open .menu-item-normal-active a {
       color: #fff;
       opacity: 1; } }
+
+.github, .lang {
+  float: right;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  margin-top: 28px;
+  margin-right: 20px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: PingFangSC-Medium;
+  font-size: 14px;
+  opacity: 0.6; }
+  .github img, .lang img {
+    width: 23px;
+    height: 23px; }
+  .github:hover, .lang:hover {
+    opacity: 1; }
+
+.langMenu {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  width: 104px; }
+  .langMenu .langList li {
+    height: 43px;
+    line-height: 43px;
+    list-style: none;
+    display: block;
+    margin-right: 0;
+    background-color: #1C1C1C;
+    color: #fff;
+    cursor: pointer; }
+    .langMenu .langList li:hover {
+      color: #035BD4; }
+
+.langHover {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  z-index: 999; }
 .bar {
-  margin-top: 66px;
-  background-image: linear-gradient(-90deg, #03DDE4 0%, #30AFED 51%, #8755FF 100%); }
+  margin-top: 80px;
+  background-color: #000; }
   .bar .bar-body {
     max-width: 1280px;
     margin: 0 auto;
@@ -183,23 +232,8 @@
     font-family: Avenir-Heavy;
     font-size: 36px;
     color: #FFF;
-    position: relative; }
-    .bar .bar-body::before {
-      content: '';
-      height: 100%;
-      position: absolute;
-      left: 42px;
-      top: 0;
-      opacity: 0.3;
-      border-left: 1px solid #FFFFFF; }
-    .bar .bar-body::after {
-      content: '';
-      height: 16px;
-      position: absolute;
-      left: 40px;
-      top: 50%;
-      margin: auto 0;
-      border-left: 4px solid #FFFFFF; }
+    position: relative;
+    text-align: center; }
     .bar .bar-body .front-img {
       width: 80px;
       height: 80px;
@@ -224,8 +258,7 @@
   .footer-container .footer-body {
     max-width: 1280px;
     margin: 0 auto;
-    box-sizing: border-box;
-    padding: 40px 40px 0; }
+    box-sizing: border-box; }
     @media screen and (max-width: 640px) {
       .footer-container .footer-body {
         padding-left: 20px;
@@ -278,8 +311,7 @@
         .footer-container .footer-body .cols-container dd a:hover {
           color: #2DACEC; }
     .footer-container .footer-body .copyright {
-      border-top: 1px solid #ccc;
-      min-height: 60px;
+      min-height: 54px;
       line-height: 20px;
       text-align: center;
       font-family: Avenir-Medium;
@@ -341,7 +373,7 @@
     top: 0;
     width: 4px;
     height: 100%;
-    background-image: linear-gradient(0deg, #03DDE4 0%, #30AFED 51%, #8755FF 100%); }
+    background-color: #035BD4; }
   .sidemenu .menu-item-level-1 > span {
     font-family: Avenir-Heavy;
     font-size: 18px;

@@ -8,8 +8,8 @@ export default {
     'en-us': {
         pageMenu: [{
             key: 'docs',
-            text: 'DOCS',
-            link: '/en-us/docs/01_bytom.html',
+            text: 'Developer',
+            link: '/dev',
         }, ],
         disclaimer: {
             title: 'friendship tips',
@@ -43,8 +43,8 @@ export default {
     'zh-cn': {
         pageMenu: [{
             key: 'docs',
-            text: '文档',
-            link: '/zh-cn/docs/01_bytom.html',
+            text: '开发者',
+            link: '/dev',
         }, ],
         disclaimer: {
             title: '友情提示',
