@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "docsite start",
-    "build": "docsite build"
+    "build": "docsite build && cp index.html ./zh-cn && cp index.html ./en-us",
+    "build:github": "cross-env TARGET=github docsite build && cp index.html ./zh-cn"
   },
   "devDependencies": {
     "docsite": "^1.1.0",
