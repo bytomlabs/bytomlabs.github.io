@@ -60,16 +60,16 @@
     .header-container .header-body .language-switch {
       float: right;
       box-sizing: border-box;
-      width: 24px;
-      height: 24px;
-      line-height: 20px;
-      margin-top: 28px;
+      width: 23px;
+      height: 23px;
+      line-height: 19px;
+      margin-top: 29px;
       margin-right: 40px;
       text-align: center;
       border-radius: 2px;
       cursor: pointer;
       font-family: PingFangSC-Medium;
-      font-size: 14px;
+      font-size: 12px;
       opacity: 0.6; }
       .header-container .header-body .language-switch:hover {
         opacity: 1; }
@@ -396,7 +396,7 @@
           top: 0;
           width: 4px;
           height: 100%;
-          background-image: linear-gradient(0deg, #03DDE4 0%, #30AFED 51%, #8755FF 100%); }
+          background-color: #035BD4; }
   .sidemenu .menu-item-level-2 > span, .sidemenu .menu-item-level-2 > a {
     padding-left: 40px;
     height: 36px;

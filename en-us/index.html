@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="keywords" content="keyword1,keyword2" />
-	<meta name="description" content="page description" />
-	<!-- 网页标签标题 -->
-	<title>page title</title>
-	<link rel="shortcut icon" href="/img/docsite.ico"/>
-	<link rel="stylesheet" href="/build/home.css" />
 </head>
 <body>
-	<div id="root"><div class="home-page" data-reactroot=""><section class="top-section"><header class="header-container header-container-primary"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/dubbo_white.png"/></a><span class="langHover"></span><span class="lang"><img src="/img/lang.png" alt=""/></span><span class="github"><a title="Github" target="_blank" href="https://github.com/Bytom/bytom"><img src="/img/github.png" alt=""/></a></span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_white.png"/><ul><li class="menu-item menu-item-primary"><a href="/dev" target="_self">Developer</a></li></ul></div></div></header><div class="vertical-middle"><div class="product-name"><h2>Bytom development document</h2></div><p class="product-desc">bytom document</p><div class="button-area"><a class="button button-primary" target="_self" href="/en-us/docs/01_bytom.html">Quick Start</a><a class="button button-normal" target="_self" href="https://github.com/Bytom/bytom">Edit Document</a></div></div><div class="animation animation1"></div><div class="animation animation2"></div><div class="animation animation3"></div><div class="animation animation4"></div><div class="animation animation5"></div></section><section class="introduction-section"><div class="introduction-body"><div class="introduction"><h3></h3><p></p></div><img src=""/></div></section><section class="feature-section"><h3></h3><ul><li><img src=""/><div><h4></h4><p></p></div></li></ul></section><section class="start-section"><div class="start-body"><div class="left-part"><h3></h3><p></p><a href="" target="_self"></a></div><div class="right-part"><img src="/img/quick_start.png"/></div></div></section><section class="users-section"><h3></h3><p><span></span></p><div class="users"></div></section><footer class="footer-container"><div class="footer-body"><div class="copyright"><span>Copyright © 2019 Bytom</span></div></div></footer></div></div>
-	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
-	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script>
-		window.rootPath = '';
+    window.rootPath = '';
+    window.defaultLanguage = 'en-us';
+    var lang = Cookies.get('docsite_language');
+    if (!lang) {
+      lang = 'en-us';
+    }
+    window.location = window.rootPath + '/' + lang + '/docs/01_bytom.html';
   </script>
-	<script src="/build/home.js"></script>
 </body>
 </html>
