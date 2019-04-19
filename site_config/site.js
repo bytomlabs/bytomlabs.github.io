@@ -9,7 +9,7 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: 'Developer',
-            link: '/dev',
+            link: '//bytom.io/dev',
         }, ],
         disclaimer: {
             title: 'friendship tips',
@@ -44,7 +44,7 @@ export default {
         pageMenu: [{
             key: 'docs',
             text: '开发者',
-            link: '/dev',
+            link: '//bytom.io/dev',
         }, ],
         disclaimer: {
             title: '友情提示',
