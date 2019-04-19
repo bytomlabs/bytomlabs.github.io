@@ -93,16 +93,16 @@
     .language-switch {
       float: right;
       box-sizing: border-box;
-      width: 24px;
-      height: 24px;
-      line-height: 20px;
-      margin-top: $headerHeight / 2 - 12px;
+      width: 23px;
+      height: 23px;
+      line-height: 19px;
+      margin-top: $headerHeight / 2 - 11px;
       margin-right: 40px;
       text-align: center;
       border-radius: 2px;
       cursor: pointer;
       font-family: PingFangSC-Medium;
-      font-size: 14px;
+      font-size: 12px;
       opacity: 0.6;
       &:hover {
         opacity: 1;

@@ -50,7 +50,6 @@ class Header extends React.Component {
       search: siteConfig.defaultSearch,
       searchValue: '',
       inputVisible: false,
-      langVisible: false,
     };
   }
 
@@ -66,23 +65,17 @@ class Header extends React.Component {
     });
   }
 
-  switchLangVisable() {
-    this.setState({
-      langVisible: !this.state.langVisible,
-    });
-  }
-
-  switchLang(lang) {
+  switchLang() {
     let language;
-    // if (this.state.language === 'zh-cn') {
-    //   language = 'en-us';
-    // } else {
-    //   language = 'zh-cn';
-    // }
-    // this.setState({
-    //   language,
-    // });
-    this.props.onLanguageChange(lang);
+    if (this.state.language === 'zh-cn') {
+      language = 'en-us';
+    } else {
+      language = 'zh-cn';
+    }
+    this.setState({
+      language,
+    });
+    this.props.onLanguageChange(language);
   }
 
   switchSearch() {
@@ -122,7 +115,7 @@ class Header extends React.Component {
 
   render() {
     const { type, logo, onLanguageChange, currentKey } = this.props;
-    const { menuBodyVisible, language, search, searchVisible, langVisible } = this.state;
+    const { menuBodyVisible, language, search, searchVisible } = this.state;
     return (
       <header
         className={
@@ -136,8 +129,22 @@ class Header extends React.Component {
           <a href={getLink(`/${language}/index.html`)}>
             <img className="logo" alt={siteConfig.name} title={siteConfig.name} src={getLink(logo)} />
           </a>
-          <span onMouseEnter={this.switchLangVisable} onMouseLeave={this.switchLangVisable} className="langHover"></span>
-          <span onClick={this.switchLangVisable} className="lang"><img src={getLink('/img/lang.png')} alt=""/></span>
+          {
+            onLanguageChange !== noop ?
+            (<span
+              className={
+                classnames({
+                  'language-switch': true,
+                  [`language-switch-${type}`]: true,
+                })
+              }
+              onClick={this.switchLang}
+            >
+              {languageSwitch.find(lang => lang.value === language).text}
+            </span>)
+            :
+            null
+          }
           <span className="github"><a title="Github" target="_blank" href="https://github.com/Bytom/bytom"><img src={getLink('/img/github.png')} alt=""/></a></span>
           <div
             className={
@@ -165,26 +172,7 @@ class Header extends React.Component {
                   <a href={getLink(item.link)} target={item.target || '_self'}>{item.text}</a>
                 </li>))}
             </ul>
-            
           </div>
-          {
-            langVisible && 
-              <div
-                onMouseEnter={() => this.setState({langVisible: true})}
-                onMouseLeave={this.switchLangVisable}
-                className={
-                  classnames({
-                    'langMenu': true,
-                    'header-menu-open': langVisible,
-                  })
-                }
-              >
-                <ul className="langList">
-                  <li><a onClick={() => this.switchLang('zh-cn')}>简体中文</a></li>
-                  <li><a onClick={() => this.switchLang('en-us')}>English</a></li>
-                </ul>
-              </div>
-          }
         </div>
       </header>
     );
