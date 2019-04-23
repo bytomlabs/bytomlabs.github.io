@@ -1,8 +1,3 @@
----
-title: 钱包命令
----
-
-
 # 钱包命令
 
 `Bytom`提供`CLI`客户端(`bytomcli`), 它是进入`Bytom`网络的入口点,能够作为全节点运行.<br />其他进程可使用`HTTP`、`WebSocket`或`IPC`等方式通过`JSON RPC`调用访问`Bytom`网络.<br />完整的`CLI`选项可使用`bytomcli --help`查看, 或参阅[bytomcli Wiki](https://github.com/Bytom/bytom/wiki/Command-Line-Options)页面.

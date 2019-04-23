@@ -1,7 +1,3 @@
----
-title: Pool Mining
----
-
 # Pool Mining
 
 <a name="af7125d2"></a>

@@ -1,7 +1,3 @@
----
-title: Error Code
----
-
 # Error Code
 
 <a name="223abb07"></a>

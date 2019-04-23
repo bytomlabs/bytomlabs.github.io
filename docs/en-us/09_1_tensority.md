@@ -1,7 +1,3 @@
----
-title: Tensority
----
-
 # Tensority
 
 <a name="Introduction"></a>

@@ -1,7 +1,3 @@
----
-title: Websocket
----
-
 # Websocket
 
 <a name="8f2948ad"></a>

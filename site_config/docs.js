@@ -203,7 +203,7 @@ export default {
             },
             ],
         }, ],
-        barText: 'Bytom Dev Document',
+        barText: 'Bytom Develop Document',
     },
     'zh-cn': {
         sidemenu: [{

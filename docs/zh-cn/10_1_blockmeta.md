@@ -1,7 +1,3 @@
----
-title: Blockmeta
----
-
 # Blockmeta
 
 Blockmeta是比原链的区块浏览器，用于查看区块、交易、地址等详细信息的工具。

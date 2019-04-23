@@ -6,11 +6,18 @@ export default {
     defaultSearch: 'google', // 默认搜索引擎，baidu或者google
     defaultLanguage: 'en-us',
     'en-us': {
-        pageMenu: [{
-            key: 'docs',
+        pageMenu: [
+            {
+                key: 'home',
+                text: 'Home',
+                link: '//bytom.io'
+            },
+            {
+            key: 'dev',
             text: 'Developer',
             link: '//bytom.io/dev',
-        }, ],
+            },
+        ],
         disclaimer: {
             title: 'friendship tips',
             content: 'If there are errors in document editing, please contact us!',
@@ -41,11 +48,19 @@ export default {
         copyright: 'Copyright © 2019 Bytom',
     },
     'zh-cn': {
-        pageMenu: [{
-            key: 'docs',
+        pageMenu: [
+            {
+                key: 'home',
+                text: '首页',
+                link: '//bytom.io'
+            },
+            {
+            key: 'dev',
             text: '开发者',
             link: '//bytom.io/dev',
-        }, ],
+            },
+       
+        ],
         disclaimer: {
             title: '友情提示',
             content: '如果文档编辑有错误，请联系我们!',

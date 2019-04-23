@@ -1,7 +1,3 @@
----
-title: Vapor
----
-
 # Vapor
 
 Vapor 侧链solonet部署说明

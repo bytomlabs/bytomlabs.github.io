@@ -1,7 +1,3 @@
----
-title: Bytom
----
-
 # Bytom
 
 <a name="aeba24c9"></a>

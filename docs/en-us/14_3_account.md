@@ -1,7 +1,3 @@
----
-title: Account
----
-
 # Account
 
 <a name="Introduction"></a>
