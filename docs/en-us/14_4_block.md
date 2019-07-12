@@ -1,7 +1,3 @@
----
-title: Block
----
-
 # Block
 
 <a name="Introduction"></a>

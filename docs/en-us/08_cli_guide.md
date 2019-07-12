@@ -1,7 +1,3 @@
----
-title: Cli Guide
----
-
 # Cli Guide
 
 `Bytom` provides `CLI` client (`bytomcli`), it is the entry point into the `Bytom` network, capable of running as a full node archive node.<br />It can be used by other processes as a gateway into the Bytom network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports.<br />The full `CLI` option can be viewed using `bytomcli --help`, or the [bytomcli Wiki](https://github.com/Bytom/bytom/wiki/Command-Line-Options) page.

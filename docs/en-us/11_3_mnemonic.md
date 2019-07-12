@@ -1,7 +1,3 @@
----
-title: Mnemonic
----
-
 # Mnemonic
 
 <a name="Mnemonic"></a>

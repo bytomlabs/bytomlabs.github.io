@@ -1,7 +1,3 @@
----
-title: 技术介绍
----
-
 # 技术介绍
 
 <a name="2eee08f9"></a>
@@ -12,9 +8,7 @@ title: 技术介绍
 
 Tensority算法是比原链发布的一种新型的POW共识算法，将矩阵和张量计算融入到共识算法过程中，从而让矿机可以用在AI加速上。
 
-[![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554878637581-a36ffabe-379d-4fd9-98ea-f8acee90258c.png#align=left&display=inline&height=952&originHeight=952&originWidth=1678&size=0&status=done&width=1678)](https://cdn.8btc.com/wp-content/uploads/2018/05/201806070714107239.png)<br />
-
-**比原链的共识算法总体过程**
+[![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554878637581-a36ffabe-379d-4fd9-98ea-f8acee90258c.png#align=left&display=inline&height=952&originHeight=952&originWidth=1678&size=0&status=done&width=1678)](https://cdn.8btc.com/wp-content/uploads/2018/05/201806070714107239.png)<br />**比原链的共识算法总体过程**
 
 整个Tensority算法过程中，区块头的哈希的选取和难度值的比较仍然作为头尾衔接的步骤，但是中间穿插了很多涉及到矩阵的运算过程，而这些运算在AI计算中比较常见，所以支持比原挖矿的矿机就有能力提高AI加速服务。
 
@@ -54,11 +48,7 @@ Vapor是一个开源的侧链区块链平台，为用户、机构提供资产交
 
 ![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554890410785-122b0ade-c0fe-4826-8695-99330b041e00.png#align=left&display=inline&height=519&originHeight=443&originWidth=637&status=done&width=746)
 
-vapor侧链充值流程中拥有验证人、收集人、联邦三个角色：<br />
-
-验证人：侧链的出块人，任何人都可以成为验证人。<br />
-收集人：监控主链锁定在联邦合约地址的交易，收集交易并生成claim交易，发送到节点验证人进行验证入交易池。<br />
-联邦：侧链充值是指资产从主链转移到侧链的过程，转移过程，是需要资产先锁定到联邦合约地址。
+vapor侧链充值流程中拥有验证人、收集人、联邦三个角色：<br />验证人：侧链的出块人，任何人都可以成为验证人。<br />收集人：监控主链锁定在联邦合约地址的交易，收集交易并生成claim交易，发送到节点验证人进行验证入交易池。<br />联邦   ： 侧链充值是指资产从主链转移到侧链的过程，转移过程，是需要资产先锁定到联邦合约地址。
 
 <a name="b4d3c72e-2"></a>
 ### 特点

@@ -1,7 +1,3 @@
----
-title: Smart Contract Build
----
-
 # Smart Contract Build
 
 <a name="01b85742"></a>

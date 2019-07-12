@@ -1,7 +1,3 @@
----
-title: Tensority算法
----
-
 # Tensority算法
 
 <a name="61a3ec66"></a>
@@ -25,7 +21,6 @@ Tensority算法总体分为以下几个步骤：
 ### 生成seed
 
 种子 seed 是生成 cache 的输入值。<br />seed 每 256 块改变一次。第 0～256 块 (此处有 257 个块) 使用第 0 块的 block header hash，第 257～512 块使用第 256 块的 block header hash，第 513～768 块使用第 512 块的hash，以此类推。
-
 <a name="d533908d"></a>
 ### 生成cache
 

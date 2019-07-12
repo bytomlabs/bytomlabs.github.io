@@ -1,7 +1,3 @@
----
-title: Vapor
----
-
 # Vapor
 
 Vapor 侧链solonet部署说明
@@ -29,24 +25,23 @@ consensus.json内容如下:
 ```
 
 ```shell
-$ ./vapor init --chain_id solonet -r "side_chain"
-$ ./vapor node -r "side_chain" --consensus_config_file consensus.json
+./vapor init --chain_id solonet -r "side_chain"
+./vapor node -r "side_chain" --consensus_config_file consensus.json
 ```
 
 <a name="ab0bb7bb"></a>
 ## 获取公私钥
 
 ```shell
-$ curl -s -X POST -d '{}' http://127.0.0.1:8888/create-key-pair  > 
-key_pair
-```
+curl -s -X POST -d '{}' http://127.0.0.1:8888/create-key-pair  > key_pair
 注: 公私钥用来生成主链上锁定资产以及解锁资产的合约地址
+```
 
 <a name="283f0fba"></a>
 ## 停止vapor并删除数据目录
 
 ```shell
-$ rm -rf side_chain
+rm -rf side_chain
 ```
 
 <a name="db404376"></a>
@@ -64,7 +59,6 @@ $ rm -rf side_chain
 ```shell
 xprv=$(cat key_pair | jq ".data.xprv" | sed "s/\"//g")
 xpub=$(cat key_pair | jq ".data.xpub" | sed "s/\"//g")
-
 ./vapor init --chain_id solonet -r "side_chain"
 ./vapor node -r "side_chain" --auth.disable --side.fedpeg_xpubs $xpub  --consensus_config_file consensus.json --validate_pegin true --side.parent_genesis_block_hash "a97a7a59e0e313f9300a2d7296336303889930bfdf5a80d8a9b05db343c03380"
 ```
@@ -124,42 +118,14 @@ xpub=$(cat key_pair | jq ".data.xpub" | sed "s/\"//g")
 <a name="7c12eaaa"></a>
 ### 侧链充值流程
 
-vapor侧链中验证人、收集人、联邦三个角色：<br />
+vapor侧链中验证人、收集人、联邦三个角色：<br />验证人：侧链的出块人，任何人都可以成为验证人。<br />收集人：监控主链锁定在联邦合约地址的交易，收集交易并生成claim交易，发送到节点验证人进行验证入交易池。<br />联邦   ： 侧链充值是指资产从主链转移到侧链的过程，转移过程，是需要资产先锁定到联邦合约地址。<br />![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554890410785-122b0ade-c0fe-4826-8695-99330b041e00.png#align=left&display=inline&height=443&originHeight=443&originWidth=637&size=0&status=done&width=637)<br />联邦合约地址生成：<br />1、联邦合约地址需要7个联邦成员公钥生成，系统开始启动由初始出块人担任。<br />2、运行一段时间后vapor侧链上用户可以注册为联邦成员候选人，由vapor侧链用户投票，从注册候选人中选出联邦成员，每次联邦成员变动不能超        过联盟成员的1/3<br />3、选出联邦成员后，由新的联邦成员生成新的合约地址，以前的联邦合约地址转账到新的联邦合约地址。<br />4、转账完成后，主链锁定资产到新的联邦地址，以后可以再竞选联邦成员。
 
-验证人：侧链的出块人，任何人都可以成为验证人。<br />
-
-收集人：监控主链锁定在联邦合约地址的交易，收集交易并生成claim交易，发送到节点验证人进行验证入交易池。<br />
-
-联邦   ： 侧链充值是指资产从主链转移到侧链的过程，转移过程，是需要资产先锁定到联邦合约地址。<br />![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554890410785-122b0ade-c0fe-4826-8695-99330b041e00.png#align=left&display=inline&height=443&originHeight=443&originWidth=637&size=0&status=done&width=637)<br />
-
-联邦合约地址生成：<br />
-
-1、联邦合约地址需要7个联邦成员公钥生成，系统开始启动由初始出块人担任。<br />
-
-2、运行一段时间后vapor侧链上用户可以注册为联邦成员候选人，由vapor侧链用户投票，从注册候选人中选出联邦成员，每次联邦成员变动不能超        过联盟成员的1/3<br />
-
-3、选出联邦成员后，由新的联邦成员生成新的合约地址，以前的联邦合约地址转账到新的联邦合约地址。<br />
-
-4、转账完成后，主链锁定资产到新的联邦地址，以后可以再竞选联邦成员。
-
-收集人：<br />
-
-1、系统启动之时，由初始出块人担任。<br />
-
-2、运行一段时间后，vapor侧链上用户可以注册成为候选人收集人，由vapor侧链用户投票，从注册的候选人中选出收集人(dpos出块一轮筛选一次)<br />
-
-3、下发新的监控主链的联邦合约地址的收集人，收集交易，并附带收集人列表、收集人签名、原始交易、收集人公钥的claim交易到节点<br />
-
-注：成为验证人、收集人、联邦在侧链都需要质押一定数量的btm
+收集人：<br />1、系统启动之时，由初始出块人担任。<br />2、运行一段时间后，vapor侧链上用户可以注册成为候选人收集人，由vapor侧链用户投票，从注册的候选人中选出收集人(dpos出块一轮筛选一次)<br />3、下发新的监控主链的联邦合约地址的收集人，收集交易，并附带收集人列表、收集人签名、原始交易、收集人公钥的claim交易到节点<br />注：成为验证人、收集人、联邦在侧链都需要质押一定数量的btm
 
 <a name="f3f561cf"></a>
 ### 侧链提现流程
 
-1、vapor侧链用户发起提现请求，销毁vapor侧链的资产<br />
-
-2、联邦合约地址针对请求向vapor侧链用户的主链地址发送对应对应数量的资产(前提交易已经在侧链上达到不会回滚的确认数)<br />
-
-3、联邦在侧链上生成一笔完成提现的操作的交易
+1、vapor侧链用户发起提现请求，销毁vapor侧链的资产<br />2、联邦合约地址针对请求向vapor侧链用户的主链地址发送对应对应数量的资产(前提交易已经在侧链上达到不会回滚的确认数)<br />3、联邦在侧链上生成一笔完成提现的操作的交易
 
 <a name="97792930-1"></a>
 # claim交易
@@ -167,24 +133,6 @@ vapor侧链中验证人、收集人、联邦三个角色：<br />
 1、claim交易输入
 
 * 增加ClaimInput的输入类型，也是vapor侧链上资产产生源头，主要用于处理资产从主链到侧链的转移。
-
-* TxInput结构作用增加字段Peginwitness<br />
-
-Peginwitness保存了主链的源交易信息，用于其他节点收到交易时做验证。<br />
-
-内容如下(字段序列化后依次放入Peginwitness):<br />
-
-amount + ParentGenesisBlockHash + claimScript + rawTx + merkleBlock
-
-* 生成claim交易输入，并根据主链交易、proof生成Peginwitness<br />
-
-2、签名交易<br />
-
-签名交易是对claim交易的签名。<br />
-
-3、提交交易<br />
-
-提交交易是要进入交易池，以及广播交易给其他节点。<br />
-
-在入交易池前以及处理block过程的交易验证的时候，claim交易验证是对输入中的claim输入与Peginwitness的信息匹配做验证(验证主链交易信息，以及生成的claim输入有没恶意行为)，类似工作量证明。
+* TxInput结构作用增加字段Peginwitness<br />Peginwitness保存了主链的源交易信息，用于其他节点收到交易时做验证。<br />内容如下(字段序列化后依次放入Peginwitness):<br />amount + ParentGenesisBlockHash + claimScript + rawTx + merkleBlock
+* 生成claim交易输入，并根据主链交易、proof生成Peginwitness<br />2、签名交易<br />签名交易是对claim交易的签名。<br />3、提交交易<br />提交交易是要进入交易池，以及广播交易给其他节点。<br />在入交易池前以及处理block过程的交易验证的时候，claim交易验证是对输入中的claim输入与Peginwitness的信息匹配做验证(验证主链交易信息，以及生成的claim输入有没恶意行为)，类似工作量证明。
 

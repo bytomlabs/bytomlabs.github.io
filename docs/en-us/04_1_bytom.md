@@ -1,7 +1,3 @@
----
-title: Bytom
----
-
 # Bytom
 
 <a name="8a5c42b7"></a>
@@ -13,30 +9,16 @@ brew tap bytom/bytom && brew install bytom
 ## [](https://github.com/Bytom/bytom#building-from-source)Building from source
 <a name="Requirements"></a>
 ### [](https://github.com/Bytom/bytom#requirements)Requirements
-[Go](https://golang.org/doc/install) version 1.8 or higher, with `$GOPATH` set to your preferred directory
+* [Go](https://golang.org/doc/install) version 1.8 or higher, with `$GOPATH` set to your preferred directory
 <a name="Installation"></a>
 ### [](https://github.com/Bytom/bytom#installation)Installation
-Ensure Go with the supported version is installed properly:
+Ensure Go with the supported version is installed properly:<br />$ go version<br />$ go env GOROOT GOPATH
+* Get the source code
 
-```
-$ go version
-$ go env GOROOT GOPATH
-```
-
-Get the source code
-
-```
 $ git clone https://github.com/Bytom/bytom.git $GOPATH/src/github.com/bytom
-```
+* Build source code
 
-Build source code<br /><br /><br />
-```
-$ cd $GOPATH/src/github.com/bytom
-$ make bytomd    # build bytomd
-$ make bytomcli  # build bytomcli
-```
-
-When successfully building the project, the `bytom` and `bytomcli` binary should be present in `cmd/bytomd` and `cmd/bytomcli` directory, respectively.
+$ cd $GOPATH/src/github.com/bytom<br />$ make bytomd    # build bytomd<br />$ make bytomcli  # build bytomcli<br />When successfully building the project, the `bytom` and `bytomcli` binary should be present in `cmd/bytomd` and `cmd/bytomcli` directory, respectively.
 <a name="Executables"></a>
 ### [](https://github.com/Bytom/bytom#executables)Executables
 The Bytom project comes with several executables found in the `cmd` directory.
@@ -51,14 +33,7 @@ The Bytom project comes with several executables found in the `cmd` directory.
 Currently, bytom is still in active development and a ton of work needs to be done, but we also provide the following content for these eager to do something with `bytom`. This section won't cover all the commands of `bytomd` and `bytomcli` at length, for more information, please the help of every command, e.g., `bytomcli help`.
 <a name="Initialize"></a>
 ### [](https://github.com/Bytom/bytom#initialize)Initialize
-First of all, initialize the node:
-
-```bash
-$ cd ./cmd/bytomd
-$ ./bytomd init --chain_id mainnet
-```
-
-There are three options for the flag `--chain_id`:<br />
+First of all, initialize the node:<br />$ cd ./cmd/bytomd<br />$ ./bytomd init --chain_id mainnet<br />There are three options for the flag `--chain_id`:
 * `mainnet`: connect to the mainnet.
 * `testnet`: connect to the testnet wisdom.
 * `solonet`: standalone mode.
@@ -66,12 +41,7 @@ There are three options for the flag `--chain_id`:<br />
 After that, you'll see `config.toml` generated, then launch the node.
 <a name="launch"></a>
 ### [](https://github.com/Bytom/bytom#launch)launch
-
-```bash
-$ ./bytomd node
-```
-
-available flags for `bytomd node`:
+$ ./bytomd node<br />available flags for `bytomd node`:
 ```
 --auth.disable                Disable rpc access authenticate
       --chain_id string             Select network type
@@ -91,7 +61,6 @@ available flags for `bytomd node`:
       --web.closed                  Lanch web browser or not
       --simd.enable                 Enable the _simd_ feature to speed up the _PoW_ verification (e.g., during mining and block verification)
 ```
-
 Given the `bytomd` node is running, the general workflow is as follows:
 * create key, then you can create account and asset.
 * send transaction, i.e., build, sign and submit transaction.

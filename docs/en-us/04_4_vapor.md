@@ -1,7 +1,3 @@
----
-title: Vapor
----
-
 # Vapor
 
 <a name="b8b6e6e2"></a>

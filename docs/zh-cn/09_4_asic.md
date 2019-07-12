@@ -1,7 +1,3 @@
----
-title: ASIC矿机
----
-
 # ASIC矿机
 
 <a name="8fb09e7e"></a>
@@ -16,7 +12,6 @@ a、点击”Miner Configuration“ 进入矿池和矿工配置页面。<br />b
 
 <a name="9706537f"></a>
 ## 查看运行状态
-
 **<br />![](https://cdn.nlark.com/yuque/0/2019/png/241708/1555046814325-94ed501a-51d0-4d73-90af-3b869949da23.png#align=left&display=inline&height=259&originHeight=663&originWidth=1910&size=0&status=done&width=746)
 
 详细教程：[B7矿机使用说明](https://support.bitmain.com/hc/zh-cn/articles/360020739874-B7%E7%9F%BF%E6%9C%BA%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)

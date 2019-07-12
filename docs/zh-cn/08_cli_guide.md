@@ -1,20 +1,11 @@
----
-title: 钱包命令
----
-
-
 # 钱包命令
 
 `Bytom`提供`CLI`客户端(`bytomcli`), 它是进入`Bytom`网络的入口点,能够作为全节点运行.<br />其他进程可使用`HTTP`、`WebSocket`或`IPC`等方式通过`JSON RPC`调用访问`Bytom`网络.<br />完整的`CLI`选项可使用`bytomcli --help`查看, 或参阅[bytomcli Wiki](https://github.com/Bytom/bytom/wiki/Command-Line-Options)页面.
-
 <a name="7be55c8a"></a>
 ## 具体的命令行选项
-
 包含从账户、密钥、资产、token、交易、区块及其他等几个方面.
-
 <a name="7116e7ec"></a>
 ### 账户
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | create-account | 创建一个新账户 | `<alias> <xpub(s)> [flags]` |   |
@@ -29,7 +20,6 @@ title: 钱包命令
 
 <a name="cdb81cf6"></a>
 ### 密钥
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | create-key | 创建密钥 | `<alias> <password> [flags]` |   |
@@ -42,7 +32,6 @@ title: 钱包命令
 
 <a name="5110a0d1"></a>
 ### 资产
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | create-asset | 创建一类资产 | `<alias> <xpub(s)> [flags]` |   |
@@ -52,7 +41,6 @@ title: 钱包命令
 
 <a name="token"></a>
 ### token
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | create-access-token | 创建新的资产token | `<tokenID> [flags]` |   |
@@ -62,7 +50,6 @@ title: 钱包命令
 
 <a name="2685c0a0"></a>
 ### 交易
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | build-transaction | 构造一笔交易(默认使用账户及资产id) | `<accountID/alias> <assetID/alias> <amount>[outputID] [flags]` |   |
@@ -76,7 +63,6 @@ title: 钱包命令
 
 <a name="2c86d897"></a>
 ### 区块
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | get-block-hash | 查询最新区块哈希 | `[flags]` |   |
@@ -88,7 +74,6 @@ title: 钱包命令
 
 <a name="0d98c747"></a>
 ### 其他
-
 | 选项 | 含义 | 参数 | 示例 |
 | :--- | :--- | :--- | :--- |
 | is-mining | 检查客户端是否开启挖矿 | `[flags]` |   |

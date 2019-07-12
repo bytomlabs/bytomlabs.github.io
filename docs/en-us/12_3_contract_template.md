@@ -1,7 +1,3 @@
----
-title: Contract Template
----
-
 # Contract Template
 
 <a name="61ca6d7d"></a>

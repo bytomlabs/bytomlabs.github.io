@@ -1,7 +1,3 @@
----
-title: Byone
----
-
 # Byone
 
 <a name="52be9dae"></a>
