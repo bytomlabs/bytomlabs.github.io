@@ -1,3 +1,7 @@
+---
+title: Bytom Spanner
+---
+
 # Bytom Spanner
 
 <a name="btm-spanner"></a>

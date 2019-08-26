@@ -1,3 +1,7 @@
+---
+title: 系统架构
+---
+
 # 系统架构
 
 ![](https://cdn.8btc.com/wp-content/uploads/2019/08/201908260245526548.png)

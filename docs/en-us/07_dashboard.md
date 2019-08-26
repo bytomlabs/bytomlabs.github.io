@@ -1,3 +1,8 @@
+---
+title: Dashboard
+---
+
+
 # Dashboard
 
 ## Bytom Dashboard

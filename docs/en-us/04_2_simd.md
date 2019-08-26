@@ -1,3 +1,7 @@
+---
+title: Simd
+---
+
 # Simd
 
 <a name="Installation"></a>

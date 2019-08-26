@@ -1,3 +1,7 @@
+---
+title: Bytom Kit
+---
+
 # Bytom Kit
 
 Bytom Kit is a development aid that integrates functions such as Verify, Sign, Decode Raw Transaction, and Testnet Faucet.

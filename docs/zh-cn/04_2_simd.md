@@ -1,3 +1,7 @@
+---
+title: Simd
+---
+
 # Simd
 
 <a name="b6780d84"></a>
