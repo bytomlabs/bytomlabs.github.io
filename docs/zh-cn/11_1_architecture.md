@@ -1,16 +1,13 @@
 # 系统架构
 
-<a name="cd4cb607"></a>
-![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554863983289-0450c0fe-284d-4fcd-b4aa-723096100c7e.png#align=left&display=inline&height=479&originHeight=876&originWidth=1364&status=done&width=746)
-
-  <br />
+![](https://cdn.8btc.com/wp-content/uploads/2019/08/201908260245526548.png)
 
 比原链分为三个层次 第一层就是大家接触比较多的钱包层，就是进行收款和打款的模块，钱包一般带操作界面，大家都可以日常使用，所以会比较熟悉。 然后就是最核心的内核层，内核可以理解为分布式系统中每个节点认同的一套规则，只有有相同的规则，两个节点才能达成一致。如果规则不同，其实就是发生分叉了。 最后一层是通信层，通信层是节点之间交换信息的方式，包含区块同步，交易同步等。
 
-<a name="c54eb9d4"></a>
+
 ## 内核层
 
-![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554863985554-186145fb-44b7-43af-bec9-d7ad5aa317e3.png#align=left&display=inline&height=477&originHeight=871&originWidth=1361&size=0&status=done&width=746)
+![](https://cdn.8btc.com/wp-content/uploads/2019/08/201908260246383403.png)
 
 首先来看内核层，内核层主要由五个模块构成：
 * 孤儿块管理：孤儿块就是由矿工挖出但未成为主链区块的区块（在相同高度产生2个甚至更多的合法区块，一个区块成为主链，剩下的则称为孤儿块），孤儿块管理就是将未成为主链区块的孤儿块存储起来。
@@ -19,10 +16,10 @@
 * 数据存储：将区块数据做持久化存储。包含两种数据，第一种是区块数据，会在网络上进行广播的原生区块信息；第二种是UTXO数据，存储UTXO数据是为了更快的验证一笔UTXO是否可以花费，而不需要去遍历所有区块信息
 * 交易池：维护了所有全网发出的但是还未被确认的交易。跟它关联最大的是挖矿模块，挖矿模块每次要产生一个新区块的时候，它会从交易池拿一些交易打包成块，然后用Tensority共识算法进行工作量验算
 
-<a name="97fb8a90"></a>
+
 ## 钱包层
 
-![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554863983212-bde29893-f883-4a9d-92ca-587728d5af78.png#align=left&display=inline&height=464&originHeight=844&originWidth=1357&size=0&status=done&width=746)
+![](https://cdn.8btc.com/wp-content/uploads/2019/08/201908260247009107.png)
 
 然后来说一下钱包层：
 * 私钥模块：主要用于管理私钥（私钥的生成，存储，备份等）和签名
@@ -32,10 +29,10 @@
   * 将和你相关的交易从所有交易中筛选出来
   * 维护钱包层UTXO的数据库，记录本人所拥有的UTXO
 
-<a name="b5d1bd6e"></a>
+
 ## 通讯层
 
-![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554863982912-5f15d2c7-17d6-47e1-83a8-bd8ecbca0fac.png#align=left&display=inline&height=486&originHeight=875&originWidth=1343&size=0&status=done&width=746)
+![](https://cdn.8btc.com/wp-content/uploads/2019/08/201908260247204983.png)
 
 最后说一下通讯层：
 * 节点发现：P2P相关，是非常独立和成熟的一块，通过节点发现这个模块获得种子节点，然后通过种子节点来获取其他更多的节点。

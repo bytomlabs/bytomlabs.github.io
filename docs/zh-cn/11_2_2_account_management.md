@@ -1,8 +1,7 @@
 # 账户管理模式
 
-该部分主要针对用户使用bytom自带的账户模式发送交易<br />
+该部分主要针对用户使用bytom自带的账户模式发送交易
 
-<a name="f13cbc7b"></a>
 ## 构建交易
 
 API接口 build-transaction，代码[api/transact.go#L120](https://github.com/Bytom/bytom/blob/master/api/transact.go#L120)
@@ -51,33 +50,31 @@ type BuildRequest struct {
 
 结构字段说明如下：
 
-* `Tx` 交易的`TxData`部分，该字段为预留字段，为空即可
-* `TTL` 构建交易的生存时间（单位为毫秒），意味着在该时间范围内，已经缓存的utxo不能用于再一次build交易，除非剩余的utxo足以构建一笔新的交易，否则会报错。当`ttl`为0时会被默认设置为600s，即5分钟
-* `TimeRange` 时间戳，意味着该交易将在该时间戳（区块高度）之后不会被提交上链，为了防止交易在网络中传输延迟而等待太久时间，如果交易没有在特定的时间范围内被打包，该交易便会自动失效
-* `Actions` 交易的`actions`结构，所有的交易都是由action构成的，`map`类型的`interface{}`保证了action类型的可扩展性。其中action中必须包含type字段，用于区分不同的action类型，`action`主要包含`input`和`output`两种类型，其详细介绍如下：
-  * `input action` 类型：
-    * issue 发行资产
-    * spend_account 以账户的模式花费utxo
-    * spend_account_unspent_output 直接花费指定的utxo
-  * `output action` 类型：
-    * control_address 接收方式为地址模式
-    * control_program 接收方式为（program）合约模式
-    * retire 销毁资产
+- `Tx` 交易的`TxData`部分，该字段为预留字段，为空即可
+- `TTL` 构建交易的生存时间（单位为毫秒），意味着在该时间范围内，已经缓存的utxo不能用于再一次build交易，除非剩余的utxo足以构建一笔新的交易，否则会报错。当`ttl`为0时会被默认设置为600s，即5分钟
+- `TimeRange` 时间戳，意味着该交易将在该时间戳（区块高度）之后不会被提交上链，为了防止交易在网络中传输延迟而等待太久时间，如果交易没有在特定的时间范围内被打包，该交易便会自动失效
+- `Actions` 交易的`actions`结构，所有的交易都是由action构成的，`map`类型的`interface{}`保证了action类型的可扩展性。其中action中必须包含type字段，用于区分不同的action类型，`action`主要包含`input`和`output`两种类型，其详细介绍如下：
+  - `input action` 类型：
+    - issue 发行资产
+    - spend_account 以账户的模式花费utxo
+    - spend_account_unspent_output 直接花费指定的utxo
+  - `output action` 类型：
+    - control_address 接收方式为地址模式
+    - control_program 接收方式为（program）合约模式
+    - retire 销毁资产
 
 _注意事项_：
 
-* 一个交易必须至少包含一个input和output（coinbase交易除外，因为coinbase交易是由系统产生，故不在此加以描述），否则交易将会报错。
-* 除了BTM资产（所有交易都是以BTM资产作为手续费）之外，其他资产在构建input和output时，所有输入和输出的资产总和必须相等，否则交易会报出输入输出不平衡的错误信息。
-* 交易的手续费： 所有inputs的BTM资产数量 - 所有outputs的BTM资产数量
-* 交易中的资产amount都是neu为单位的，BTM的单位换算如下：1 BTM = 1000 mBTM = 100000000 neu
+- 一个交易必须至少包含一个input和output（coinbase交易除外，因为coinbase交易是由系统产生，故不在此加以描述），否则交易将会报错。
+- 除了BTM资产（所有交易都是以BTM资产作为手续费）之外，其他资产在构建input和output时，所有输入和输出的资产总和必须相等，否则交易会报出输入输出不平衡的错误信息。
+- 交易的手续费： 所有inputs的BTM资产数量 - 所有outputs的BTM资产数量
+- 交易中的资产amount都是neu为单位的，BTM的单位换算如下：1 BTM = 1000 mBTM = 100000000 neu
 
 
-<a name="f445051d"></a>
 ### action简介
 
 下面对构建交易时用到的各种`action`类型进行详细说明：
 
-<a name="issue"></a>
 #### issue
 
 `issueAction`结构体源代码如下：
@@ -96,8 +93,8 @@ type AssetAmount struct {
 
 结构字段说明如下：
 
-* `assets` 主要用于资产的管理，无需用户设置参数
-* `AssetAmount` 表示用户需要发行的资产ID和对应的资产数目，这里的`AssetID`需要通过`create-asset`创建，并且这里不能使用`BTM`的资产ID
+- `assets` 主要用于资产的管理，无需用户设置参数
+- `AssetAmount` 表示用户需要发行的资产ID和对应的资产数目，这里的`AssetID`需要通过`create-asset`创建，并且这里不能使用`BTM`的资产ID
 
 `issueAction`的`json`格式为：
 
@@ -109,7 +106,8 @@ type AssetAmount struct {
 }
 ```
 
-例如发行一笔资产的交易示例如下：<br />（该交易表示发行数量为`900000000`个`assetID`的`42275aacbeda1522cd41580f875c3c452daf5174b17ba062bf0ab71a568c123f`的资产到接收地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中手续费为`20000000`neu的BTM资产）
+例如发行一笔资产的交易示例如下：
+（该交易表示发行数量为`900000000`个`assetID`的`42275aacbeda1522cd41580f875c3c452daf5174b17ba062bf0ab71a568c123f`的资产到接收地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中手续费为`20000000`neu的BTM资产）
 
 ```javascript
 {
@@ -140,7 +138,7 @@ type AssetAmount struct {
 
 ---
 
-<a name="spend_account"></a>
+
 #### spend_account
 
 `spendAction`结构体源代码如下：
@@ -161,10 +159,10 @@ type AssetAmount struct {
 
 结构字段说明如下：
 
-* `accounts` 主要用于账户的管理，无需用户设置参数
-* `AccountID` 表示需要花费资产的账户ID
-* `AssetAmount` 表示花费的资产ID和对应的资产数目
-* `ClientToken` 表示Reserve用户UTXO的限制条件，目前不填或为空即可
+- `accounts` 主要用于账户的管理，无需用户设置参数
+- `AccountID` 表示需要花费资产的账户ID
+- `AssetAmount` 表示花费的资产ID和对应的资产数目
+- `ClientToken` 表示Reserve用户UTXO的限制条件，目前不填或为空即可
 
 `spendAction`的`json`格式为：
 
@@ -177,7 +175,8 @@ type AssetAmount struct {
 }
 ```
 
-例如转账一笔资产的交易示例如下：<br />（该交易表示通过账户的方式转账`100000000`neu的BTM资产到地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中手续费`20000000`neu = 输入BTM资产数量 - 输出BTM资产数量）
+例如转账一笔资产的交易示例如下：
+（该交易表示通过账户的方式转账`100000000`neu的BTM资产到地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中手续费`20000000`neu = 输入BTM资产数量 - 输出BTM资产数量）
 
 ```javascript
 {
@@ -203,7 +202,7 @@ type AssetAmount struct {
 
 ---
 
-<a name="spend_account_unspent_output"></a>
+
 #### spend_account_unspent_output
 
 `spendUTXOAction`结构体源代码如下：
@@ -218,9 +217,9 @@ type spendUTXOAction struct {
 
 结构字段说明如下：
 
-* `accounts` 主要用于账户的管理，无需用户设置参数
-* `OutputID` 表示需要花费的UTXO的ID，可以根据`list-unspent-outputs`查询可用的UTXO，其中`OutputID`对应该API返回结果的`id`字段
-* `ClientToken` 表示Reserve用户UTXO的限制条件，目前不填或为空即可
+- `accounts` 主要用于账户的管理，无需用户设置参数
+- `OutputID` 表示需要花费的UTXO的ID，可以根据`list-unspent-outputs`查询可用的UTXO，其中`OutputID`对应该API返回结果的`id`字段
+- `ClientToken` 表示Reserve用户UTXO的限制条件，目前不填或为空即可
 
 `spendUTXOAction`的`json`格式为：
 
@@ -231,7 +230,8 @@ type spendUTXOAction struct {
 }
 ```
 
-例如通过花费UTXO的方式转账一笔资产的交易示例如下：<br />（该交易表示通过直接花费UTXO的方式转账`100000000`neu的BTM资产到地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中手续费 = 输入BTM资产的UTXO值 - 输出BTM资产数量）
+例如通过花费UTXO的方式转账一笔资产的交易示例如下：
+（该交易表示通过直接花费UTXO的方式转账`100000000`neu的BTM资产到地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中手续费 = 输入BTM资产的UTXO值 - 输出BTM资产数量）
 
 ```javascript
 {
@@ -255,7 +255,7 @@ type spendUTXOAction struct {
 
 ---
 
-<a name="control_address"></a>
+
 #### control_address
 
 `controlAddressAction`结构体源代码如下：
@@ -274,8 +274,8 @@ type AssetAmount struct {
 
 结构字段说明如下：
 
-* `Address` 表示接收资产的地址，可以根据 `create-account-receiver` API接口创建地址
-* `AssetAmount` 表示接收的资产ID和对应的资产数目
+- `Address` 表示接收资产的地址，可以根据 `create-account-receiver` API接口创建地址
+- `AssetAmount` 表示接收的资产ID和对应的资产数目
 
 `controlAddressAction`的`json`格式为：
 
@@ -288,7 +288,8 @@ type AssetAmount struct {
 }
 ```
 
-例如转账一笔资产的交易示例如下：<br />（该交易表示通过账户的方式转账`100000000`neu的BTM资产到地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中`control_address`类型表示以地址作为接收方式）
+例如转账一笔资产的交易示例如下：
+（该交易表示通过账户的方式转账`100000000`neu的BTM资产到地址`sm1qxe4jwhkekgnxkezu7xutu5gqnnpmyc8ppq98me`中, 其中`control_address`类型表示以地址作为接收方式）
 
 ```javascript
 {
@@ -314,7 +315,7 @@ type AssetAmount struct {
 
 ---
 
-<a name="control_program"></a>
+
 #### control_program
 
 `controlProgramAction`结构体源代码如下：
@@ -333,8 +334,8 @@ type AssetAmount struct {
 
 结构字段说明如下：
 
-* `Program` 表示接收资产的合约脚本，可以根据 `create-account-receiver` API接口创建接收`program`（返回结果的 `program` 和 `address` 是一一对应的）
-* `AssetAmount` 表示接收的资产ID和对应的资产数目
+- `Program` 表示接收资产的合约脚本，可以根据 `create-account-receiver` API接口创建接收`program`（返回结果的 `program` 和 `address` 是一一对应的）
+- `AssetAmount` 表示接收的资产ID和对应的资产数目
 
 `controlProgramAction`的`json`格式为：
 
@@ -347,7 +348,8 @@ type AssetAmount struct {
 }
 ```
 
-例如转账一笔资产的交易示例如下：<br />（该交易表示通过账户的方式转账`100000000`neu的BTM资产到接收`program`（跟`address`是一一对应的）`0014a3f9111f3b0ee96cbd119a3ea5c60058f506fb19`中, 其中`control_program`类型表示以`program`作为接收方式）
+例如转账一笔资产的交易示例如下：
+（该交易表示通过账户的方式转账`100000000`neu的BTM资产到接收`program`（跟`address`是一一对应的）`0014a3f9111f3b0ee96cbd119a3ea5c60058f506fb19`中, 其中`control_program`类型表示以`program`作为接收方式）
 
 ```javascript
 {
@@ -373,7 +375,7 @@ type AssetAmount struct {
 
 ---
 
-<a name="retire"></a>
+
 #### retire
 
 `retireAction`结构体源代码如下：
@@ -391,7 +393,7 @@ type AssetAmount struct {
 
 结构字段说明如下：
 
-* `AssetAmount` 表示销毁的资产ID和对应的资产数目
+- `AssetAmount` 表示销毁的资产ID和对应的资产数目
 
 `retireAction`的`json`格式为：
 
@@ -403,7 +405,8 @@ type AssetAmount struct {
 }
 ```
 
-例如销毁一笔资产的交易示例如下：<br />（该交易表示通过账户的方式将`100000000`neu的BTM资产销毁, `retire`表示销毁指定数量的资产）
+例如销毁一笔资产的交易示例如下：
+（该交易表示通过账户的方式将`100000000`neu的BTM资产销毁, `retire`表示销毁指定数量的资产）
 
 ```javascript
 {
@@ -427,6 +430,7 @@ type AssetAmount struct {
 ```
 
 ---
+
 
 `build-transaction`的输入构造完成之后，便可以通过http的调用方式进行发送交易，构建交易请求成功之后返回的json结果如下：
 
@@ -504,31 +508,30 @@ type Template struct {
 
 结构字段说明如下：
 
-* `Transaction` 交易相关信息，该字段包含`TxData`和`bc.Tx`两个部分：
-  * `TxData` 表示给用户展示的交易数据部分，该部分对用户可见
-    * `Version` 交易版本
-    * `SerializedSize` 交易序列化之后的size
-    * `TimeRange` 交易提交上链的最大时间戳（区块高度）（主链区块高度到达该时间戳（区块高度）之后，如果交易没有被提交上链，该交易便会失效）
-    * `Inputs` 交易输入
-    * `Outputs` 交易输出
-  * `bc.Tx` 表示系统中处理交易用到的转换结构，该部分对用户不可见，故不做详细描述
-* `SigningInstructions` 交易的签名信息
-  * `Position` 对`input action`签名的位置
-  * `WitnessComponents` 对`input action`签名需要的数据信息，其中build交易的`signatures`为`null`，表示没有签名; 如果交易签名成功，则该字段会存在签名信息。该字段是一个interface接口，主要包含3种不同的类型：
-    * `SignatureWitness` 对交易模板`Template`中交易`input action`位置的合约program进行哈希，然后对hash值进行签名
-      * `signatures` （数组类型）交易的签名，`sign-transaction`执行完成之后才会有值存在
-      * `keys` （数组类型）包含主公钥`xpub`和派生路径`derivation_path`，通过它们可以在签名阶段找到对应的派生私钥`child_xprv`，然后使用派生私钥进行签名
-      * `quorum` 账户`key` 的个数，必须和上面的`keys`的长度相等。如果`quorum` 等于1，则表示单签账户，否则为多签账户
-      * `program` 签名的数据部分，`program`的hash值作为签名数据。如果`program`为空，则会根据当前交易ID和对应action位置的InputID两部分生成一个hash，然后把它们作为指令数据自动构造一个`program`
-    * `RawTxSigWitness` 对交易模板`Template`的交易ID和对应`input action`位置的InputID(该字段位于bc.Tx中)进行哈希，然后对hash值进行签名
-      * `signatures` （数组类型）交易的签名，`sign-transaction`执行完成之后才会有值存在
-      * `keys` （数组类型）包含主公钥`xpub`和派生路径`derivation_path`，通过它们可以在签名阶段找到对应的派生私钥`child_xprv`，然后使用派生私钥进行签名
-      * `quorum` 账户`key`的个数，必须和上面的`keys` 的长度相等。如果`quorum` 等于1，则表示单签账户，否则为多签账户
-    * `DataWitness` 该类型无需签名，验证合约program的附加数据
-* `AllowAdditional` 是否允许交易的附加数据，如果为`true`，则交易的附加数据会添加到交易中，但是不会影响交易的执行的`program`脚本，对签名结果不会造成影响; 如果为`false`，则整个交易作为一个整体进行签名，任何数据的改变将影响整个交易的签名
+- `Transaction` 交易相关信息，该字段包含`TxData`和`bc.Tx`两个部分：
+  - `TxData` 表示给用户展示的交易数据部分，该部分对用户可见
+    - `Version` 交易版本
+    - `SerializedSize` 交易序列化之后的size
+    - `TimeRange` 交易提交上链的最大时间戳（区块高度）（主链区块高度到达该时间戳（区块高度）之后，如果交易没有被提交上链，该交易便会失效）
+    - `Inputs` 交易输入
+    - `Outputs` 交易输出
+  - `bc.Tx` 表示系统中处理交易用到的转换结构，该部分对用户不可见，故不做详细描述
+- `SigningInstructions` 交易的签名信息
+  - `Position` 对`input action`签名的位置
+  - `WitnessComponents` 对`input action`签名需要的数据信息，其中build交易的`signatures`为`null`，表示没有签名; 如果交易签名成功，则该字段会存在签名信息。该字段是一个interface接口，主要包含3种不同的类型：
+    - `SignatureWitness` 对交易模板`Template`中交易`input action`位置的合约program进行哈希，然后对hash值进行签名
+      - `signatures` （数组类型）交易的签名，`sign-transaction`执行完成之后才会有值存在
+      - `keys` （数组类型）包含主公钥`xpub`和派生路径`derivation_path`，通过它们可以在签名阶段找到对应的派生私钥`child_xprv`，然后使用派生私钥进行签名
+      - `quorum` 账户`key` 的个数，必须和上面的`keys`的长度相等。如果`quorum` 等于1，则表示单签账户，否则为多签账户
+      - `program` 签名的数据部分，`program`的hash值作为签名数据。如果`program`为空，则会根据当前交易ID和对应action位置的InputID两部分生成一个hash，然后把它们作为指令数据自动构造一个`program`
+    - `RawTxSigWitness` 对交易模板`Template`的交易ID和对应`input action`位置的InputID(该字段位于bc.Tx中)进行哈希，然后对hash值进行签名
+      - `signatures` （数组类型）交易的签名，`sign-transaction`执行完成之后才会有值存在
+      - `keys` （数组类型）包含主公钥`xpub`和派生路径`derivation_path`，通过它们可以在签名阶段找到对应的派生私钥`child_xprv`，然后使用派生私钥进行签名
+      - `quorum` 账户`key`的个数，必须和上面的`keys` 的长度相等。如果`quorum` 等于1，则表示单签账户，否则为多签账户
+    - `DataWitness` 该类型无需签名，验证合约program的附加数据
+- `AllowAdditional` 是否允许交易的附加数据，如果为`true`，则交易的附加数据会添加到交易中，但是不会影响交易的执行的`program`脚本，对签名结果不会造成影响; 如果为`false`，则整个交易作为一个整体进行签名，任何数据的改变将影响整个交易的签名
 
 
-<a name="3b2118bc"></a>
 ## 估算手续费
 
 估算手续费接口`estimate-transaction-gas`是对`build-transaction`的结果进行手续费的预估，估算的结果需要重新加到`build-transaction`的结果中，然后对交易进行签名和提交。其主要流程如下：
@@ -642,12 +645,11 @@ type EstimateTxGasResp struct {
 
 结构字段说明如下：
 
-* `TotalNeu` 预估的总手续费（单位为neu），该值直接加到build-transaction的BTM资产输入action中即可
-* `StorageNeu` 存储交易的手续费
-* `VMNeu` 运行虚拟机的手续费
+- `TotalNeu` 预估的总手续费（单位为neu），该值直接加到build-transaction的BTM资产输入action中即可
+- `StorageNeu` 存储交易的手续费
+- `VMNeu` 运行虚拟机的手续费
 
 
-<a name="d76875ef"></a>
 ## 签名交易
 
 API接口 sign-transaction，代码[api/hsm.go#L53](https://github.com/Bytom/bytom/blob/master/api/hsm.go#L53)
@@ -723,8 +725,8 @@ type SignRequest struct {    //function pseudohsmSignTemplates request
 
 结构字段说明如下：
 
-* `Password` 签名的密码，根据密码可以从节点服务器上解析出用户的私钥，然后用私钥对交易进行签名
-* `Txs` 交易模板，build-transaction的返回结果，结构类型为 `txbuilder.Template`，相关字段的说明见build-transaction的结果描述
+- `Password` 签名的密码，根据密码可以从节点服务器上解析出用户的私钥，然后用私钥对交易进行签名
+- `Txs` 交易模板，build-transaction的返回结果，结构类型为 `txbuilder.Template`，相关字段的说明见build-transaction的结果描述
 
 签名交易`sign-transaction`请求成功之后返回的json结果如下：
 
@@ -801,11 +803,10 @@ type signResp struct {
 
 结构字段说明如下：
 
-* `Tx` 签名之后的交易模板`txbuilder.Template`，如果签名成功则`signatures`会由null变成签名的值，而`raw_transaction`的长度会变长，是因为`bc.Tx`部分添加了验证签名的参数信息
-* `SignComplete` 签名是否完成标志，如果为`true`表示签名完成，否则为`false`表示签名未完成，单签的话一般可能为签名密码错误; 而多签的话一般为还需要其他签名。签名失败只需将签名的交易数据用正确的密码重新签名即可，无需再次`build-transaction`构建交易
+- `Tx` 签名之后的交易模板`txbuilder.Template`，如果签名成功则`signatures`会由null变成签名的值，而`raw_transaction`的长度会变长，是因为`bc.Tx`部分添加了验证签名的参数信息
+- `SignComplete` 签名是否完成标志，如果为`true`表示签名完成，否则为`false`表示签名未完成，单签的话一般可能为签名密码错误; 而多签的话一般为还需要其他签名。签名失败只需将签名的交易数据用正确的密码重新签名即可，无需再次`build-transaction`构建交易
 
 
-<a name="fc0881cd"></a>
 ## 提交交易
 
 API接口 submit-transaction，代码[api/transact.go#L135](https://github.com/Bytom/bytom/blob/master/api/transact.go#L135)
@@ -828,7 +829,7 @@ type SubmitRequest struct {    //function submit request
 
 结构字段说明如下：
 
-* `Tx` 签名完成之后的交易信息。这里需要注意该字段中的`raw_transaction`不是签名交易`sign-transaction`的全部返回结果，而是签名交易返回结果中`transaction`中的`raw_transaction`字段。
+- `Tx` 签名完成之后的交易信息。这里需要注意该字段中的`raw_transaction`不是签名交易`sign-transaction`的全部返回结果，而是签名交易返回结果中`transaction`中的`raw_transaction`字段。
 
 `submit-transaction`请求成功之后返回的json结果如下：
 
@@ -848,5 +849,5 @@ type submitTxResp struct {
 
 结构字段说明如下：
 
-* `TxID` 交易ID，当交易被提交到交易池之后会显示该信息，否则表示交易失败
+- `TxID` 交易ID，当交易被提交到交易池之后会显示该信息，否则表示交易失败
 

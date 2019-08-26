@@ -1,6 +1,5 @@
 # 智能合约模板
 
-<a name="1f91e7aa"></a>
 ## 单签验证合约
 
 `LockWithPublicKey`源代码如下：
@@ -14,10 +13,13 @@ contract LockWithPublicKey(publicKey: PublicKey) locks valueAmount of valueAsset
 }
 ```
 
-* 合约编译之后的字节码为：`ae7cac`
-* 合约对应的指令码为：`TXSIGHASH SWAP CHECKSIG`<br />假如合约参数如下：
-* `publicKey` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78<br />添加合约参数后的合约程序如下：`20e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e787403ae7cac00c0`<br />对应的解锁合约的参数如下：
-* `sig` :
+- 合约编译之后的字节码为：`ae7cac`
+- 合约对应的指令码为：`TXSIGHASH SWAP CHECKSIG`
+假如合约参数如下：
+- `publicKey` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
+添加合约参数后的合约程序如下：`20e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e787403ae7cac00c0`
+对应的解锁合约的参数如下：
+- `sig` :
 
 ```javascript
 {
@@ -72,7 +74,6 @@ contract LockWithPublicKey(publicKey: PublicKey) locks valueAmount of valueAsset
 }
 ```
 
-<a name="88474636"></a>
 ## 多签验证合约
 
 `LockWithMultiSig`源代码如下：
@@ -88,12 +89,15 @@ contract LockWithMultiSig(publicKey1: PublicKey,
 }
 ```
 
-* 合约编译之后的字节码为：`537a547a526bae71557a536c7cad`
-* 合约对应的指令码为：`3 ROLL 4 ROLL 2 TOALTSTACK TXSIGHASH 2ROT 5 ROLL 3 FROMALTSTACK SWAP CHECKMULTISIG`<br />假如合约参数如下：
-* `publicKey1` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
-* `publicKey2` : 1f51c25decab2168835f1292a5432707ed94b90be8f5ec0d62aca1c6daa1ec55
-* `publicKey3` : e386c85178418fc72f8182111aa818ac736f3f7f1eee75ccdd7e5a057abe8fe0<br />添加合约参数后的合约程序如下：（注意添加合约参数的顺序与虚拟机入栈的顺序是相反的）`20e386c85178418fc72f8182111aa818ac736f3f7f1eee75ccdd7e5a057abe8fe0201f51c25decab2168835f1292a5432707ed94b90be8f5ec0d62aca1c6daa1ec5520e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78740e537a547a526bae71557a536c7cad00c0`<br />对应的解锁合约的参数如下：（注意解锁合约参数的顺序，否则会执行VM失败）
-* `sig1` :
+- 合约编译之后的字节码为：`537a547a526bae71557a536c7cad`
+- 合约对应的指令码为：`3 ROLL 4 ROLL 2 TOALTSTACK TXSIGHASH 2ROT 5 ROLL 3 FROMALTSTACK SWAP CHECKMULTISIG`
+假如合约参数如下：
+- `publicKey1` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
+- `publicKey2` : 1f51c25decab2168835f1292a5432707ed94b90be8f5ec0d62aca1c6daa1ec55
+- `publicKey3` : e386c85178418fc72f8182111aa818ac736f3f7f1eee75ccdd7e5a057abe8fe0
+添加合约参数后的合约程序如下：（注意添加合约参数的顺序与虚拟机入栈的顺序是相反的）`20e386c85178418fc72f8182111aa818ac736f3f7f1eee75ccdd7e5a057abe8fe0201f51c25decab2168835f1292a5432707ed94b90be8f5ec0d62aca1c6daa1ec5520e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78740e537a547a526bae71557a536c7cad00c0`
+对应的解锁合约的参数如下：（注意解锁合约参数的顺序，否则会执行VM失败）
+- `sig1` :
 
 ```javascript
 {
@@ -108,7 +112,7 @@ contract LockWithMultiSig(publicKey1: PublicKey,
 }
 ```
 
-* `sig2` :
+- `sig2` :
 
 ```javascript
 {
@@ -173,7 +177,6 @@ contract LockWithMultiSig(publicKey1: PublicKey,
 }
 ```
 
-<a name="3c3f6d75"></a>
 ## pubkey哈希校验和单签验证合约
 
 `LockWithPublicKeyHash`源代码如下：
@@ -188,10 +191,13 @@ contract LockWithPublicKeyHash(pubKeyHash: Hash) locks valueAmount of valueAsset
 }
 ```
 
-* 合约编译之后的字节码为：`5279aa887cae7cac`
-* 合约对应的指令码为：`2 PICK SHA3 EQUALVERIFY SWAP TXSIGHASH SWAP CHECKSIG`<br />假如合约参数如下：
-* `pubKeyHash` : b3f37834dfa74174e9f0d208302e77c637cfe66c3e37fe1e1574e416b3516e89<br />添加合约参数后的合约程序如下：`20b3f37834dfa74174e9f0d208302e77c637cfe66c3e37fe1e1574e416b3516e8974085279aa887cae7cac00c0`<br />对应的解锁合约的参数如下：（注意解锁合约参数的顺序，否则会执行VM失败）
-* `pubKey` :
+- 合约编译之后的字节码为：`5279aa887cae7cac`
+- 合约对应的指令码为：`2 PICK SHA3 EQUALVERIFY SWAP TXSIGHASH SWAP CHECKSIG`
+假如合约参数如下：
+- `pubKeyHash` : b3f37834dfa74174e9f0d208302e77c637cfe66c3e37fe1e1574e416b3516e89
+添加合约参数后的合约程序如下：`20b3f37834dfa74174e9f0d208302e77c637cfe66c3e37fe1e1574e416b3516e8974085279aa887cae7cac00c0`
+对应的解锁合约的参数如下：（注意解锁合约参数的顺序，否则会执行VM失败）
+- `pubKey` :
 
 ```javascript
 {
@@ -202,7 +208,7 @@ contract LockWithPublicKeyHash(pubKeyHash: Hash) locks valueAmount of valueAsset
 }
 ```
 
-* `sig` :
+- `sig` :
 
 ```javascript
 {
@@ -263,7 +269,6 @@ contract LockWithPublicKeyHash(pubKeyHash: Hash) locks valueAmount of valueAsset
 }
 ```
 
-<a name="d039bc25"></a>
 ## 字符串哈希校验合约
 
 `RevealPreimage`源代码如下：
@@ -277,10 +282,13 @@ contract RevealPreimage(hash: Hash) locks valueAmount of valueAsset {
 }
 ```
 
-* 合约编译之后的字节码为：`7caa87`
-* 合约对应的指令码为：`SWAP SHA3 EQUAL`<br />假如合约参数如下：
-* `hash` : 22e829107201c6b975b1dc60b928117916285ceb4aa5c6d7b4b8cc48038083e0<br />添加合约参数后的合约程序如下：`2022e829107201c6b975b1dc60b928117916285ceb4aa5c6d7b4b8cc48038083e074037caa8700c0`<br />对应的解锁合约的参数如下：（注意解锁合约参数的顺序，否则会执行VM失败）
-* `string` :
+- 合约编译之后的字节码为：`7caa87`
+- 合约对应的指令码为：`SWAP SHA3 EQUAL`
+假如合约参数如下：
+- `hash` : 22e829107201c6b975b1dc60b928117916285ceb4aa5c6d7b4b8cc48038083e0
+添加合约参数后的合约程序如下：`2022e829107201c6b975b1dc60b928117916285ceb4aa5c6d7b4b8cc48038083e074037caa8700c0`
+对应的解锁合约的参数如下：（注意解锁合约参数的顺序，否则会执行VM失败）
+- `string` :
 
 ```javascript
 {
@@ -338,7 +346,6 @@ contract RevealPreimage(hash: Hash) locks valueAmount of valueAsset {
 }
 ```
 
-<a name="7e685474"></a>
 ## 币币交易合约
 
 `TradeOffer`源代码如下：
@@ -359,14 +366,17 @@ contract TradeOffer(assetRequested: Asset,
 }
 ```
 
-* 合约编译之后的字节码为：`547a6413000000007b7b51547ac1631a000000547a547aae7cac`
-* 合约对应的指令码为：`4 ROLL JUMPIF:$cancel $trade FALSE ROT ROT 1 4 ROLL CHECKOUTPUT JUMP:$_end $cancel 4 ROLL 4 ROLL TXSIGHASH SWAP CHECKSIG $_end`<br />假如合约参数如下：
-* `assetRequested` : 1e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22
-* `amountRequested` : 99
-* `seller` : 0014c5a5b563c4623018557fb299259542b8739f6bc2
-* `cancelKey` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78<br />添加合约参数后的合约程序如下：`20e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78160014c5a5b563c4623018557fb299259542b8739f6bc20163201e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22741a547a6413000000007b7b51547ac1631a000000547a547aae7cac00c0`<br />对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
-* `clause trade` 解锁参数 :
-  * `clause_selector` :
+- 合约编译之后的字节码为：`547a6413000000007b7b51547ac1631a000000547a547aae7cac`
+- 合约对应的指令码为：`4 ROLL JUMPIF:$cancel $trade FALSE ROT ROT 1 4 ROLL CHECKOUTPUT JUMP:$_end $cancel 4 ROLL 4 ROLL TXSIGHASH SWAP CHECKSIG $_end`
+假如合约参数如下：
+- `assetRequested` : 1e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22
+- `amountRequested` : 99
+- `seller` : 0014c5a5b563c4623018557fb299259542b8739f6bc2
+- `cancelKey` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
+添加合约参数后的合约程序如下：`20e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78160014c5a5b563c4623018557fb299259542b8739f6bc20163201e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22741a547a6413000000007b7b51547ac1631a000000547a547aae7cac00c0`
+对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
+- `clause trade` 解锁参数 :
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -384,7 +394,8 @@ contract TradeOffer(assetRequested: Asset,
   }
 }
 ```
-  * `lock`语句的交易`action`构造 : `lock amountRequested of assetRequested with seller`语句表示解锁账户需要支付对应的`amountRequested`数量的`assetRequested`资产到对应的接收对象`seller`，注意上述参数必须严格匹配，否则合约执行将失败.
+
+  - `lock`语句的交易`action`构造 : `lock amountRequested of assetRequested with seller`语句表示解锁账户需要支付对应的`amountRequested`数量的`assetRequested`资产到对应的接收对象`seller`，注意上述参数必须严格匹配，否则合约执行将失败.
 ```javascript
 {
   "amount": 99,
@@ -446,8 +457,9 @@ contract TradeOffer(assetRequested: Asset,
   "time_range": 1521625823
 }
 ```
-* `clause cancel` 解锁参数 :（注意参数顺序）
-  * `sellerSig` :
+
+- `clause cancel` 解锁参数 :（注意参数顺序）
+  - `sellerSig` :
 ```javascript
 {
   "type": "raw_tx_signature",
@@ -460,7 +472,8 @@ contract TradeOffer(assetRequested: Asset,
   }
 }
 ```
-  * `clause_selector` :
+
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -524,7 +537,6 @@ contract TradeOffer(assetRequested: Asset,
 }
 ```
 
-<a name="a8e63c73"></a>
 ## 第三方信任机构托管合约
 
 `Escrow`源代码如下：
@@ -544,13 +556,16 @@ contract Escrow(agent: PublicKey,
 }
 ```
 
-* 合约编译之后的字节码为：`537a641a000000537a7cae7cac6900c3c251557ac16328000000537a7cae7cac6900c3c251547ac1`
-* 合约对应的指令码为：`3 ROLL JUMPIF:$reject $approve 3 ROLL SWAP TXSIGHASH SWAP CHECKSIG VERIFY FALSE AMOUNT ASSET 1 5 ROLL CHECKOUTPUT JUMP:$_end $reject 3 ROLL SWAP TXSIGHASH SWAP CHECKSIG VERIFY FALSE AMOUNT ASSET 1 4 ROLL CHECKOUTPUT $_end`<br />假如合约参数如下：
-* `agent` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
-* `sender` : 0014905df16bc248790676744bab063a1ae810803bd7
-* `recipient` : 0014929ec7d92f89d74716ba9591eaea588aa1867f75<br />添加合约参数后的合约程序如下：`160014929ec7d92f89d74716ba9591eaea588aa1867f75160014905df16bc248790676744bab063a1ae810803bd720e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e787428537a641a000000537a7cae7cac6900c3c251557ac16328000000537a7cae7cac6900c3c251547ac100c0`<br />对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
-* `clause approve` 解锁参数 :
-  * `sellerSig` :
+- 合约编译之后的字节码为：`537a641a000000537a7cae7cac6900c3c251557ac16328000000537a7cae7cac6900c3c251547ac1`
+- 合约对应的指令码为：`3 ROLL JUMPIF:$reject $approve 3 ROLL SWAP TXSIGHASH SWAP CHECKSIG VERIFY FALSE AMOUNT ASSET 1 5 ROLL CHECKOUTPUT JUMP:$_end $reject 3 ROLL SWAP TXSIGHASH SWAP CHECKSIG VERIFY FALSE AMOUNT ASSET 1 4 ROLL CHECKOUTPUT $_end`
+假如合约参数如下：
+- `agent` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
+- `sender` : 0014905df16bc248790676744bab063a1ae810803bd7
+- `recipient` : 0014929ec7d92f89d74716ba9591eaea588aa1867f75
+添加合约参数后的合约程序如下：`160014929ec7d92f89d74716ba9591eaea588aa1867f75160014905df16bc248790676744bab063a1ae810803bd720e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e787428537a641a000000537a7cae7cac6900c3c251557ac16328000000537a7cae7cac6900c3c251547ac100c0`
+对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
+- `clause approve` 解锁参数 :
+  - `sellerSig` :
 ```javascript
 {
   "type": "raw_tx_signature",
@@ -563,7 +578,8 @@ contract Escrow(agent: PublicKey,
   }
 }
 ```
-  * `clause_selector` :
+
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -626,7 +642,8 @@ contract Escrow(agent: PublicKey,
   "time_range": 1521625823
 }
 ```
-* `clause reject` 解锁参数 :
+
+- `clause reject` 解锁参数 :
 ```javascript
 {
   "type": "raw_tx_signature",
@@ -639,7 +656,8 @@ contract Escrow(agent: PublicKey,
   }
 }
 ```
-  * `clause_selector` :
+
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -703,7 +721,6 @@ contract Escrow(agent: PublicKey,
 }
 ```
 
-<a name="bed20857"></a>
 ## 抵押贷款合约
 
 `LoanCollateral`源代码如下：
@@ -725,15 +742,18 @@ contract LoanCollateral(assetLoaned: Asset,
 }
 ```
 
-* 合约编译之后的字节码为：`557a641b000000007b7b51557ac16951c3c251557ac163260000007bcd9f6900c3c251567ac1`
-* 合约对应的指令码为：`5 ROLL JUMPIF:$default $repay FALSE ROT ROT 1 5 ROLL CHECKOUTPUT VERIFY 1 AMOUNT ASSET 1 5 ROLL CHECKOUTPUT JUMP:$_end $default ROT BLOCKHEIGHT LESSTHAN VERIFY FALSE AMOUNT ASSET 1 6 ROLL CHECKOUTPUT $_end`<br />假如合约参数如下：
-* `assetLoaned` : 1e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22
-* `amountLoaned` : 88
-* `blockHeight` : 1920
-* `lender` : 0014905df16bc248790676744bab063a1ae810803bd7
-* `borrower` : 0014929ec7d92f89d74716ba9591eaea588aa1867f75<br />添加合约参数后的合约程序如下：`160014929ec7d92f89d74716ba9591eaea588aa1867f75160014905df16bc248790676744bab063a1ae810803bd70280070158201e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c227426557a641b000000007b7b51557ac16951c3c251557ac163260000007bcd9f6900c3c251567ac100c0`<br />对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
-* `clause repay` 解锁参数 :
-  * `clause_selector` :
+- 合约编译之后的字节码为：`557a641b000000007b7b51557ac16951c3c251557ac163260000007bcd9f6900c3c251567ac1`
+- 合约对应的指令码为：`5 ROLL JUMPIF:$default $repay FALSE ROT ROT 1 5 ROLL CHECKOUTPUT VERIFY 1 AMOUNT ASSET 1 5 ROLL CHECKOUTPUT JUMP:$_end $default ROT BLOCKHEIGHT LESSTHAN VERIFY FALSE AMOUNT ASSET 1 6 ROLL CHECKOUTPUT $_end`
+假如合约参数如下：
+- `assetLoaned` : 1e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22
+- `amountLoaned` : 88
+- `blockHeight` : 1920
+- `lender` : 0014905df16bc248790676744bab063a1ae810803bd7
+- `borrower` : 0014929ec7d92f89d74716ba9591eaea588aa1867f75
+添加合约参数后的合约程序如下：`160014929ec7d92f89d74716ba9591eaea588aa1867f75160014905df16bc248790676744bab063a1ae810803bd70280070158201e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c227426557a641b000000007b7b51557ac16951c3c251557ac163260000007bcd9f6900c3c251567ac100c0`
+对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
+- `clause repay` 解锁参数 :
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -751,7 +771,8 @@ contract LoanCollateral(assetLoaned: Asset,
   }
 }
 ```
-  * 连续两个`lock`语句的交易`action`构造 : `lock amountLoaned of assetLoaned with lender`语句表示解锁账户需要支付对应的`amountLoaned`数量的`assetLoaned`资产到对应的接收对象`lender`; `lock valueAmount of valueAsset with borrower`语句表示将合约锁定的`valueAmount`数量的`valueAsset`资产到对应的接收对象`borrower`。注意上述参数必须严格匹配，否则合约执行将失败.
+
+  - 连续两个`lock`语句的交易`action`构造 : `lock amountLoaned of assetLoaned with lender`语句表示解锁账户需要支付对应的`amountLoaned`数量的`assetLoaned`资产到对应的接收对象`lender`; `lock valueAmount of valueAsset with borrower`语句表示将合约锁定的`valueAmount`数量的`valueAsset`资产到对应的接收对象`borrower`。注意上述参数必须严格匹配，否则合约执行将失败.
 ```javascript
 {
   "amount": 88,
@@ -819,8 +840,9 @@ contract LoanCollateral(assetLoaned: Asset,
   "time_range": 1521625823
 }
 ```
-* `clause default` 解锁参数 :（注意参数顺序）
-  * `clause_selector` :
+
+- `clause default` 解锁参数 :（注意参数顺序）
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -874,7 +896,6 @@ contract LoanCollateral(assetLoaned: Asset,
 }
 ```
 
-<a name="fd8c352e"></a>
 ## 看涨期权合约
 
 `CallOption`源代码如下：
@@ -898,15 +919,18 @@ contract CallOption(strikePrice: Amount,
 }
 ```
 
-* 合约编译之后的字节码为：`557a6420000000547acda069547a547aae7cac69007c7b51547ac1632c000000547acd9f6900c3c251567ac1`
-* 合约对应的指令码为：`5 ROLL JUMPIF:$expire $exercise FALSE ROT ROT 1 5 ROLL CHECKOUTPUT VERIFY 1 AMOUNT ASSET 1 5 ROLL CHECKOUTPUT JUMP:$_end $expire ROT BLOCKHEIGHT LESSTHAN VERIFY FALSE AMOUNT ASSET 1 6 ROLL CHECKOUTPUT $_end`<br />假如合约参数如下：
-* `strikePrice` : 199
-* `strikeCurrency` : 1e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22
-* `seller` : 0014905df16bc248790676744bab063a1ae810803bd7
-* `buyerKey` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
-* `blockHeight` : 3096<br />添加合约参数后的合约程序如下：`02180c20e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78160014905df16bc248790676744bab063a1ae810803bd7201e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c2201c7742c557a6420000000547acda069547a547aae7cac69007c7b51547ac1632c000000547acd9f6900c3c251567ac100c0`<br />对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
-* `clause exercise` 解锁参数 :
-  * `buyerSig` :
+- 合约编译之后的字节码为：`557a6420000000547acda069547a547aae7cac69007c7b51547ac1632c000000547acd9f6900c3c251567ac1`
+- 合约对应的指令码为：`5 ROLL JUMPIF:$expire $exercise FALSE ROT ROT 1 5 ROLL CHECKOUTPUT VERIFY 1 AMOUNT ASSET 1 5 ROLL CHECKOUTPUT JUMP:$_end $expire ROT BLOCKHEIGHT LESSTHAN VERIFY FALSE AMOUNT ASSET 1 6 ROLL CHECKOUTPUT $_end`
+假如合约参数如下：
+- `strikePrice` : 199
+- `strikeCurrency` : 1e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c22
+- `seller` : 0014905df16bc248790676744bab063a1ae810803bd7
+- `buyerKey` : e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78
+- `blockHeight` : 3096
+添加合约参数后的合约程序如下：`02180c20e9108d3ca8049800727f6a3505b3a2710dc579405dde03c250f16d9a7e1e6e78160014905df16bc248790676744bab063a1ae810803bd7201e074b22ed7ae8470c7ba5d8a7bc95e83431a753a17465e8673af68a82500c2201c7742c557a6420000000547acda069547a547aae7cac69007c7b51547ac1632c000000547acd9f6900c3c251567ac100c0`
+对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
+- `clause exercise` 解锁参数 :
+  - `buyerSig` :
 ```javascript
 {
   "type": "raw_tx_signature",
@@ -919,7 +943,8 @@ contract CallOption(strikePrice: Amount,
   }
 }
 ```
-  * `clause_selector` :
+
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -937,7 +962,8 @@ contract CallOption(strikePrice: Amount,
   }
 }
 ```
-  * `lock`语句的交易`action`构造 : `lock strikePrice of strikeCurrency with seller`语句表示解锁账户需要支付对应的`strikePrice`数量的`strikeCurrency`资产到对应的接收对象`seller`，注意上述参数必须严格匹配，否则合约执行将失败.
+
+  - `lock`语句的交易`action`构造 : `lock strikePrice of strikeCurrency with seller`语句表示解锁账户需要支付对应的`strikePrice`数量的`strikeCurrency`资产到对应的接收对象`seller`，注意上述参数必须严格匹配，否则合约执行将失败.
 ```javascript
 {
   "amount": 199,
@@ -1009,8 +1035,9 @@ contract CallOption(strikePrice: Amount,
   "time_range": 1521625823
 }
 ```
-* `clause expire` 解锁参数 :
-  * `clause_selector` :
+
+- `clause expire` 解锁参数 :
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -1064,7 +1091,6 @@ contract CallOption(strikePrice: Amount,
 }
 ```
 
-<a name="607fb642"></a>
 ## 可修改价格的币币交易合约
 
 `PriceChanger`源代码如下：
@@ -1082,14 +1108,18 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
 }
 ```
 
-* 合约编译之后的字节码为：`557a6432000000557a5479ae7cac6900c3c25100597a89587a89587a89587a89557a890274787e008901c07ec1633a000000007b537a51567ac1`
-* 合约对应的指令码为：`5 05 ROLL JUMPIF:$redeem $changePrice 5 05 ROLL 4 04 PICK TXSIGHASH SWAP CHECKSIG VERIFY FALSE AMOUNT ASSET 1 01 FALSE 9 09 ROLL CATPUSHDATA 8 08 ROLL CATPUSHDATA 8 08 ROLL CATPUSHDATA 8 08 ROLL CATPUSHDATA 5 05 ROLL CATPUSHDATA DATA_2 7478 CAT FALSE CATPUSHDATA DATA_1 c0 CAT CHECKOUTPUT JUMP:$_end $redeem FALSE ROT 3 03 ROLL 1 01 6 06 ROLL CHECKOUTPUT $_end`<br />假如合约参数如下：
-* `askAmount` : 20000
-* `askAsset` : c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
-* `sellerKey` : 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
-* `sellerProg` : 0014dedfd406c591aa221a047a260107f877da92fec5<br />添加合约参数后的合约程序如下：<br />`160014dedfd406c591aa221a047a260107f877da92fec520055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf20c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee02204e3a557a6432000000557a5479ae7cac6900c3c25100597a89587a89587a89587a89557a890274787e008901c07ec1633a000000007b537a51567ac1747800c0`<br />对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
-* `clause changePrice` 解锁参数 :
-  * `newAmount` :
+- 合约编译之后的字节码为：`557a6432000000557a5479ae7cac6900c3c25100597a89587a89587a89587a89557a890274787e008901c07ec1633a000000007b537a51567ac1`
+- 合约对应的指令码为：`5 05 ROLL JUMPIF:$redeem $changePrice 5 05 ROLL 4 04 PICK TXSIGHASH SWAP CHECKSIG VERIFY FALSE AMOUNT ASSET 1 01 FALSE 9 09 ROLL CATPUSHDATA 8 08 ROLL CATPUSHDATA 8 08 ROLL CATPUSHDATA 8 08 ROLL CATPUSHDATA 5 05 ROLL CATPUSHDATA DATA_2 7478 CAT FALSE CATPUSHDATA DATA_1 c0 CAT CHECKOUTPUT JUMP:$_end $redeem FALSE ROT 3 03 ROLL 1 01 6 06 ROLL CHECKOUTPUT $_end`
+假如合约参数如下：
+- `askAmount` : 20000
+- `askAsset` : c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+- `sellerKey` : 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+- `sellerProg` : 0014dedfd406c591aa221a047a260107f877da92fec5
+添加合约参数后的合约程序如下：
+`160014dedfd406c591aa221a047a260107f877da92fec520055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf20c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee02204e3a557a6432000000557a5479ae7cac6900c3c25100597a89587a89587a89587a89557a890274787e008901c07ec1633a000000007b537a51567ac1747800c0`
+对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
+- `clause changePrice` 解锁参数 :
+  - `newAmount` :
 ```javascript
 {
   "type": "integer",
@@ -1098,7 +1128,8 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
   }
 }
 ```
-  * `newAsset` :
+
+  - `newAsset` :
 ```javascript
 {
   "type": "data",
@@ -1107,7 +1138,8 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
   }
 }
 ```
-  * `sig` :
+
+  - `sig` :
 ```javascript
 {
   "type": "raw_tx_signature",
@@ -1120,7 +1152,8 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
   }
 }
 ```
-  * `clause_selector` :
+
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -1130,10 +1163,16 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
 }
 ```
 合约参数构造完成之后，需要对合约`lock`语句中接收对象进行指定。该合约中的接收对象是一个新的合约程序，`lock valueAmount of valueAsset with PriceChanger(newAmount, newAsset, sellerKey, sellerProg)`语句表示合约锁定的资产被重新锁定到合约对象中，因此需要构造实例化的合约程序作为接收对象。接收合约的参数如下：
-  * `newAmount` : 10000
-  * `newAsset` : 3addca837514d599c509aed802c0b7671838b363a298cbcb0acb06bc24076cf4
-  * `sellerKey` : 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
-  * `sellerProg` : 0014dedfd406c591aa221a047a260107f877da92fec5<br /> <br />添加合约参数后的实例化合约程序如下：<br />`160014dedfd406c591aa221a047a260107f877da92fec520055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf203addca837514d599c509aed802c0b7671838b363a298cbcb0acb06bc24076cf40210273a557a6432000000557a5479ae7cac6900c3c25100597a89587a89587a89587a89557a890274787e008901c07ec1633a000000007b537a51567ac1747800c0`<br /> <br />对应的解锁合约交易模板示例如下：
+
+  - `newAmount` : 10000
+  - `newAsset` : 3addca837514d599c509aed802c0b7671838b363a298cbcb0acb06bc24076cf4
+  - `sellerKey` : 055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
+  - `sellerProg` : 0014dedfd406c591aa221a047a260107f877da92fec5
+ 
+添加合约参数后的实例化合约程序如下：
+`160014dedfd406c591aa221a047a260107f877da92fec520055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf203addca837514d599c509aed802c0b7671838b363a298cbcb0acb06bc24076cf40210273a557a6432000000557a5479ae7cac6900c3c25100597a89587a89587a89587a89557a890274787e008901c07ec1633a000000007b537a51567ac1747800c0`
+ 
+对应的解锁合约交易模板示例如下：
 ```javascript
 // clause changePrice
 {
@@ -1190,8 +1229,9 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
 "time_range": 1521625823
 }
 ```
-* `clause redeem` 解锁参数 :
-  * `clause_selector` :
+
+- `clause redeem` 解锁参数 :
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -1248,7 +1288,6 @@ contract PriceChanger(askAmount: Amount, askAsset: Asset, sellerKey: PublicKey, 
 }
 ```
 
-<a name="8a6eb79d"></a>
 ## 可部分借贷的抵押贷款合约
 
 `PartLoanCollateral`源代码如下：
@@ -1276,15 +1315,18 @@ contract PartLoanCollateral(assetLoaned: Asset,
 }
 ```
 
-* 合约编译之后的字节码为：`567a6477000000567900a0577954799f9a916164630000000057795379515879c16951c3587995547996c2515979c16952c3767c59799555799694c251005a798959798958798957795c7994895679895579890274787e008901c07ec16963720000000070515879c16951c3c2515979c1696383000000537acd9f6900c3c251577ac1`
-* 合约对应的指令码为：`6 06 ROLL JUMPIF:$default $repay 6 06 PICK FALSE GREATERTHAN 7 07 PICK 4 04 PICK LESSTHAN BOOLAND NOT NOP JUMPIF 63000000 FALSE 7 07 PICK 3 03 PICK 1 01 8 08 PICK CHECKOUTPUT VERIFY 1 01 AMOUNT 8 08 PICK MUL 4 04 PICK DIV ASSET 1 01 9 09 PICK CHECKOUTPUT VERIFY 2 02 AMOUNT DUP SWAP 9 09 PICK MUL 5 05 PICK DIV SUB ASSET 1 01 FALSE 10 0a PICK CATPUSHDATA 9 09 PICK CATPUSHDATA 8 08 PICK CATPUSHDATA 7 07 PICK 12 0c PICK SUB CATPUSHDATA 6 06 PICK CATPUSHDATA 5 05 PICK CATPUSHDATA DATA_2 7478 CAT FALSE CATPUSHDATA DATA_1 c0 CAT CHECKOUTPUT VERIFY JUMP 72000000 FALSE 2OVER 1 01 8 08 PICK CHECKOUTPUT VERIFY 1 01 AMOUNT ASSET 1 01 9 09 PICK CHECKOUTPUT VERIFY JUMP:$_end $default 3 03 ROLL BLOCKHEIGHT LESSTHAN VERIFY FALSE AMOUNT ASSET 1 01 7 07 ROLL CHECKOUTPUT $_end`<br />假如合约参数如下：
-* `assetLoaned` : c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
-* `amountLoaned` : 8000
-* `blockHeight` : 1900
-* `lender` : 0014dedfd406c591aa221a047a260107f877da92fec5
-* `borrower` : 0014bf54f5adbbd2dc11bffb50277b5a993cec75e924<br />添加合约参数后的合约程序如下：`160014bf54f5adbbd2dc11bffb50277b5a993cec75e924160014dedfd406c591aa221a047a260107f877da92fec5026c0702401f20c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4c83567a6477000000567900a0577954799f9a916164630000000057795379515879c16951c3587995547996c2515979c16952c3767c59799555799694c251005a798959798958798957795c7994895679895579890274787e008901c07ec16963720000000070515879c16951c3c2515979c1696383000000537acd9f6900c3c251577ac1747800c0`<br />对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
-* `clause changePrice` 解锁参数 :
-  * `amountPartLoaned` :
+- 合约编译之后的字节码为：`567a6477000000567900a0577954799f9a916164630000000057795379515879c16951c3587995547996c2515979c16952c3767c59799555799694c251005a798959798958798957795c7994895679895579890274787e008901c07ec16963720000000070515879c16951c3c2515979c1696383000000537acd9f6900c3c251577ac1`
+- 合约对应的指令码为：`6 06 ROLL JUMPIF:$default $repay 6 06 PICK FALSE GREATERTHAN 7 07 PICK 4 04 PICK LESSTHAN BOOLAND NOT NOP JUMPIF 63000000 FALSE 7 07 PICK 3 03 PICK 1 01 8 08 PICK CHECKOUTPUT VERIFY 1 01 AMOUNT 8 08 PICK MUL 4 04 PICK DIV ASSET 1 01 9 09 PICK CHECKOUTPUT VERIFY 2 02 AMOUNT DUP SWAP 9 09 PICK MUL 5 05 PICK DIV SUB ASSET 1 01 FALSE 10 0a PICK CATPUSHDATA 9 09 PICK CATPUSHDATA 8 08 PICK CATPUSHDATA 7 07 PICK 12 0c PICK SUB CATPUSHDATA 6 06 PICK CATPUSHDATA 5 05 PICK CATPUSHDATA DATA_2 7478 CAT FALSE CATPUSHDATA DATA_1 c0 CAT CHECKOUTPUT VERIFY JUMP 72000000 FALSE 2OVER 1 01 8 08 PICK CHECKOUTPUT VERIFY 1 01 AMOUNT ASSET 1 01 9 09 PICK CHECKOUTPUT VERIFY JUMP:$_end $default 3 03 ROLL BLOCKHEIGHT LESSTHAN VERIFY FALSE AMOUNT ASSET 1 01 7 07 ROLL CHECKOUTPUT $_end`
+假如合约参数如下：
+- `assetLoaned` : c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+- `amountLoaned` : 8000
+- `blockHeight` : 1900
+- `lender` : 0014dedfd406c591aa221a047a260107f877da92fec5
+- `borrower` : 0014bf54f5adbbd2dc11bffb50277b5a993cec75e924
+添加合约参数后的合约程序如下：`160014bf54f5adbbd2dc11bffb50277b5a993cec75e924160014dedfd406c591aa221a047a260107f877da92fec5026c0702401f20c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4c83567a6477000000567900a0577954799f9a916164630000000057795379515879c16951c3587995547996c2515979c16952c3767c59799555799694c251005a798959798958798957795c7994895679895579890274787e008901c07ec16963720000000070515879c16951c3c2515979c1696383000000537acd9f6900c3c251577ac1747800c0`
+对应的解锁合约的参数如下：（注意该合约包含两个`clause`，在解锁合约的时候任选其一即可，其中`clause_selector`指的是选择的解锁`clause`在合约中的位置（位置序号从`0`开始计算），此外还需注意解锁合约参数的顺序，否则会执行VM失败）
+- `clause changePrice` 解锁参数 :
+  - `amountPartLoaned` :
 ```javascript
 {
   "type": "integer",
@@ -1293,7 +1335,8 @@ contract PartLoanCollateral(assetLoaned: Asset,
   }
 }
 ```
-  * `clause_selector` :
+
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -1303,13 +1346,18 @@ contract PartLoanCollateral(assetLoaned: Asset,
 }
 ```
 从合约中可以看出`lock`语句位于`if-else`语句块中，并且`if`语句下面的`lock`语句个数跟`else`语句下的`lock`语句个数不相同，因此合约解锁之前，需要对语句的执行流程进行预判断。当`amountPartLoaned`等于2000时，是小于`amountLoaned`的值8000，所以执行的流程是`if`语句下面合约流程。此外，`lock`语句中`valueAmount*amountPartLoaned/amountLoaned`和`valueAmount-(valueAmount*amountPartLoaned/amountLoaned)`需要用户在使用之前先计算好，假如合约锁定的资产值`valueAmount`为3000, 那么`valueAmount*amountPartLoaned/amountLoaned`的计算结果为750，而`valueAmount-(valueAmount*amountPartLoaned/amountLoaned)`的计算结果为2250。最后，该合约中的接收对象是一个新的合约程序，`lock valueAmount-(valueAmount*amountPartLoaned/amountLoaned) of valueAsset with PartLoanCollateral(assetLoaned, amountLoaned-amountPartLoaned, blockHeight, lender, borrower)`语句表示合约锁定的资产被重新锁定到合约对象中，因此需要构造实例化的合约程序作为接收对象。接收合约的参数如下：
-  * `assetLoaned` : c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
-  * `amountLoaned` : 6000
-  * `blockHeight` : 1900
-  * `lender` : 0014dedfd406c591aa221a047a260107f877da92fec5
-  * `borrower` : 0014bf54f5adbbd2dc11bffb50277b5a993cec75e924<br /> <br />添加合约参数后的实例化合约程序如下：<br />`160014bf54f5adbbd2dc11bffb50277b5a993cec75e924160014dedfd406c591aa221a047a260107f877da92fec5026c0702701720c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4c83567a6477000000567900a0577954799f9a916164630000000057795379515879c16951c3587995547996c2515979c16952c3767c59799555799694c251005a798959798958798957795c7994895679895579890274787e008901c07ec16963720000000070515879c16951c3c2515979c1696383000000537acd9f6900c3c251577ac1747800c0`
 
- <br />对应的解锁合约交易模板示例如下：
+  - `assetLoaned` : c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee
+  - `amountLoaned` : 6000
+  - `blockHeight` : 1900
+  - `lender` : 0014dedfd406c591aa221a047a260107f877da92fec5
+  - `borrower` : 0014bf54f5adbbd2dc11bffb50277b5a993cec75e924
+ 
+添加合约参数后的实例化合约程序如下：
+`160014bf54f5adbbd2dc11bffb50277b5a993cec75e924160014dedfd406c591aa221a047a260107f877da92fec5026c0702701720c6b12af8326df37b8d77c77bfa2547e083cbacde15cc48da56d4aa4e4235a3ee4c83567a6477000000567900a0577954799f9a916164630000000057795379515879c16951c3587995547996c2515979c16952c3767c59799555799694c251005a798959798958798957795c7994895679895579890274787e008901c07ec16963720000000070515879c16951c3c2515979c1696383000000537acd9f6900c3c251577ac1747800c0`
+
+ 
+对应的解锁合约交易模板示例如下：
 ```javascript
 // clause repay
 {
@@ -1421,8 +1469,9 @@ contract PartLoanCollateral(assetLoaned: Asset,
   "time_range": 1521625823
 }
 ```
-* `clause default` 解锁参数 :
-  * `clause_selector` :
+
+- `clause default` 解锁参数 :
+  - `clause_selector` :
 ```javascript
 {
   "type": "integer",
@@ -1468,12 +1517,11 @@ contract PartLoanCollateral(assetLoaned: Asset,
 ```
 
 
-<a name="7192c8e0"></a>
 ## 储蓄分红合约
 
 储蓄分红合约指的是项目方发起了一个锁仓计划（即储蓄合约和取现合约），用户可以在准备期自由选择锁仓金额参与该计划，等到锁仓到期之后还可以自动获取锁仓的利润。用户可以在准备期内（`dueBlockHeight`）参与储蓄，按照合约规定可以 `1：1` 获取同等数量的储蓄票据资产，同时用户锁仓的资产（`deposit`）将放到取现合约中，并且项目方是无法动用的，等到锁仓期限（`expireBlockHeight`）一到，用户便可以调用取现合约将自己储蓄的资产连本待息一同取出来。其示意图如下:
 
-![](https://cdn.nlark.com/yuque/0/2019/png/241708/1554956714365-0067acd2-d77d-4bff-9e01-c46220c518b5.png#align=left&display=inline&height=643&originHeight=683&originWidth=793&size=0&status=done&width=746)
+![](https://cdn.8btc.com/wp-content/uploads/2019/08/201908260253218177.png)
 
 从上图中可以看出，项目方发布了一个利润为`20%`的锁仓项目，其中储蓄合约`FixedLimitCollect`锁定了`1000`个票据资产（`bill`），同时项目方将`200`个储蓄资产（`deposit`）锁定到利息合约中。待项目方发布完合约之后，所有用户便可以参与了。例如上图中`user1`调用合约储蓄了`500`，这`500`个储蓄资产将被锁定在取现合约`FixedLimitProfit`中，同时`user1`获得了`500`个票据资产，剩余找零的资产将继续锁定在储蓄合约`FixedLimitCollect`中，以此类推，`user2`和`user3`也是相同的流程，直到储蓄合约没有资产为止。取现合约`FixedLimitProfit`跟储蓄合约的模型大致相同，只是取现合约是由多个`UTXO`组成的，用户在取现的时候可以并行操作。但是如果合约中的面值不能支持用户一次性取现的话，需要分多次提取。例如`user1`拥有`500`个票据资产，而可以获得的本息总额为`600`，但是取现的`UTXO`面值为`500`,那么`user1`一次最多只能取`500`,剩下的`100`需要再构造一笔交易来提现。
 
@@ -1550,9 +1598,9 @@ contract FixedLimitProfit(assetBill: Asset,
 
 注意事项：
 
-* 时间期限不是具体的时间，而是通过区块高度来大概估算的（平均区块时间间隔大概为`2.5`分钟）
-* 比原的精度是`8`, 即 `1BTM = 100000000 neu`，正常情况下参与计算都是以`neu`为单位的，然而虚拟机的`int64`类型的最大值是`9223372036854775807`，为了避免数值太大导致计算溢出，所以对计算的金额提出了金额限制（即`amountBill/100000000`）
-* 另外`clause cancel`是项目方的管理方法，如果储蓄或者取现没有满额，项目方也可以回收剩余的资产
+- 时间期限不是具体的时间，而是通过区块高度来大概估算的（平均区块时间间隔大概为`2.5`分钟）
+- 比原的精度是`8`, 即 `1BTM = 100000000 neu`，正常情况下参与计算都是以`neu`为单位的，然而虚拟机的`int64`类型的最大值是`9223372036854775807`，为了避免数值太大导致计算溢出，所以对计算的金额提出了金额限制（即`amountBill/100000000`）
+- 另外`clause cancel`是项目方的管理方法，如果储蓄或者取现没有满额，项目方也可以回收剩余的资产
 
 编译并实例化合约
 
@@ -1569,7 +1617,8 @@ banker                  :0014dedfd406c591aa221a047a260107f877da92fec5
 bankerKey               :055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aedb018ca1bf
 ```
 
-其中`bankerKey`是管理员的`publicKey`，可以通过比原链的接口[`list-pubkeys`](https://github.com/Bytom/bytom/wiki/API-Reference#list-pubkeys)来获取，注意管理员需要保存一下对应的`rootXpub`和`Path`，否则无法正确调用`clause cancel`。<br />实例化合约命令如下：
+其中`bankerKey`是管理员的`publicKey`，可以通过比原链的接口[`list-pubkeys`](https://github.com/Bytom/bytom/wiki/API-Reference#list-pubkeys)来获取，注意管理员需要保存一下对应的`rootXpub`和`Path`，否则无法正确调用`clause cancel`。
+实例化合约命令如下：
 
 ```sh
 // 储蓄合约
@@ -1610,7 +1659,8 @@ bankerKey               :055539eb36abcaaf127c63ae20e3d049cd28d0f1fe569df84da3aed
 }
 ```
 
-合约交易成功后，合约`control_program`对应的`UTXO`将会被所有用户查询到，使用比原链的接口[`list-unspent-outputs`](https://github.com/Bytom/bytom/wiki/API-Reference#list-unspent-outputs)即可查询。<br />此外，开发者需要存储一下合约`UTXO`的`assetID`和`program`，以便在`DAPP`的前端页面的`config`配置文件和`bufferserver`缓冲服务器中调用。如上所示：
+合约交易成功后，合约`control_program`对应的`UTXO`将会被所有用户查询到，使用比原链的接口[`list-unspent-outputs`](https://github.com/Bytom/bytom/wiki/API-Reference#list-unspent-outputs)即可查询。
+此外，开发者需要存储一下合约`UTXO`的`assetID`和`program`，以便在`DAPP`的前端页面的`config`配置文件和`bufferserver`缓冲服务器中调用。如上所示：
 
 ```
 // 储蓄合约
